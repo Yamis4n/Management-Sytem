@@ -1,17 +1,25 @@
 package com.evertonvsf.managementsystem.models.stock;
 
 public class Component {
-    int id; // enumerate
+    ComponentId id;
     int quantity;
     String description;
     double value;
 
     public int getId() {
-        return id;
+        return id.getId();
     }
 
     public void setId(int id) {
-        this.id = id;
+        switch (id) {
+            case 1 -> this.id = ComponentId.RAM;
+            case 2 -> this.id = ComponentId.HD_SSD;
+            case 3 -> this.id = ComponentId.MOTHERBOARD;
+            case 4 -> this.id = ComponentId.POWER_SUPPLY;
+            case 5 -> this.id = ComponentId.VIDEO_CARD;
+            default -> this.id = ComponentId.OTHER;
+        }
+
     }
 
     public int getQuantity() {
