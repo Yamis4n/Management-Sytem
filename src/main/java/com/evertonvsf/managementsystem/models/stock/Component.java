@@ -6,6 +6,12 @@ public class Component {
     String description;
     double value;
 
+    public Component(int id, int quantity, double value){
+        this.setId(id);
+        this.quantity = quantity;
+        this.value = value;
+    }
+
     public int getId() {
         return id.getId();
     }
