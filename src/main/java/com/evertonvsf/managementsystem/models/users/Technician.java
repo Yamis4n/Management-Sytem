@@ -5,6 +5,11 @@ public class Technician {
     String name;
     String password;
 
+    public Technician(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
+
     public int getId() {
         return id;
     }
