@@ -6,8 +6,7 @@ public class Component {
     String description;
     double value;
 
-    public Component(int id, int quantity, double value){
-        this.setId(id);
+    public Component(int quantity, double value){
         this.quantity = quantity;
         this.value = value;
     }
