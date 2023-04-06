@@ -17,11 +17,11 @@ public class Component {
 
     public void setId(int id) {
         switch (id) {
-            case 1 -> this.id = ComponentId.RAM;
-            case 2 -> this.id = ComponentId.HD_SSD;
-            case 3 -> this.id = ComponentId.MOTHERBOARD;
-            case 4 -> this.id = ComponentId.POWER_SUPPLY;
-            case 5 -> this.id = ComponentId.VIDEO_CARD;
+            case 0 -> this.id = ComponentId.RAM;
+            case 1 -> this.id = ComponentId.HD_SSD;
+            case 2 -> this.id = ComponentId.MOTHERBOARD;
+            case 3 -> this.id = ComponentId.POWER_SUPPLY;
+            case 4 -> this.id = ComponentId.VIDEO_CARD;
             default -> this.id = ComponentId.OTHER;
         }
 
