@@ -6,13 +6,13 @@ import java.util.concurrent.TimeUnit;
 public class ServiceOrder {
     private int id, clientId, technicianId, invoiceId;
     private Date beginningTime, conclusionTime;
-    private String status; // change for enum;
+    private ServiceOrderStatus status;
 
     public ServiceOrder(int clientId, int technicianId) {
         this.clientId = clientId;
         this.technicianId = technicianId;
         this.beginningTime = new Date();
-        this.status = "WAITING";
+        this.setStatus(0);
     }
 
 
@@ -65,10 +65,16 @@ public class ServiceOrder {
     }
 
     public String getStatus() {
-        return status;
+        return status.getStatusName();
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setStatus(int statusId) {
+        switch (statusId){
+            case 0 -> this.status = ServiceOrderStatus.WAITING;
+            case 1 -> this.status = ServiceOrderStatus.INITIALIZED;
+            case 2 -> this.status = ServiceOrderStatus.FINISHED;
+            case 3 -> this.status = ServiceOrderStatus.CANCELED;
+            default -> this.status = ServiceOrderStatus.PAID;
+        }
     }
 }
