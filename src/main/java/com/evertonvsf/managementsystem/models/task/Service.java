@@ -5,8 +5,8 @@ import java.util.Date;
 public class Service {
     private int id, rating, necessaryComponentId, invoiceId;
     private String necessaryComponentName; // only used if componentId == 6;
-    private ServiceCategory category; // change for an enum;
-    private ServiceStatus status; // change for an enum;
+    private ServiceCategory category;
+    private ServiceStatus status;
     private Date beginning, conclusion;
     private double value;
 
