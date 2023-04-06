@@ -10,10 +10,10 @@ public class Service {
     private Date beginningTime, conclusionTime;
     private double value;
 
-    public Service(int category, Date beginning, double value) {
+    public Service(int category, double value) {
         this.setCategory(category);
         this.setStatus(0);
-        this.beginningTime = beginning;
+        this.beginningTime = new Date();
         this.value = value;
     }
 
