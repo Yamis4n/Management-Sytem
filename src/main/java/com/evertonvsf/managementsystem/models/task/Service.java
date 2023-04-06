@@ -5,13 +5,13 @@ import java.util.Date;
 public class Service {
     private int id, rating, necessaryComponentId, invoiceId;
     private String necessaryComponentName; // only used if componentId == 6;
-    private String category; // change for an enum;
+    private ServiceCategory category; // change for an enum;
     private String status; // change for an enum;
     private Date beginning, conclusion;
     private double value;
 
-    public Service(String category, Date beginning, double value) {
-        this.category = category;
+    public Service(int category, Date beginning, double value) {
+        this.setCategory(category);
         this.status = "WAITING";
         this.beginning = beginning;
         this.value = value;
@@ -58,11 +58,15 @@ public class Service {
     }
 
     public String getCategory() {
-        return category;
+        return category.getServiceName();
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategory(int category) {
+        switch (category){
+            case 0 -> this.category = ServiceCategory.MOUNTING;
+            case 1 -> this.category = ServiceCategory.FORMATTING_INSTALLATION;
+            default -> this.category = ServiceCategory.CLEANING;
+        }
     }
 
     public String getStatus() {
