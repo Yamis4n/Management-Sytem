@@ -6,13 +6,13 @@ public class Service {
     private int id, rating, necessaryComponentId, invoiceId;
     private String necessaryComponentName; // only used if componentId == 6;
     private ServiceCategory category; // change for an enum;
-    private String status; // change for an enum;
+    private ServiceStatus status; // change for an enum;
     private Date beginning, conclusion;
     private double value;
 
     public Service(int category, Date beginning, double value) {
         this.setCategory(category);
-        this.status = "WAITING";
+        this.setStatus(0);
         this.beginning = beginning;
         this.value = value;
     }
@@ -70,11 +70,15 @@ public class Service {
     }
 
     public String getStatus() {
-        return status;
+        return status.getStatus();
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setStatus(int status) {
+        if (status == 0) {
+            this.status = ServiceStatus.INITIALIZED;
+        } else {
+            this.status = ServiceStatus.FINISHED;
+        }
     }
 
     public Date getBeginning() {
