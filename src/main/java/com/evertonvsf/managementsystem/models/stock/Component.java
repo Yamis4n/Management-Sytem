@@ -1,10 +1,10 @@
 package com.evertonvsf.managementsystem.models.stock;
 
 public class Component {
-    ComponentId id;
-    int quantity;
-    String description;
-    double value;
+    private ComponentId id;
+    private int quantity;
+    private String description;
+    private double value;
 
     public Component(int quantity, double value){
         this.quantity = quantity;

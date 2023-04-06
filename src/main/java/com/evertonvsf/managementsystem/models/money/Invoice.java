@@ -1,10 +1,10 @@
 package com.evertonvsf.managementsystem.models.money;
 
 public class Invoice {
-    int id;
-    int ServiceOrderId;
-    double totalValue;
-    double paidValue;
+    private int id;
+    private int ServiceOrderId;
+    private double totalValue;
+    private double paidValue;
 
     public Invoice(int serviceOrderId, double totalValue) {
         ServiceOrderId = serviceOrderId;

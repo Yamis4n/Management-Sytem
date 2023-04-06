@@ -3,16 +3,12 @@ package com.evertonvsf.managementsystem.models.task;
 import java.util.Date;
 
 public class Service {
-    int id;
-    int rating; // a value between 0 and 5;
-    int necessaryComponentId; // only used in mounting category
-    int invoiceId;
-    String necessaryComponentName; // only used if componentId == 6;
-    String category; // change for an enum;
-    String status; // change for an enum;
-    Date beginning;
-    Date conclusion;
-    double value;
+    private int id, rating, necessaryComponentId, invoiceId;
+    private String necessaryComponentName; // only used if componentId == 6;
+    private String category; // change for an enum;
+    private String status; // change for an enum;
+    private Date beginning, conclusion;
+    private double value;
 
     public Service(String category, Date beginning, double value) {
         this.category = category;

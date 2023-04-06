@@ -2,10 +2,10 @@ package com.evertonvsf.managementsystem.models.money;
 
 public class Payment {
 
-    int id;
-    int invoiceId;
-    String paymentWay;
-    double value;
+    private int id;
+    private int invoiceId;
+    private String paymentWay;
+    private double value;
 
     public Payment(int invoiceId, String paymentWay, double value) {
         this.invoiceId = invoiceId;

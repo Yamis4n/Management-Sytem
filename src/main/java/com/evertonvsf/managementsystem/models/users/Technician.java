@@ -1,9 +1,9 @@
 package com.evertonvsf.managementsystem.models.users;
 
 public class Technician {
-    int id;
-    String name;
-    String password;
+    private int id;
+    private String name;
+    private String password;
 
     public Technician(String name, String password) {
         this.name = name;

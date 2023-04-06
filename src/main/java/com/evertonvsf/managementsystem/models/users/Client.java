@@ -1,11 +1,11 @@
 package com.evertonvsf.managementsystem.models.users;
 
 public class Client {
-    String name;
-    int id;
-    String address;
-    String emailAddress;
-    String phoneNumber;
+    private String name;
+    private int id;
+    private String address;
+    private String emailAddress;
+    private String phoneNumber;
 
     public Client(String address, String emailAddress, String phoneNumber){
         this.name = "";

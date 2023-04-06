@@ -1,11 +1,11 @@
 package com.evertonvsf.managementsystem.models.stock;
 
 public class BuyOrder {
-    int id;
-    int componentId;
-    int quantity;
-    double unitaryCost;
-    String componentDescription; // only used if componentID == 6
+    private int id;
+    private int componentId;
+    private int quantity;
+    private double unitaryCost;
+    private String componentDescription; // only used if componentID == 6
 
     public int getId() {
         return id;
