@@ -7,13 +7,13 @@ public class Service {
     private String necessaryComponentName; // only used if componentId == 6;
     private ServiceCategory category;
     private ServiceStatus status;
-    private Date beginning, conclusion;
+    private Date beginningTime, conclusionTime;
     private double value;
 
     public Service(int category, Date beginning, double value) {
         this.setCategory(category);
         this.setStatus(0);
-        this.beginning = beginning;
+        this.beginningTime = beginning;
         this.value = value;
     }
 
@@ -82,19 +82,19 @@ public class Service {
     }
 
     public Date getBeginning() {
-        return beginning;
+        return beginningTime;
     }
 
     public void setBeginning(Date beginning) {
-        this.beginning = beginning;
+        this.beginningTime = beginning;
     }
 
     public Date getConclusion() {
-        return conclusion;
+        return conclusionTime;
     }
 
     public void setConclusion(Date conclusion) {
-        this.conclusion = conclusion;
+        this.conclusionTime = conclusion;
     }
 
     public double getValue() {
