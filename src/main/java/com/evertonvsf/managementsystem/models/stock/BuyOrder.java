@@ -6,6 +6,7 @@ public class BuyOrder {
     private int componentId;
     private int quantity;
     private double unitaryCost;
+    private double totalCost;
     private String componentDescription; // only used if componentID == 6
 
     public int getId() {
@@ -21,6 +22,15 @@ public class BuyOrder {
         this.componentId = componentId;
         this.quantity = quantity;
         this.unitaryCost = unitaryCost;
+        this.totalCost = quantity * unitaryCost;
+    }
+
+    public double getTotalCost() {
+        return totalCost;
+    }
+
+    public void setTotalCost(double totalCost) {
+        this.totalCost = totalCost;
     }
 
     public int getTechnicianId() {
