@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface InvoiceCRUD extends CRUD<Invoice> {
 
-    public Invoice findById(int id);
     public Invoice findByOrder(int orderId);
     public List<Invoice> findByValue(double value);
     public boolean deleteById(int id);

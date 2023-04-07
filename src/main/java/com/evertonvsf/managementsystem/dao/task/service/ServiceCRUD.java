@@ -8,7 +8,6 @@ import com.evertonvsf.managementsystem.models.task.ServiceStatus;
 import java.util.List;
 
 public interface ServiceCRUD extends CRUD<Service> {
-    public Service findById(int id);
     public List<Service> findByRating(int rating);
     public List<Service> findByCategory(String category);
     public List<Service> findByStatus(String status);

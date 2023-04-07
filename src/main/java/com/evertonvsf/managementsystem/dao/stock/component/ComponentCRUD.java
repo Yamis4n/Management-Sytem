@@ -6,7 +6,6 @@ import com.evertonvsf.managementsystem.models.stock.Component;
 import java.util.List;
 
 public interface ComponentCRUD extends CRUD<Component> {
-    public Component findById(int Id);
     public List<Component> findByQuantity(int quantity);
     public List<Component> findByPrice(double price);
     public boolean deleteById(int id);
