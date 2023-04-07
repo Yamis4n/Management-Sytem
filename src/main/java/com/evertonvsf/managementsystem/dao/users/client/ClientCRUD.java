@@ -6,5 +6,5 @@ import com.evertonvsf.managementsystem.models.users.Client;
 import java.util.List;
 
 public interface ClientCRUD extends CRUD<Client> {
-    
+
 }
