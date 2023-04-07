@@ -1,6 +1,5 @@
 package com.evertonvsf.managementsystem.dao.users.technician;
 
-import com.evertonvsf.managementsystem.models.users.Client;
 import com.evertonvsf.managementsystem.models.users.Technician;
 
 import java.util.ArrayList;
