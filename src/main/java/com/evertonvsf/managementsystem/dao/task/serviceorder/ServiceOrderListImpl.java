@@ -45,6 +45,7 @@ public class ServiceOrderListImpl implements ServiceOrderCRUD{
             return false;
         }
         this.serviceOrders = new ArrayList<ServiceOrder>();
+        this.newId = 0;
         return true;
     }
 

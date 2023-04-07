@@ -44,6 +44,7 @@ public class BuyOrderListImpl implements BuyOrderCRUD{
             return false;
         }
         this.buyOrders = new ArrayList<BuyOrder>();
+        this.newId = 0;
         return true;
     }
 
