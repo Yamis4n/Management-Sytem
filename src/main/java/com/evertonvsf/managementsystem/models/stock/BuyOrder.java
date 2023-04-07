@@ -2,6 +2,7 @@ package com.evertonvsf.managementsystem.models.stock;
 
 public class BuyOrder {
     private int id;
+    private int technicianId;
     private int componentId;
     private int quantity;
     private double unitaryCost;
@@ -15,10 +16,19 @@ public class BuyOrder {
         this.id = id;
     }
 
-    public BuyOrder(int componentId, int quantity, double unitaryCost) {
+    public BuyOrder(int technicianId, int componentId, int quantity, double unitaryCost) {
+        this.technicianId = technicianId;
         this.componentId = componentId;
         this.quantity = quantity;
         this.unitaryCost = unitaryCost;
+    }
+
+    public int getTechnicianId() {
+        return technicianId;
+    }
+
+    public void setTechnicianId(int technicianId) {
+        this.technicianId = technicianId;
     }
 
     public int getComponentId() {

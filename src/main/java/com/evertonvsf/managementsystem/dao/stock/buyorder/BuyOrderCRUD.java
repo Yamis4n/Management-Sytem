@@ -7,5 +7,5 @@ public interface BuyOrderCRUD extends CRUD<BuyOrder> {
 
     public BuyOrder findById(int id);
     public boolean deleteById(int id);
-    
+
 }
