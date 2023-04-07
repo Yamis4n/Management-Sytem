@@ -7,7 +7,7 @@ public class Invoice {
     private double paidValue;
 
     public Invoice(int serviceOrderId, double totalValue) {
-        ServiceOrderId = serviceOrderId;
+        this.ServiceOrderId = serviceOrderId;
         this.totalValue = totalValue;
     }
 
