@@ -4,12 +4,12 @@ public class Payment {
 
     private int id;
     private int invoiceId;
-    private String paymentWay;
+    private String paymentMethod;
     private double value;
 
-    public Payment(int invoiceId, String paymentWay, double value) {
+    public Payment(int invoiceId, String paymentMethod, double value) {
         this.invoiceId = invoiceId;
-        this.paymentWay = paymentWay;
+        this.paymentMethod = paymentMethod;
         this.value = value;
     }
 
@@ -29,12 +29,12 @@ public class Payment {
         this.invoiceId = invoiceId;
     }
 
-    public String getPaymentWay() {
-        return paymentWay;
+    public String getPaymentMethod() {
+        return paymentMethod;
     }
 
-    public void setPaymentWay(String paymentWay) {
-        this.paymentWay = paymentWay;
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 
     public double getValue() {
