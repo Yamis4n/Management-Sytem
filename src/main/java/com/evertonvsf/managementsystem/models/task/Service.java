@@ -96,7 +96,7 @@ public class Service {
 
     public void setTimeToConcludeConclusion() {
         Date finished = new Date();
-        this.timeToConclude = (finished.getTime() - this.beginningTime.getTime());
+        this.timeToConclude = (finished.getTime() - this.beginningTime.getTime()) / 60000;
     }
 
     public double getValue() {
