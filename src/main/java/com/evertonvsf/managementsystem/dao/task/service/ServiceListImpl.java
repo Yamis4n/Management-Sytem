@@ -43,9 +43,12 @@ public class ServiceListImpl implements ServiceCRUD{
 
     @Override
     public boolean deleteMany() {
-        this.services = new ArrayList<Service>();
         this.newId = 0;
-        return true;
+        if (this.services.size() > 0){
+            this.services = new ArrayList<Service>();
+            return true;
+        }
+        return false;
     }
 
     @Override

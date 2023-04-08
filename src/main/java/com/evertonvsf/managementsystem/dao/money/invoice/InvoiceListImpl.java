@@ -40,9 +40,9 @@ public class InvoiceListImpl implements InvoiceCRUD{
 
     @Override
     public boolean deleteMany() {
+        this.newId = 0;
         if (this.invoices.size() > 0){
             this.invoices = new ArrayList<Invoice>();
-            this.newId = 0;
             return true;
         }
         return false;

@@ -42,9 +42,9 @@ public class TechnicianListImpl implements TechnicianCRUD{
 
     @Override
     public boolean deleteMany() {
+        this.newId = 0;
         if (this.technicians.size() > 0) {
             this.technicians = new ArrayList<Technician>();
-            this.newId = 0;
             return true;
         }
         return false;
@@ -85,12 +85,7 @@ public class TechnicianListImpl implements TechnicianCRUD{
 
     @Override
     public boolean deleteByName(String name) {
-        List<Technician> sameNameTechnicians = new ArrayList<Technician>();
-        for (Technician technician : this.technicians) {
-            if (Objects.equals(technician.getName(), name)) {
-                sameNameTechnicians.add(technician);
-            }
-        }
+        List<Technician> sameNameTechnicians = findByName(name);
         if (sameNameTechnicians.size() > 0){
             this.technicians.removeAll(sameNameTechnicians);
             return true;

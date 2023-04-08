@@ -39,9 +39,9 @@ public class ClientListImpl implements ClientCRUD{
 
     @Override
     public boolean deleteMany() {
+        this.newId = 0;
         if (this.clients.size() > 0) {
             this.clients = new ArrayList<Client>();
-            this.newId = 0;
             return true;
         }
         return false;
@@ -81,12 +81,7 @@ public class ClientListImpl implements ClientCRUD{
 
     @Override
     public boolean deleteByName(String name) {
-        List<Client> sameNameClients = new ArrayList<Client>();
-        for (Client client : this.clients) {
-            if (Objects.equals(client.getName(), name)) {
-                sameNameClients.add(client);
-            }
-        }
+        List<Client> sameNameClients = this.findByName(name);
         if (sameNameClients.size() > 0){
             this.clients.removeAll(sameNameClients);
             return true;

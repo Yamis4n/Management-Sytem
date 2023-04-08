@@ -40,11 +40,11 @@ public class BuyOrderListImpl implements BuyOrderCRUD{
 
     @Override
     public boolean deleteMany() {
+        this.newId = 0;
         if (this.buyOrders.size() == 0){
             return false;
         }
         this.buyOrders = new ArrayList<BuyOrder>();
-        this.newId = 0;
         return true;
     }
 

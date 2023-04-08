@@ -41,11 +41,11 @@ public class ServiceOrderListImpl implements ServiceOrderCRUD{
 
     @Override
     public boolean deleteMany() {
+        this.newId = 0;
         if (this.serviceOrders.size() == 0){
             return false;
         }
         this.serviceOrders = new ArrayList<ServiceOrder>();
-        this.newId = 0;
         return true;
     }
 
