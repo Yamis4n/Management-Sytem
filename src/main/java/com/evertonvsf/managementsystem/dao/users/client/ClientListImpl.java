@@ -9,7 +9,7 @@ import java.util.Objects;
 public class ClientListImpl implements ClientCRUD{
     private List<Client> clients;
     private int newId;
-    ClientListImpl(){
+    public ClientListImpl(){
         this.clients = new ArrayList<Client>();
         this.newId = 0;
     }
