@@ -1,11 +1,11 @@
 package com.evertonvsf.managementsystem.models.task;
 
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 public class ServiceOrder {
     private int id, clientId, technicianId, invoiceId;
-    private Date beginningTime, conclusionTime;
+    private Date beginningTime;
+    long timeToConclude;
     private ServiceOrderStatus status;
 
     public ServiceOrder(int clientId, int technicianId) {
@@ -56,12 +56,13 @@ public class ServiceOrder {
         this.beginningTime = new Date();
     }
 
-    public Date getConclusionTime() {
-        return conclusionTime;
+    public long getTimeToConclude() {
+        return timeToConclude;
     }
 
-    public void setConclusionTime() {
-        this.conclusionTime = new Date();
+    public void setTimeToConclude() {
+        Date finished = new Date();
+        this.timeToConclude = (finished.getTime() - this.beginningTime.getTime()) / 60000;
     }
 
     public String getStatus() {
