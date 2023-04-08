@@ -7,7 +7,8 @@ public class Service {
     private String necessaryComponentName; // only used if componentId == 6;
     private ServiceCategory category;
     private ServiceStatus status;
-    private Date beginningTime, conclusionTime;
+    private Date beginningTime;
+    long timeToConclude;
     private double value;
 
     public Service(int category, double value) {
@@ -89,12 +90,13 @@ public class Service {
         this.beginningTime = beginning;
     }
 
-    public Date getConclusion() {
-        return conclusionTime;
+    public long getTimeToConclude() {
+        return timeToConclude;
     }
 
-    public void setConclusion(Date conclusion) {
-        this.conclusionTime = conclusion;
+    public void setTimeToConcludeConclusion() {
+        Date finished = new Date();
+        this.timeToConclude = (finished.getTime() - this.beginningTime.getTime());
     }
 
     public double getValue() {
