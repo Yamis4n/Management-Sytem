@@ -9,4 +9,4 @@ public interface PaymentCRUD extends CRUD<Payment> {
     public List<Payment> findByInvoice(int invoiceId);
     public List<Payment> findByPaymentMethod(String paymentMethod);
     public List<Payment> findByValue(double value);
-}   
+}
