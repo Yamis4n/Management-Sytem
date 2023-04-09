@@ -26,13 +26,15 @@ public class ClientController {
     public static List<Client> getAllClients(){
         return DAO.getClientDAO().findMany();
     }
-    public static boolean updateOne(String name, String address, String emailAddress, String phoneNumber){
+    public static boolean updateOne(String name, String address, String emailAddress, String phoneNumber, int id){
         boolean emailIsValid = EmailValidator.getInstance().isValid(emailAddress);
         boolean nameIsValid = name.toLowerCase().matches("[a-z]{3,}");
         boolean phoneNumberIsValid = phoneNumber.matches("[0-9]{11}");
 
         if (emailIsValid && nameIsValid && phoneNumberIsValid){
-            return DAO.getClientDAO().update(new Client(name, address, emailAddress, phoneNumber));
+            Client newClient = new Client(name, address, emailAddress, phoneNumber);
+            newClient.setId(id);
+            return DAO.getClientDAO().update(newClient);
         }
         return false;
     }
