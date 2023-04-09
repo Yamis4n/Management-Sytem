@@ -11,7 +11,7 @@ public class ServiceOrder {
     private long timeToConclude;
     private ServiceOrderStatus status;
 
-    public ServiceOrder(int clientId, int technicianId, int serviceId) {
+    public ServiceOrder(int clientId, int technicianId) {
         this.clientId = clientId;
         this.technicianId = technicianId;
         this.beginningTime = new Date();
