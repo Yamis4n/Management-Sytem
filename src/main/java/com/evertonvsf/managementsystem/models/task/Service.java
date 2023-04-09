@@ -9,13 +9,13 @@ public class Service {
     private ServiceStatus status;
     private Date beginningTime;
     long timeToConclude;
-    private double value;
+    private double price;
 
-    public Service(int category, double value) {
+    public Service(int category) {
         this.setCategory(category);
         this.setStatus(0);
         this.beginningTime = new Date();
-        this.value = value;
+        this.setPrice(this.category);
     }
 
     public int getId() {
@@ -104,11 +104,11 @@ public class Service {
         this.timeToConclude = (finished.getTime() - this.beginningTime.getTime()) / 60000;
     }
 
-    public double getValue() {
-        return value;
+    public double getPrice() {
+        return price;
     }
 
-    public void setValue(double value) {
-        this.value = value;
+    public void setPrice(ServiceCategory category) {
+        this.price = category.getPrice();
     }
 }
