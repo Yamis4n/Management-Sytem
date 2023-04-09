@@ -64,8 +64,13 @@ public class Service {
 
     public void setCategory(int category) {
         switch (category){
-            case 0 -> this.category = ServiceCategory.MOUNTING;
-            case 1 -> this.category = ServiceCategory.FORMATTING_INSTALLATION;
+            case 0 -> this.category = ServiceCategory.MOUNTING_RAM;
+            case 1 -> this.category = ServiceCategory.MOUNTING_MOTHERBOARD;
+            case 2 -> this.category = ServiceCategory.MOUNTING_POWER_SUPPLY;
+            case 3 -> this.category = ServiceCategory.MOUNTING_VIDEO_CARD;
+            case 4 -> this.category = ServiceCategory.MOUNTING_HD_SSD;
+            case 5 -> this.category = ServiceCategory.FORMATTING_INSTALLATION_PROGRAMS;
+            case 6 -> this.category = ServiceCategory.FORMATTING_INSTALLATION_OS;
             default -> this.category = ServiceCategory.CLEANING;
         }
     }
