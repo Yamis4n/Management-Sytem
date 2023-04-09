@@ -1,14 +1,17 @@
 package com.evertonvsf.managementsystem.models.task;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class ServiceOrder {
     private int id, clientId, technicianId, invoiceId;
+    private List<Integer> servicesIds;
     private Date beginningTime;
-    long timeToConclude;
+    private long timeToConclude;
     private ServiceOrderStatus status;
 
-    public ServiceOrder(int clientId, int technicianId) {
+    public ServiceOrder(int clientId, int technicianId, int serviceId) {
         this.clientId = clientId;
         this.technicianId = technicianId;
         this.beginningTime = new Date();
@@ -77,5 +80,16 @@ public class ServiceOrder {
             case 3 -> this.status = ServiceOrderStatus.CANCELED;
             default -> this.status = ServiceOrderStatus.PAID;
         }
+    }
+
+    public List<Integer> getServicesIds() {
+        return servicesIds;
+    }
+
+    public void setServicesIds(int servicesIds) {
+        if (this.servicesIds == null){
+            this.servicesIds = new ArrayList<Integer>();
+        }
+        this.servicesIds.add(servicesIds);
     }
 }
