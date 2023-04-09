@@ -25,19 +25,19 @@ public class TechnicianController {
         }
         return false;
     }
-    public Technician getById(int id){
+    public static Technician getById(int id){
         return DAO.getTechnicianDAO().findById(id);
     }
     public List<Technician> getAll(){
         return DAO.getTechnicianDAO().findMany();
     }
-    public boolean deleteById(int id){
+    public static boolean deleteById(int id){
         return DAO.getTechnicianDAO().deleteById(id);
     }
-    public boolean deleteAll(){
+    public static boolean deleteAll(){
         return DAO.getTechnicianDAO().deleteMany();
     }
-    public List<Technician> getByName(String name){
+    public static List<Technician> getByName(String name){
         boolean nameIsValid = name.toLowerCase().matches("[a,z]{3,}");
         if (nameIsValid){
             return DAO.getTechnicianDAO().findByName(name);
@@ -45,7 +45,7 @@ public class TechnicianController {
         return null;
     }
 
-    public boolean deleteByName(String name){
+    public static boolean deleteByName(String name){
         boolean nameIsValid = name.toLowerCase().matches("[a,z]{3,}");
         if (nameIsValid){
             return DAO.getTechnicianDAO().deleteByName(name);
