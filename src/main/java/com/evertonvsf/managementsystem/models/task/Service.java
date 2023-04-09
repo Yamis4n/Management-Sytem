@@ -84,6 +84,7 @@ public class Service {
             this.status = ServiceStatus.INITIALIZED;
         } else {
             this.status = ServiceStatus.FINISHED;
+            this.setTimeToConcludeConclusion();
         }
     }
 
