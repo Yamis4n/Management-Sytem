@@ -1,16 +1,27 @@
 package com.evertonvsf.managementsystem.models.task;
 
 public enum ServiceCategory {
-    MOUNTING("MOUNTING"),
-    CLEANING("CLEANING"),
-    FORMATTING_INSTALLATION("FORMATTING");
+    MOUNTING_RAM("MOUNTING_RAM", 20),
+    MOUNTING_MOTHERBOARD("MOUNTING MOTHERBOARD", 100),
+    MOUNTING_POWER_SUPPLY("MOUNTING POWER SUPPLY", 30),
+    MOUNTING_VIDEO_CARD("MOUNTING VIDEO CARD", 100),
+    MOUNTING_HD_SSD("MOUNTING HD/SSD", 30),
+    CLEANING("CLEANING", 70),
+    FORMATTING_INSTALLATION_PROGRAMS("FORMATTING/INSTALLING PROGRAMS", 10),
+    FORMATTING_INSTALLATION_OS("FORMATTING/INSTALLING OS", 50);
     private final String serviceName;
+    private final double price;
 
-    ServiceCategory(String name){
+    ServiceCategory(String name, double price){
         this.serviceName = name;
+        this.price = price;
     }
 
     public String getServiceName() {
         return serviceName;
+    }
+
+    public double getPrice() {
+        return price;
     }
 }
