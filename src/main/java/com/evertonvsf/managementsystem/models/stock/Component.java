@@ -5,9 +5,10 @@ public class Component {
     private int quantity;
     private double value;
 
-    public Component(int quantity, double value){
+    public Component(int quantity, double value, int id){
         this.quantity = quantity;
         this.value = value;
+        this.setId(id);
     }
 
     public int getId() {
