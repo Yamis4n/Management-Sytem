@@ -23,57 +23,46 @@ public class ServiceOrderController {
         newServiceOrder.setId(serviceOrderId);
         return DAO.getServiceOrderDAO().update(newServiceOrder);
     }
-    public static ServiceOrder getById(int id){
+    public static ServiceOrder getServiceOrderById(int id){
         if (id >= 0){
             return DAO.getServiceOrderDAO().findById(id);
         }
         return null;
     }
 
-    public static List<ServiceOrder> getAll(){
+    public static List<ServiceOrder> getAllServiceOrders(){
         return DAO.getServiceOrderDAO().findMany();
     }
 
-    public static boolean deleteById(int id){
+    public static boolean deleteServiceOrderById(int id){
         if (id  >= 0){
             return DAO.getServiceOrderDAO().deleteById(id);
         }
         return false;
     }
 
-    public static boolean deleteAll(){
+    public static boolean deleteAllServiceOrders(){
         return DAO.getServiceOrderDAO().deleteMany();
     }
 
-    public static List<ServiceOrder> getByClient(int clientId){
-        if (clientId >= 0){
-            return DAO.getServiceOrderDAO().findByClient(clientId);
-        }
-        return null;
-    }
-    public static List<ServiceOrder> getByTechnician(int technicianId) {
+    public static List<ServiceOrder> getServiceOrderByTechnician(int technicianId) {
         if (technicianId >= 0) {
             return DAO.getServiceOrderDAO().findByTechnician(technicianId);
         }
         return null;
     }
-    public static List<ServiceOrder> getByStatus(String status) {
+    public static List<ServiceOrder> getServiceOrderByStatus(String status) {
         return DAO.getServiceOrderDAO().findByStatus(status);
     }
 
-    public static boolean deleteByClient(int clientId){
-        if (clientId >= 0){
-            return DAO.getServiceOrderDAO().deleteByClient(clientId);
-        }
-        return false;
-    }
-    public static boolean deleteByTechnician(int technicianId) {
+
+    public static boolean deleteServiceOrderByTechnician(int technicianId) {
         if (technicianId >= 0) {
             return DAO.getServiceOrderDAO().deleteByTechnician(technicianId);
         }
         return false;
     }
-    public static boolean deleteByStatus(String status) {
+    public static boolean deleteServiceOrderByStatus(String status) {
         return DAO.getServiceOrderDAO().deleteByStatus(status);
     }
 
