@@ -36,13 +36,6 @@ public class ComponentController {
         return null;
     }
 
-    public static List<Component> getComponentsByPrice(double price){
-        if (price >= 0){
-            return DAO.getComponentDAO().findByPrice(price);
-        }
-        return null;
-    }
-
     public boolean deleteComponentById(int id){
         if (id >= 0){
             return DAO.getComponentDAO().deleteById(id);
