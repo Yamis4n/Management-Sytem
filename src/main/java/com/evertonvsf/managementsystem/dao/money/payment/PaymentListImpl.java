@@ -60,6 +60,17 @@ public class PaymentListImpl implements PaymentCRUD {
     }
 
     @Override
+    public boolean deleteById(int id) {
+        for (int index = 0; index < this.payments.size(); index++){
+            if (this.payments.get(index).getId() == id){
+                this.payments.remove(index);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
     public List<Payment> findByInvoice(int invoiceId) {
         List<Payment> sameInvoicePayments = new ArrayList<Payment>();
         for (Payment payment : this.payments){

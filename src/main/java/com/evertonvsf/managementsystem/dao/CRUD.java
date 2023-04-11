@@ -8,4 +8,5 @@ public interface CRUD<Generic> {
     public List<Generic> findMany();
     public boolean update(Generic object);
     public boolean deleteMany();
+    public boolean deleteById(int id);
 }
