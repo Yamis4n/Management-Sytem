@@ -53,5 +53,5 @@ public class ComponentController {
     public boolean deleteAllComponents(){
         return DAO.getComponentDAO().deleteMany();
     }
-    
+
 }
