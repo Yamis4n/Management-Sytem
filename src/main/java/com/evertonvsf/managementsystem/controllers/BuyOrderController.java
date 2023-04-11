@@ -7,7 +7,8 @@ import java.util.List;
 
 public class BuyOrderController {
 
-    public static BuyOrder  createBuyOrder(int technicianId, int componentId, int quantity, double unitaryCost){
+    public static BuyOrder  createBuyOrder(int technicianId, int componentId,
+                                           int quantity, double unitaryCost){
         if (technicianId >= 0 && quantity > 0 && unitaryCost >0 && componentId > 0 && componentId <= 5){
             return DAO.getBuyOrderDAO().create(new BuyOrder(technicianId, componentId, quantity, unitaryCost));
         }
@@ -36,12 +37,6 @@ public class BuyOrderController {
     public static List<BuyOrder> getByTechnician(int technicianId){
         if (technicianId >= 0){
             return DAO.getBuyOrderDAO().findByTechnician(technicianId);
-        }
-        return null;
-    }
-    public static List<BuyOrder> getByPrice(double price){
-        if (price > 0){
-            return DAO.getBuyOrderDAO().findByPrice(price);
         }
         return null;
     }
