@@ -38,17 +38,17 @@ public class ClientController {
         }
         return false;
     }
-    public static boolean deleteAll(){
+    public static boolean deleteAllClients(){
         return DAO.getClientDAO().deleteMany();
     }
     public static List<Client> getClientByName(String name){
         return DAO.getClientDAO().findByName(name);
     }
-    public static boolean deleteById(int id){
+    public static boolean deleteClientById(int id){
         return DAO.getClientDAO().deleteById(id);
     }
 
-    public boolean deleteByName(String name){
+    public boolean deleteClientByName(String name){
         return DAO.getClientDAO().deleteByName(name);
     }
 }
