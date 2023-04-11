@@ -1,11 +1,6 @@
 package com.evertonvsf.managementsystem.models.money;
 
-/*Cash.
-Checks.
-Debit cards.
-Credit cards.
-Mobile payments.
-Electronic bank transfers.*/
+
 public enum PaymentMethod {
     CASH("CASH"),
     DEBIT_CARD("DEBIT CARD"),

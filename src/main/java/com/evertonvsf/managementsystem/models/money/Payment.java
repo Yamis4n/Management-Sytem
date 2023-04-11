@@ -4,12 +4,12 @@ public class Payment {
 
     private int id;
     private int invoiceId;
-    private String paymentMethod;
+    private PaymentMethod paymentMethod;
     private double value;
 
-    public Payment(int invoiceId, String paymentMethod, double value) {
+    public Payment(int invoiceId, int paymentMethod, double value) {
         this.invoiceId = invoiceId;
-        this.paymentMethod = paymentMethod;
+        this.setPaymentMethod(paymentMethod);
         this.value = value;
     }
 
@@ -30,11 +30,18 @@ public class Payment {
     }
 
     public String getPaymentMethod() {
-        return paymentMethod;
+        return paymentMethod.getMethod()    ;
     }
 
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
+    public void setPaymentMethod(int paymentMethod) {
+        switch (paymentMethod){
+            case 0 -> this.paymentMethod = PaymentMethod.CASH;
+            case 1 -> this.paymentMethod = PaymentMethod.DEBIT_CARD;
+            case 2 -> this.paymentMethod = PaymentMethod.CREDIT_CARD;
+            case 3 -> this.paymentMethod = PaymentMethod.BANK_TRANSFER;
+            case default -> this.paymentMethod = PaymentMethod.PIX;
+        }
+
     }
 
     public double getValue() {
