@@ -21,40 +21,22 @@ public class ServiceController {
         }
         return false;
     }
-    public static List<Service> getAll(){
+    public static List<Service> getAllServices(){
         return DAO.getServiceDao().findMany();
     }
-    public static Service getById(int id){
+    public static boolean deleteAllServices(){
+        return DAO.getServiceDao().deleteMany();
+    }
+    public static Service getServiceById(int id){
         if (id >= 0){
             return DAO.getServiceDao().findById(id);
         }
         return null;
     }
-    public static boolean deleteById(int id){
+    public static boolean deleteServiceById(int id){
         if (id >= 0){
             return DAO.getServiceDao().deleteById(id);
         }
         return false;
-    }
-    public static boolean deleteAll(){
-        return DAO.getServiceDao().deleteMany();
-    }
-    public static List<Service> getByCategory(String category){
-        return DAO.getServiceDao().findByCategory(category);
-    }
-    public static List<Service> getByRating(int rating){
-        return DAO.getServiceDao().findByRating(rating);
-    }
-    public static List<Service> getByStatus(String status){
-        return DAO.getServiceDao().findByStatus(status);
-    }
-    public static boolean deleteByRating(int rating){
-        return DAO.getServiceDao().deleteByRating(rating);
-    }
-    public static boolean deleteByCategory(String category){
-        return DAO.getServiceDao().deleteByCategory(category);
-    }
-    public static boolean deleteByStatus(String status){
-        return DAO.getServiceDao().deleteByStatus(status);
     }
 }
