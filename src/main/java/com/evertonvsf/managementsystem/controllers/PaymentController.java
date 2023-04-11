@@ -33,11 +33,24 @@ public class PaymentController {
         return DAO.getPaymentDAO().findMany();
     }
 
-    /*public static boolean deletePaymentById(int id){
+    public static boolean deletePaymentById(int id){
         if (id >=0){
-            return DAO.getPaymentDAO()
+            return DAO.getPaymentDAO().deleteById(id);
         }
-    }*/
+        return false;
+    }
+
+    public static boolean deleteAllPayments(){
+        return DAO.getPaymentDAO().deleteMany();
+    }
+
+    public static List<Payment> getPaymentByInvoice(int invoiceId){
+        if (invoiceId >= 0){
+            return DAO.getPaymentDAO().findByInvoice(invoiceId);
+        }
+        return null;
+    }
+    
 
 
 
