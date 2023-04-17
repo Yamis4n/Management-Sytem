@@ -42,8 +42,21 @@ public class MainController {
         return false;
     }
 
-    
+    public static boolean createNewTechnician(String name, String password){
 
+        Technician newTechnician = TechnicianController.createTechnician(name, password);
+        return newTechnician != null;
+    }
+
+    public static boolean updateATechnician(String name, String password, String stringId){
+        if (loggedTechnician != null) {
+            Integer id = Validations.tryParse(stringId);
+            if (id != null) {
+                return TechnicianController.updateTechnician(name, password, id);
+            }
+        }
+        return false;
+    }
 
 
 
