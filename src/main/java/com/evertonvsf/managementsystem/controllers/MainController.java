@@ -18,7 +18,7 @@ public class MainController {
     public static boolean technicianLogin(String stringId, String password) {
         Integer id = Validations.tryParse(stringId);
         if (id != null) {
-            Technician toLoginTech = TechnicianController.getById(id);
+            Technician toLoginTech = TechnicianController.getTechnicianById(id);
             if (Objects.equals(toLoginTech.getPassword(), password)){
                 loggedTechnician = toLoginTech;
                 return true;
@@ -33,6 +33,16 @@ public class MainController {
         }
         return false;
     }
+
+    public static boolean deleteTechnician(String stringId){
+        Integer id = Validations.tryParse(stringId);
+        if (id != null && loggedTechnician != null && loggedTechnician.getId() != id){ // quero que esteja logado mas que não seja o tecnico a ser apagado
+            return TechnicianController.deleteTechnicianById(id);
+        }
+        return false;
+    }
+
+    
 
 
 
