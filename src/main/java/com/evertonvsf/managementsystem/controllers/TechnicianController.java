@@ -28,13 +28,13 @@ public class TechnicianController {
     public static Technician getTechnicianById(int id){
         return DAO.getTechnicianDAO().findById(id);
     }
-    public List<Technician> getAll(){
+    public List<Technician> getAllTechnician(){
         return DAO.getTechnicianDAO().findMany();
     }
     public static boolean deleteTechnicianById(int id){
         return DAO.getTechnicianDAO().deleteById(id);
     }
-    public static boolean deleteAll(){
+    public static boolean deleteAllTechnicians(){
         return DAO.getTechnicianDAO().deleteMany();
     }
     public static List<Technician> getTechnicianByName(String name){
