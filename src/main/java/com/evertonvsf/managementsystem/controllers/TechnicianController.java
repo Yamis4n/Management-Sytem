@@ -45,12 +45,4 @@ public class TechnicianController {
         return null;
     }
 
-    public static boolean deleteByName(String name){
-        boolean nameIsValid = name.toLowerCase().matches("[a,z]{3,}");
-        if (nameIsValid){
-            return DAO.getTechnicianDAO().deleteByName(name);
-        }
-        return false;
-    }
-
 }

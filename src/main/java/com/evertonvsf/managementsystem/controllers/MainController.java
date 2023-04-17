@@ -14,8 +14,8 @@ import java.util.Objects;
 
 public class MainController {
 
-    Technician loggedTechnician = null;
-    public boolean technicianLogin(String stringId, String password) {
+    private static Technician loggedTechnician = null;
+    public static boolean technicianLogin(String stringId, String password) {
         Integer id = Validations.tryParse(stringId);
         if (id != null) {
             Technician toLoginTech = TechnicianController.getById(id);
@@ -26,14 +26,22 @@ public class MainController {
         }
         return false;
     }
+    public static boolean technicianLogout(){
+        if (loggedTechnician != null){
+            loggedTechnician = null;
+            return true;
+        }
+        return false;
+    }
+
 
 
      // registro de clientes:
-    public boolean createNewClient(String name, String address, String emailAddress, String phoneNumber){
+    public static boolean createNewClient(String name, String address, String emailAddress, String phoneNumber){
         Client newClient = ClientController.createClient(name, address, emailAddress, phoneNumber);
         return newClient != null;
     }
-    public boolean updateClient(String name, String address, String emailAddress, String phoneNumber, String idString){
+    public static boolean updateClient(String name, String address, String emailAddress, String phoneNumber, String idString){
         Integer id = Validations.tryParse(idString);
         if (id != null){
             return ClientController.updateClient(name, address, emailAddress, phoneNumber, id);
@@ -41,10 +49,9 @@ public class MainController {
         return false;
     }
 
-    public List<Client> getAllClients(){
+    public static List<Client> getAllClients() {
         return ClientController.getAllClients();
     }
-    public
 
 // Gerenciar Ordens de serviço;
 // Agenda de atentidmento;
