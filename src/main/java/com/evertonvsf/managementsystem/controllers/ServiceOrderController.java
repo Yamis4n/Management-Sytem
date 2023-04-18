@@ -6,11 +6,9 @@ import com.evertonvsf.managementsystem.models.task.ServiceOrder;
 import java.util.List;
 
 public class ServiceOrderController {
-    public static ServiceOrder createServiceOrder(int clientId, int technicianId, List<Integer> servicesIds){
+    public static ServiceOrder createServiceOrder(int clientId, int technicianId, int serviceId){
         ServiceOrder newServiceOrder = new ServiceOrder(clientId, technicianId);
-        for (int serviceId : servicesIds){
-            newServiceOrder.setServicesIds(serviceId);
-        }
+        newServiceOrder.setServicesIds(serviceId);
        return DAO.getServiceOrderDAO().create(new ServiceOrder(clientId, technicianId));
     }
     public static boolean updateServiceOrder(int clientId, int technicianId,

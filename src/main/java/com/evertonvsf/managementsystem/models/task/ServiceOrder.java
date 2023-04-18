@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ServiceOrder {
     private int id, clientId, technicianId, invoiceId;
-    private List<Integer> servicesIds;
+    private int servicesId;
     private Date beginningTime;
     private long timeToConclude;
     private ServiceOrderStatus status;
@@ -82,14 +82,11 @@ public class ServiceOrder {
         }
     }
 
-    public List<Integer> getServicesIds() {
-        return servicesIds;
+    public int getServicesIds() {
+        return servicesId;
     }
 
-    public void setServicesIds(int servicesIds) {
-        if (this.servicesIds == null){
-            this.servicesIds = new ArrayList<Integer>();
-        }
-        this.servicesIds.add(servicesIds);
+    public void setServicesIds(int servicesId) {
+        this.servicesId = servicesId;
     }
 }

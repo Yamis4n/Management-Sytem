@@ -115,7 +115,9 @@ public class MainController {
     }
 // ------------------------------------ Aqui acabam as funções relacionadas aos clientes -----------------
 
-//
+// ----------------------------------- Aqui começam as funções relacionadas aos pagamentos ------------
+
+
 
 // Agenda de atentidmento;
 // Gerenciamento de peças e estoque;
