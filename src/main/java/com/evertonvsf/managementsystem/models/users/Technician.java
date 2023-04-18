@@ -61,6 +61,6 @@ public class Technician {
 
     @Override
     public String toString() {
-        return id + " - " + name;
+        return "Id: " + id + "\nNome: " + name;
     }
 }
