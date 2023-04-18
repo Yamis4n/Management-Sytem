@@ -49,4 +49,8 @@ public class Technician {
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return id + " - " + name;
+    }
 }

@@ -28,7 +28,7 @@ public class TechnicianController {
     public static Technician getTechnicianById(int id){
         return DAO.getTechnicianDAO().findById(id);
     }
-    public List<Technician> getAllTechnician(){
+    public static List<Technician> getAllTechnicians(){
         return DAO.getTechnicianDAO().findMany();
     }
     public static boolean deleteTechnicianById(int id){

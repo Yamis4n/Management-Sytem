@@ -58,6 +58,16 @@ public class MainController {
         return false;
     }
 
+    public static boolean removeAllTechnicians(){
+        return TechnicianController.deleteAllTechnicians();
+    }
+
+    public static List<Technician> getAllTechnicians(){
+        return TechnicianController.getAllTechnicians();
+    }
+
+    //public static
+
 
 
      // registro de clientes:
