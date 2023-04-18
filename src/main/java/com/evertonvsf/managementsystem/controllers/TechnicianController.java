@@ -37,12 +37,5 @@ public class TechnicianController {
     public static boolean deleteAllTechnicians(){
         return DAO.getTechnicianDAO().deleteMany();
     }
-    public static List<Technician> getTechnicianByName(String name){
-        boolean nameIsValid = name.toLowerCase().matches("[a,z]{3,}");
-        if (nameIsValid){
-            return DAO.getTechnicianDAO().findByName(name);
-        }
-        return null;
-    }
 
 }

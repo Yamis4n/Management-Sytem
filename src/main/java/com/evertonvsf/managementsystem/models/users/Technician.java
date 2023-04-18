@@ -13,6 +13,7 @@ public class Technician {
     public Technician(String name, String password) {
         this.name = name;
         this.password = password;
+        this.actualOrderId = -1;
     }
 
     public int getActualOrderId() {

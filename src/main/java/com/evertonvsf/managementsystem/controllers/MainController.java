@@ -71,20 +71,23 @@ public class MainController {
         }
         return techniciansInString;
     }
+ // --------------------------------- aqui acabam as funções relacionadas ao tecnico ----------------------------
 
-    //public static
-
-
-
-     // registro de clientes:
-    public static boolean createNewClient(String name, String address, String emailAddress, String phoneNumber){
-        Client newClient = ClientController.createClient(name, address, emailAddress, phoneNumber);
-        return newClient != null;
+// ---------------------------------- aqui começam as funções relacionadas ao cliente ---------------------------
+    public static boolean createNewClient(String name, String address, String emailAddress, String phoneNumber) {
+        if (loggedTechnician != null) {
+            Client newClient = ClientController.createClient(name, address, emailAddress, phoneNumber);
+            return newClient != null;
+        }
+        return false;
     }
+
     public static boolean updateClient(String name, String address, String emailAddress, String phoneNumber, String idString){
-        Integer id = Validations.tryParse(idString);
-        if (id != null){
-            return ClientController.updateClient(name, address, emailAddress, phoneNumber, id);
+        if (loggedTechnician != null) {
+            Integer id = Validations.tryParse(idString);
+            if (id != null) {
+                return ClientController.updateClient(name, address, emailAddress, phoneNumber, id);
+            }
         }
         return false;
     }
