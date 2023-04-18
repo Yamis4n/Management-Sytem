@@ -8,6 +8,20 @@ public class Technician {
     private String name;
     private String password;
     private List<Integer> OrdersIds;
+    private int actualOrderId;
+
+    public Technician(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
+
+    public int getActualOrderId() {
+        return actualOrderId;
+    }
+
+    public void setActualOrderId(int actualOrderId) {
+        this.actualOrderId = actualOrderId;
+    }
 
     public List<Integer> getOrdersIds() {
         return OrdersIds;
@@ -18,11 +32,6 @@ public class Technician {
             this.OrdersIds = new ArrayList<Integer>();
         }
         this.OrdersIds.add(orderId);
-    }
-
-    public Technician(String name, String password) {
-        this.name = name;
-        this.password = password;
     }
 
     public int getId() {
