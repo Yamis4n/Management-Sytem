@@ -109,13 +109,16 @@ public class MainController {
     public static boolean deleteClientById(String stringId){
         if (loggedTechnician != null) {
             Integer id = Validations.tryParse(stringId);
-            return ClientController.deleteClientById(id);
+            if (id != null) {
+                return ClientController.deleteClientById(id);
+            }
         }
         return false;
     }
 // ------------------------------------ Aqui acabam as funções relacionadas aos clientes -----------------
 
 // ----------------------------------- Aqui começam as funções relacionadas aos pagamentos ------------
+
 
 
 
