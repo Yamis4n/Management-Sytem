@@ -9,6 +9,7 @@ import com.evertonvsf.managementsystem.controllers.Validations;
 
 import java.io.LineNumberInputStream;
 import java.nio.channels.ClosedByInterruptException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -62,8 +63,13 @@ public class MainController {
         return TechnicianController.deleteAllTechnicians();
     }
 
-    public static List<Technician> getAllTechnicians(){
-        return TechnicianController.getAllTechnicians();
+    public static List<String> getAllTechnicians(){
+        List<Technician> technicians =  TechnicianController.getAllTechnicians();
+        List<String> techniciansInString = new ArrayList<String>();
+        for (Technician technician : technicians){
+            techniciansInString.add(technician.toString());
+        }
+        return techniciansInString;
     }
 
     //public static
