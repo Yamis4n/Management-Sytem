@@ -101,9 +101,22 @@ public class MainController {
         return clients;
     }
 
-    
+    public static boolean removeAllClients(){
+        return ClientController.deleteAllClients();
+    }
 
-// Gerenciar Ordens de serviço;
+
+    public static boolean deleteClientById(String stringId){
+        if (loggedTechnician != null) {
+            Integer id = Validations.tryParse(stringId);
+            return ClientController.deleteClientById(id);
+        }
+        return false;
+    }
+// ------------------------------------ Aqui acabam as funções relacionadas aos clientes -----------------
+
+//
+
 // Agenda de atentidmento;
 // Gerenciamento de peças e estoque;
 // Faturamentp e pagamneto;
