@@ -92,8 +92,13 @@ public class MainController {
         return false;
     }
 
-    public static List<Client> getAllClients() {
-        return ClientController.getAllClients();
+    public static List<String> getAllClients() {
+        List<Client> clientsModels = ClientController.getAllClients();
+        List<String> clients = new ArrayList<String>();
+        for (Client client : clientsModels){
+            clients.add(client.toString());
+        }
+        return clients;
     }
 
 // Gerenciar Ordens de serviço;
