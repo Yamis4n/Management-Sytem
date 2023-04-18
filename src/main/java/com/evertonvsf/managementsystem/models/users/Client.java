@@ -56,7 +56,6 @@ public class Client {
     }
 
     public String toString(){
-    return "nome: " + this.getName() + "\nEndereço: " + this.getAddress() +
-        "\nEmail: " + this.getEmailAddress() + "\nnumero: " + this.getPhoneNumber();
+    return "Nome: " + this.getName() +  "\nNúmero: " + this.getPhoneNumber() + "\nId: " + this.getId();
     }
 }
