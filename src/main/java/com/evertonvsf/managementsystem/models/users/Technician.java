@@ -6,15 +6,30 @@ import java.util.List;
 public class Technician {
     private int id;
     private String name;
+    private String emailAddress;
     private String password;
     private List<Integer> OrdersIds;
     private int actualOrderId;
+
 
     public Technician(String name, String password) {
         this.name = name;
         this.password = password;
         this.actualOrderId = -1;
     }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public void setOrdersIds(List<Integer> ordersIds) {
+        OrdersIds = ordersIds;
+    }
+
 
     public int getActualOrderId() {
         return actualOrderId;
@@ -61,6 +76,6 @@ public class Technician {
 
     @Override
     public String toString() {
-        return "Id: " + id + "\nNome: " + name;
+        return "Id: " + this.id + "\nNome: " + this.name + "\nEmail: " + this.emailAddress;
     }
 }
