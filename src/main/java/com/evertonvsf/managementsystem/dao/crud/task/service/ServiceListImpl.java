@@ -1,5 +1,6 @@
 package com.evertonvsf.managementsystem.dao.crud.task.service;
 
+import com.evertonvsf.managementsystem.dao.persistence.task.service.ServicePersistence;
 import com.evertonvsf.managementsystem.models.task.Service;
 
 import java.util.ArrayList;
@@ -7,12 +8,19 @@ import java.util.List;
 import java.util.Objects;
 
 public class ServiceListImpl implements ServiceCRUD{
+    public static final ServicePersistence persistence = new ServicePersistence();
     private List<Service> services;
     private int newId;
 
     public ServiceListImpl() {
-        this.services = new ArrayList<Service>();
-        this.newId = 0;
+        this.services = persistence.loadFiles();
+        newId = -1;
+        for (Service service : services){
+            if (service.getId() > newId){
+                newId = service.getId();
+            }
+        }
+        this.newId = newId+1;
     }
 
     @Override
