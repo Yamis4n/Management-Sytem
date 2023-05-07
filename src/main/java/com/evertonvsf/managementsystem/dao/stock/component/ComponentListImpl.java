@@ -1,13 +1,14 @@
 package com.evertonvsf.managementsystem.dao.stock.component;
 
 import com.evertonvsf.managementsystem.models.stock.Component;
+import com.evertonvsf.managementsystem.models.stock.ComponentStock;
 import com.evertonvsf.managementsystem.models.users.Client;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ComponentListImpl implements ComponentCRUD{
-    private List<Component> components;
+    private List<ComponentStock> components;
 
     @Override
     public Component create(Component component) {
@@ -51,9 +52,9 @@ public class ComponentListImpl implements ComponentCRUD{
     }
 
     @Override
-    public List<Component> findByQuantity(int quantity) {
-        List<Component> sameQuantityComponents = new ArrayList<Component>();
-        for (Component component : this.components){
+    public List<ComponentStock> findByQuantity(int quantity) {
+        List<ComponentStock> sameQuantityComponents = new ArrayList<ComponentStock>();
+        for (ComponentStock component : this.components){
             if (component.getQuantity() == quantity){
                 sameQuantityComponents.add(component);
             }

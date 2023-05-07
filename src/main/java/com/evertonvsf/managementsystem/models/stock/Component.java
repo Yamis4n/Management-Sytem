@@ -1,44 +1,27 @@
 package com.evertonvsf.managementsystem.models.stock;
 
-public class Component {
-    private ComponentId id;
-    private int quantity;
-    private double value;
+public enum Component {
+    NONE(0, "NONE"),
+    RAM(1, "RAM"),
+    HD_SSD(2, "HD/SSD"),
+    MOTHERBOARD(3, "MOTHERBOARD"),
+    POWER_SUPPLY (4, "POWER SUPPLY"),
+    VIDEO_CARD (5, "VIDEO CARD");
 
-    public Component(int quantity, double value, int id){
-        this.quantity = quantity;
-        this.value = value;
-        this.setId(id);
-    }
+    private final int id;
+    private final String name;
+
+    Component(int id, String name){
+        this.id = id;
+        this.name = name;
+    };
+
 
     public int getId() {
-        return id.getId();
+        return id;
     }
 
-    public void setId(int id) {
-        switch (id) {
-            case 0 -> this.id = ComponentId.RAM;
-            case 1 -> this.id = ComponentId.HD_SSD;
-            case 2 -> this.id = ComponentId.MOTHERBOARD;
-            case 3 -> this.id = ComponentId.POWER_SUPPLY;
-            default -> this.id = ComponentId.VIDEO_CARD;
-        }
-
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public double getValue() {
-        return value;
-    }
-
-    public void setValue(double value) {
-        this.value = value;
+    public String getName() {
+        return name;
     }
 }

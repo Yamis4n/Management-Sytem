@@ -1,13 +1,9 @@
 package com.evertonvsf.managementsystem.models.stock;
 
 public class BuyOrder {
-    private int id;
-    private int technicianId;
-    private int componentId;
-    private int quantity;
+    private int id, componentId, quantity;
+    private final int technicianId;
     private double unitaryCost;
-    private double totalCost;
-    private String componentDescription; // only used if componentID == 6
 
     public int getId() {
         return id;
@@ -22,23 +18,10 @@ public class BuyOrder {
         this.componentId = componentId;
         this.quantity = quantity;
         this.unitaryCost = unitaryCost;
-        this.totalCost = quantity * unitaryCost;
-    }
-
-    public double getTotalCost() {
-        return totalCost;
-    }
-
-    public void setTotalCost(double totalCost) {
-        this.totalCost = totalCost;
     }
 
     public int getTechnicianId() {
         return technicianId;
-    }
-
-    public void setTechnicianId(int technicianId) {
-        this.technicianId = technicianId;
     }
 
     public int getComponentId() {
@@ -65,11 +48,14 @@ public class BuyOrder {
         this.unitaryCost = unitaryCost;
     }
 
-    public String getComponentDescription() {
-        return componentDescription;
-    }
-
-    public void setComponentDescription(String componentDescription) {
-        this.componentDescription = componentDescription;
+    @Override
+    public String toString() {
+        return "BuyOrder{" +
+                "id=" + id +
+                ", componentId=" + componentId +
+                ", quantity=" + quantity +
+                ", technicianId=" + technicianId +
+                ", unitaryCost=" + unitaryCost +
+                '}';
     }
 }
