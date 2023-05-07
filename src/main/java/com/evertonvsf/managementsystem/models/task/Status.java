@@ -1,6 +1,6 @@
 package com.evertonvsf.managementsystem.models.task;
 
-public enum ServiceOrderStatus {
+public enum Status {
     WAITING("WAITING"),
     INITIALIZED("INITIALIZED"),
     FINISHED("FINISHED"),
@@ -8,7 +8,7 @@ public enum ServiceOrderStatus {
     PAID("PAID");
     private final String statusName;
 
-    ServiceOrderStatus(String statusName) {
+    Status(String statusName) {
         this.statusName = statusName;
     }
 

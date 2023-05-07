@@ -3,17 +3,19 @@ package com.evertonvsf.managementsystem.models.task;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.zip.Inflater;
 
 public class ServiceOrder {
     private int id, clientId, technicianId, invoiceId;
-    private int servicesId;
+    private List<Integer> servicesIds;
     private Date beginningTime;
     private long timeToConclude;
-    private ServiceOrderStatus status;
+    private Status status;
 
-    public ServiceOrder(int clientId, int technicianId) {
+    public ServiceOrder(int clientId, int technicianId, List<Integer> servicesIds) {
         this.clientId = clientId;
         this.technicianId = technicianId;
+        this.servicesIds = servicesIds;
         this.beginningTime = new Date();
         this.setStatus(0);
     }
@@ -74,19 +76,21 @@ public class ServiceOrder {
 
     public void setStatus(int statusId) {
         switch (statusId){
-            case 0 -> this.status = ServiceOrderStatus.WAITING;
-            case 1 -> this.status = ServiceOrderStatus.INITIALIZED;
-            case 2 -> this.status = ServiceOrderStatus.FINISHED;
-            case 3 -> this.status = ServiceOrderStatus.CANCELED;
-            default -> this.status = ServiceOrderStatus.PAID;
+            case 0 -> this.status = Status.WAITING;
+            case 1 -> this.status = Status.INITIALIZED;
+            case 2 -> this.status = Status.FINISHED;
+            case 3 -> this.status = Status.CANCELED;
+            default -> this.status = Status.PAID;
         }
     }
 
-    public int getServicesIds() {
-        return servicesId;
+    public List<Integer> getServicesIds() {
+        return servicesIds;
     }
 
-    public void setServicesIds(int servicesId) {
-        this.servicesId = servicesId;
+    public void setServicesIds(List<Integer> servicesIds) {
+        this.servicesIds = servicesIds;
     }
+
+
 }

@@ -44,6 +44,6 @@ public class Client {
     }
 
     public String toString(){
-    return "Nome: " + this.getName() +  "\nNúmero: " + this.getPhoneNumber() + "\nId: " + this.getId();
+    return "Nome: " + this.name +  "\nNúmero: " + this.phoneNumber + "\nId: " + this.id;
     }
 }

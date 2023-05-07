@@ -4,9 +4,8 @@ import java.util.Date;
 
 public class Service {
     private int id, rating, necessaryComponentId, invoiceId;
-    private String necessaryComponentName; // only used if componentId == 6;
     private ServiceCategory category;
-    private ServiceStatus status;
+    private Status status;
     private Date beginningTime;
     long timeToConclude;
     private double price;
@@ -15,7 +14,6 @@ public class Service {
         this.setCategory(category);
         this.setStatus(0);
         this.beginningTime = new Date();
-        this.setPrice(this.category);
     }
 
     public int getId() {
@@ -38,24 +36,15 @@ public class Service {
         return necessaryComponentId;
     }
 
-    public void setNecessaryComponentId(int necessaryComponentId) {
-        this.necessaryComponentId = necessaryComponentId;
+    public void setNecessaryComponentId() {
+        this.necessaryComponentId = this.category.getComponentId();
     }
-
     public int getInvoiceId() {
         return invoiceId;
     }
 
     public void setInvoiceId(int invoiceId) {
         this.invoiceId = invoiceId;
-    }
-
-    public String getNecessaryComponentName() {
-        return necessaryComponentName;
-    }
-
-    public void setNecessaryComponentName(String necessaryComponentName) {
-        this.necessaryComponentName = necessaryComponentName;
     }
 
     public String getCategory() {
@@ -76,15 +65,16 @@ public class Service {
     }
 
     public String getStatus() {
-        return status.getStatus();
+        return status.getStatusName();
     }
 
-    public void setStatus(int status) {
-        if (status == 0) {
-            this.status = ServiceStatus.INITIALIZED;
-        } else {
-            this.status = ServiceStatus.FINISHED;
-            this.setTimeToConcludeConclusion();
+    public void setStatus(int statusId) {
+        switch (statusId){
+            case 0 -> this.status = Status.WAITING;
+            case 1 -> this.status = Status.INITIALIZED;
+            case 2 -> this.status = Status.FINISHED;
+            case 3 -> this.status = Status.CANCELED;
+            default -> this.status = Status.PAID;
         }
     }
 
@@ -109,7 +99,7 @@ public class Service {
         return price;
     }
 
-    public void setPrice(ServiceCategory category) {
-        this.price = category.getPrice();
+    public void setPrice() {
+        this.price = this.category.getPrice();
     }
 }
