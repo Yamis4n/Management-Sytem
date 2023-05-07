@@ -11,7 +11,7 @@ public class ComponentListImpl implements ComponentCRUD{
     private List<ComponentStock> components;
 
     @Override
-    public Component create(Component component) {
+    public ComponentStock create(ComponentStock component) {
         this.components.add(component);
         return component;
     }

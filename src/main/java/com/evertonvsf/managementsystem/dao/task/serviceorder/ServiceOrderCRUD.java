@@ -11,11 +11,6 @@ public interface ServiceOrderCRUD extends CRUD<ServiceOrder> {
     public List<ServiceOrder> findByTechnician(int technicianId);
     public List<ServiceOrder> findByStatus(String orderStatus);
     public boolean deleteById(int id);
-    public boolean deleteByInvoice(int invoiceId);
-    public boolean deleteByClient(int clientId);
-    public boolean deleteByTechnician(int technicianId);
-    public boolean deleteByStatus(String orderStatus);
-
 
 }
 

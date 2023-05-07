@@ -103,33 +103,4 @@ public class ServiceListImpl implements ServiceCRUD{
         return false;
     }
 
-    @Override
-    public boolean deleteByRating(int rating) {
-        List<Service> sameRatingServices = this.findByRating(rating);
-        if (sameRatingServices.size() > 0){
-            this.services.removeAll(sameRatingServices);
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public boolean deleteByCategory(String category) {
-        List<Service> sameCategoryServices = this.findByCategory(category);
-        if (sameCategoryServices.size() > 0){
-            this.services.removeAll(sameCategoryServices);
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public boolean deleteByStatus(String status) {
-        List<Service> sameStatusServices = this.findByStatus(status);
-        if (sameStatusServices.size() > 0){
-            this.services.removeAll(sameStatusServices);
-            return true;
-        }
-        return false;
-    }
 }

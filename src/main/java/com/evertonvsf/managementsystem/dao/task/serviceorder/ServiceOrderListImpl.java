@@ -115,44 +115,4 @@ public class ServiceOrderListImpl implements ServiceOrderCRUD{
         return false;
     }
 
-    @Override
-    public boolean deleteByInvoice(int invoiceId) {
-        for (int index = 0; index<this.serviceOrders.size(); index++){
-            if (this.serviceOrders.get(index).getId() == invoiceId){
-                this.serviceOrders.remove(index);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public boolean deleteByClient(int clientId) {
-        List<ServiceOrder> sameClientServiceOrders = findByClient(clientId);
-        if (sameClientServiceOrders.size() > 0) {
-            this.serviceOrders.removeAll(sameClientServiceOrders);
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public boolean deleteByTechnician(int technicianId) {
-        List<ServiceOrder> sameTechnicianServiceOrders = findByTechnician(technicianId);
-        if (sameTechnicianServiceOrders.size() > 0) {
-            this.serviceOrders.removeAll(sameTechnicianServiceOrders);
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public boolean deleteByStatus(String orderStatus) {
-        List<ServiceOrder> sameStatusServiceOrders = findByStatus(orderStatus);
-        if (sameStatusServiceOrders.size() > 0) {
-            this.serviceOrders.removeAll(sameStatusServiceOrders);
-            return true;
-        }
-        return false;
-    }
 }

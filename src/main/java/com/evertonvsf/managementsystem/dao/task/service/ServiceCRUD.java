@@ -10,8 +10,5 @@ public interface ServiceCRUD extends CRUD<Service> {
     public List<Service> findByCategory(String category);
     public List<Service> findByStatus(String status);
     public boolean deleteById(int id);
-    public boolean deleteByRating(int rating);
-    public boolean deleteByCategory(String category);
-    public boolean deleteByStatus(String status);
 
 }
