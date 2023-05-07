@@ -1,5 +1,7 @@
 package com.evertonvsf.managementsystem.dao.crud.users.technician;
 
+import com.evertonvsf.managementsystem.dao.persistence.users.technician.TechnicianPersistence;
+import com.evertonvsf.managementsystem.models.task.Service;
 import com.evertonvsf.managementsystem.models.users.Technician;
 
 import java.util.ArrayList;
@@ -7,31 +9,21 @@ import java.util.List;
 import java.util.Objects;
 
 public class TechnicianListImpl implements TechnicianCRUD{
-
+    private static final TechnicianPersistence persistence = new TechnicianPersistence();
     private List<Technician> technicians;
     private int newId;
 
     public TechnicianListImpl() {
-        this.technicians = new ArrayList<Technician>();
-        this.newId = 0;
+        this.technicians = persistence.loadFiles();
+        newId = -1;
+        for (Technician technician : technicians) {
+            if (technician.getId() > newId) {
+                newId = technician.getId();
+            }
+        }
+        this.newId = newId + 1;
     }
-    // uso na persistência:
-    public List<Technician> getTechnicians() {
-        return technicians;
-    }
-
-    public void setTechnicians(List<Technician> technicians) {
-        this.technicians = technicians;
-    }
-
-    public int getNewId() {
-        return newId;
-    }
-
-    public void setNewId(int newId) {
-        this.newId = newId;
-    }
-    // =================
+    
     @Override
     public Technician create(Technician technician) {
         technician.setId(this.newId);
