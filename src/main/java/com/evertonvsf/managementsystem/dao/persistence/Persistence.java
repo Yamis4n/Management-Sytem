@@ -1,4 +1,4 @@
-package com.evertonvsf.managementsystem.dao;
+package com.evertonvsf.managementsystem.dao.persistence;
 
 import java.util.List;
 
