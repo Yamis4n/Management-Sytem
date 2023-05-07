@@ -1,14 +1,14 @@
 package com.evertonvsf.managementsystem.models.money;
 
+
 public class Invoice {
-    private int id;
-    private int ServiceOrderId;
-    private double totalValue;
-    private double paidValue;
+    private int id, ServiceOrderId;
+    private double totalValue, paidValue;
 
     public Invoice(int serviceOrderId, double totalValue) {
         this.ServiceOrderId = serviceOrderId;
         this.totalValue = totalValue;
+        this.paidValue = 0;
     }
 
     public int getId() {
@@ -41,5 +41,15 @@ public class Invoice {
 
     public void setPaidValue(double paidValue) {
         this.paidValue = paidValue;
+    }
+
+    @Override
+    public String toString() {
+        return "Invoice{" +
+                "id=" + id +
+                ", ServiceOrderId=" + ServiceOrderId +
+                ", totalValue=" + totalValue +
+                ", paidValue=" + paidValue +
+                '}';
     }
 }
