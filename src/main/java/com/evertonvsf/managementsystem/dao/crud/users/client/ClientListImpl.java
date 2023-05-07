@@ -1,5 +1,6 @@
 package com.evertonvsf.managementsystem.dao.crud.users.client;
 
+import com.evertonvsf.managementsystem.dao.persistence.users.client.ClientPersistence;
 import com.evertonvsf.managementsystem.models.users.Client;
 
 import java.util.ArrayList;
@@ -10,8 +11,14 @@ public class ClientListImpl implements ClientCRUD{
     private List<Client> clients;
     private int newId;
     public ClientListImpl(){
-        this.clients = new ArrayList<Client>();
-        this.newId = 0;
+        this.clients = new ClientPersistence().loadFiles();
+        int newId = -1;
+        for (Client client : clients){
+            if (client.getId() > newId){
+                newId = client.getId();
+            }
+        }
+        this.newId = newId+1;
     }
     @Override
     public Client create(Client client) {
