@@ -82,31 +82,11 @@ public class BuyOrderListImpl implements BuyOrderCRUD{
 
     @Override
     public boolean deleteById(int id) {
-        for (int index = 0; index < this.buyOrders.size(); index++){
-            if (this.buyOrders.get(index).getId() == id){
+        for (int index = 0; index < this.buyOrders.size(); index++) {
+            if (this.buyOrders.get(index).getId() == id) {
                 this.buyOrders.remove(index);
                 return true;
             }
-        }
-        return false;
-    }
-
-    @Override
-    public boolean deleteByTechnician(int technicianId) {
-        List<BuyOrder> sameTechnicianBuyOrders = findByTechnician(technicianId);
-        if (sameTechnicianBuyOrders.size() > 0){
-            this.buyOrders.removeAll(sameTechnicianBuyOrders);
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public boolean deleteByPrice(double price) {
-        List<BuyOrder> samePriceBuyOrders = findByPrice(price);
-        if (samePriceBuyOrders.size() > 0){
-            this.buyOrders.removeAll(samePriceBuyOrders);
-            return true;
         }
         return false;
     }

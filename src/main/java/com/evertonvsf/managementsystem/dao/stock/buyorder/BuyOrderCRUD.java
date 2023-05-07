@@ -9,7 +9,5 @@ public interface BuyOrderCRUD extends CRUD<BuyOrder> {
 
     public List<BuyOrder> findByTechnician(int technicianId);
     public List<BuyOrder> findByPrice(double price);
-    public boolean deleteById(int id);
-    public boolean deleteByTechnician(int technicianId);
-    public boolean deleteByPrice(double price);
+
 }

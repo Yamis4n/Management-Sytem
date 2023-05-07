@@ -17,14 +17,14 @@ public class ComponentListImpl implements ComponentCRUD{
     }
 
     @Override
-    public List<Component> findMany() {
-        return new ArrayList<Component>(this.components);
+    public List<ComponentStock> findMany() {
+        return new ArrayList<ComponentStock>(this.components);
     }
 
     @Override
-    public boolean update(Component component) {
+    public boolean update(ComponentStock component) {
         for (int index =0; index < this.components.size(); index++){
-            if (this.components.get(index).getId() == component.getId()){
+            if (this.components.get(index).getComponent().getId() == component.getComponent().getId()){
                 this.components.add(index, component);
                 return true;
             }
@@ -33,18 +33,9 @@ public class ComponentListImpl implements ComponentCRUD{
     }
 
     @Override
-    public boolean deleteMany() {
-        if (this.components.size() > 0){
-            this.components = new ArrayList<Component>();
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public Component findById(int id) {
-        for (Component component : this.components){
-            if (component.getId() == id){
+    public ComponentStock findById(int id) {
+        for (ComponentStock component : this.components){
+            if (component.getComponent().getId() == id){
                 return component;
             }
         }
@@ -63,10 +54,10 @@ public class ComponentListImpl implements ComponentCRUD{
     }
 
     @Override
-    public List<Component> findByPrice(double price) {
-        List<Component> samePriceComponents = new ArrayList<Component>();
-        for (Component component : this.components){
-            if (component.getValue() == price){
+    public List<ComponentStock> findByPrice(double price) {
+        List<ComponentStock> samePriceComponents = new ArrayList<ComponentStock>();
+        for (ComponentStock component : this.components){
+            if (component.getPrice() == price){
                 samePriceComponents.add(component);
             }
         }
@@ -76,7 +67,7 @@ public class ComponentListImpl implements ComponentCRUD{
     @Override
     public boolean deleteById(int id) {
         for (int index = 0; index < this.components.size(); index++){
-            if (this.components.get(index).getId() == id){
+            if (this.components.get(index).getComponent().getId() == id){
                 this.components.remove(index);
                 return true;
             }
@@ -85,20 +76,9 @@ public class ComponentListImpl implements ComponentCRUD{
     }
 
     @Override
-    public boolean deleteByQuantity(int quantity) {
-        List<Component> sameQuantityComponents = this.findByQuantity(quantity);
-        if (sameQuantityComponents.size() > 0){
-            this.components.removeAll(sameQuantityComponents);
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public boolean deleteByPrice(double price) {
-        List<Component> samePriceComponents = findByPrice(price);
-        if (samePriceComponents.size() > 0){
-            this.components.removeAll(samePriceComponents);
+    public boolean deleteMany() {
+        if (this.components.size() > 0){
+            this.components = new ArrayList<ComponentStock>();
             return true;
         }
         return false;
