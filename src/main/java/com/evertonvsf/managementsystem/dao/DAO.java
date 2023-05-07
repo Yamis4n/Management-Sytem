@@ -1,21 +1,21 @@
 package com.evertonvsf.managementsystem.dao;
 
-import com.evertonvsf.managementsystem.dao.CRUD.CRUD.money.invoice.InvoiceCRUD;
-import com.evertonvsf.managementsystem.dao.CRUD.CRUD.money.invoice.InvoiceListImpl;
-import com.evertonvsf.managementsystem.dao.CRUD.CRUD.money.payment.PaymentCRUD;
-import com.evertonvsf.managementsystem.dao.CRUD.CRUD.money.payment.PaymentListImpl;
-import com.evertonvsf.managementsystem.dao.CRUD.CRUD.stock.buyorder.BuyOrderCRUD;
-import com.evertonvsf.managementsystem.dao.CRUD.CRUD.stock.buyorder.BuyOrderListImpl;
-import com.evertonvsf.managementsystem.dao.CRUD.CRUD.stock.component.ComponentCRUD;
-import com.evertonvsf.managementsystem.dao.CRUD.CRUD.stock.component.ComponentListImpl;
-import com.evertonvsf.managementsystem.dao.CRUD.CRUD.task.service.ServiceCRUD;
-import com.evertonvsf.managementsystem.dao.CRUD.CRUD.task.service.ServiceListImpl;
-import com.evertonvsf.managementsystem.dao.CRUD.CRUD.task.serviceorder.ServiceOrderCRUD;
-import com.evertonvsf.managementsystem.dao.CRUD.CRUD.task.serviceorder.ServiceOrderListImpl;
-import com.evertonvsf.managementsystem.dao.CRUD.CRUD.users.client.ClientCRUD;
-import com.evertonvsf.managementsystem.dao.CRUD.CRUD.users.client.ClientListImpl;
-import com.evertonvsf.managementsystem.dao.CRUD.CRUD.users.technician.TechnicianCRUD;
-import com.evertonvsf.managementsystem.dao.CRUD.CRUD.users.technician.TechnicianListImpl;
+import com.evertonvsf.managementsystem.dao.crud.money.invoice.InvoiceCRUD;
+import com.evertonvsf.managementsystem.dao.crud.money.invoice.InvoiceListImpl;
+import com.evertonvsf.managementsystem.dao.crud.money.payment.PaymentCRUD;
+import com.evertonvsf.managementsystem.dao.crud.money.payment.PaymentListImpl;
+import com.evertonvsf.managementsystem.dao.crud.stock.buyorder.BuyOrderCRUD;
+import com.evertonvsf.managementsystem.dao.crud.stock.buyorder.BuyOrderListImpl;
+import com.evertonvsf.managementsystem.dao.crud.stock.component.ComponentCRUD;
+import com.evertonvsf.managementsystem.dao.crud.stock.component.ComponentListImpl;
+import com.evertonvsf.managementsystem.dao.crud.task.service.ServiceCRUD;
+import com.evertonvsf.managementsystem.dao.crud.task.service.ServiceListImpl;
+import com.evertonvsf.managementsystem.dao.crud.task.serviceorder.ServiceOrderCRUD;
+import com.evertonvsf.managementsystem.dao.crud.task.serviceorder.ServiceOrderListImpl;
+import com.evertonvsf.managementsystem.dao.crud.users.client.ClientCRUD;
+import com.evertonvsf.managementsystem.dao.crud.users.client.ClientListImpl;
+import com.evertonvsf.managementsystem.dao.crud.users.technician.TechnicianCRUD;
+import com.evertonvsf.managementsystem.dao.crud.users.technician.TechnicianListImpl;
 
 public class DAO {
     private static InvoiceCRUD invoiceDAO;

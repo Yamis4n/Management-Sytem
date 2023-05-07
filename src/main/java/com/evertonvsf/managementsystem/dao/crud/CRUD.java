@@ -1,4 +1,4 @@
-package com.evertonvsf.managementsystem.dao.CRUD;
+package com.evertonvsf.managementsystem.dao.crud;
 
 import java.util.List;
 

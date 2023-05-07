@@ -1,6 +1,6 @@
-package com.evertonvsf.managementsystem.dao.CRUD.money.invoice;
+package com.evertonvsf.managementsystem.dao.crud.money.invoice;
 
-import com.evertonvsf.managementsystem.dao.CRUD.CRUD;
+import com.evertonvsf.managementsystem.dao.crud.CRUD;
 import com.evertonvsf.managementsystem.models.money.Invoice;
 
 import java.util.List;

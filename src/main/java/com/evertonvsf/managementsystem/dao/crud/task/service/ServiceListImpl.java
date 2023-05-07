@@ -1,4 +1,4 @@
-package com.evertonvsf.managementsystem.dao.CRUD.task.service;
+package com.evertonvsf.managementsystem.dao.crud.task.service;
 
 import com.evertonvsf.managementsystem.models.task.Service;
 

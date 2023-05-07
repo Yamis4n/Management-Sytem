@@ -1,6 +1,6 @@
-package com.evertonvsf.managementsystem.dao.CRUD.stock.buyorder;
+package com.evertonvsf.managementsystem.dao.crud.stock.buyorder;
 
-import com.evertonvsf.managementsystem.dao.CRUD.CRUD;
+import com.evertonvsf.managementsystem.dao.crud.CRUD;
 import com.evertonvsf.managementsystem.models.stock.BuyOrder;
 
 import java.util.List;

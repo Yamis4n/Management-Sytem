@@ -1,4 +1,4 @@
-package com.evertonvsf.managementsystem.dao.CRUD.stock.component;
+package com.evertonvsf.managementsystem.dao.crud.stock.component;
 
 import com.evertonvsf.managementsystem.models.stock.ComponentStock;
 

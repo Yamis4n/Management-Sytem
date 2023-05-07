@@ -1,4 +1,4 @@
-package com.evertonvsf.managementsystem.dao.CRUD.money.invoice;
+package com.evertonvsf.managementsystem.dao.crud.money.invoice;
 
 import com.evertonvsf.managementsystem.models.money.Invoice;
 

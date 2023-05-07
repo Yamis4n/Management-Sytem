@@ -1,4 +1,4 @@
-package com.evertonvsf.managementsystem.dao.CRUD.users.client;
+package com.evertonvsf.managementsystem.dao.crud.users.client;
 
 import com.evertonvsf.managementsystem.models.users.Client;
 

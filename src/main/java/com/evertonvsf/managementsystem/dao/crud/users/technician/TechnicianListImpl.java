@@ -1,4 +1,4 @@
-package com.evertonvsf.managementsystem.dao.CRUD.users.technician;
+package com.evertonvsf.managementsystem.dao.crud.users.technician;
 
 import com.evertonvsf.managementsystem.models.users.Technician;
 
