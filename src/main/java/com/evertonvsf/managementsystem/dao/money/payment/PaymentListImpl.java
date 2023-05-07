@@ -16,6 +16,14 @@ public class PaymentListImpl implements PaymentCRUD {
     }
 
     @Override
+    public Payment create(Payment payment) {
+        payment.setId(this.newId);
+        this.newId++;
+        this.payments.add(payment);
+        return payment;
+    }
+
+    @Override
     public Payment findById(int id) {
         for (Payment payment : this.payments){
             if (payment.getId() == id){
@@ -24,15 +32,6 @@ public class PaymentListImpl implements PaymentCRUD {
         }
         return null;
     }
-
-    @Override
-    public Payment create(Payment payment) {
-        payment.setId(this.newId);
-        this.newId++;
-        this.payments.add(payment);
-        return payment;
-    }
-
     @Override
     public List<Payment> findMany() {
         return new ArrayList<Payment>(this.payments);
@@ -113,23 +112,4 @@ public class PaymentListImpl implements PaymentCRUD {
         return false;
     }
 
-    @Override
-    public boolean deleteByPaymentMethod(String paymentMethod) {
-        List<Payment> sameMethodPayments = this.findByPaymentMethod(paymentMethod);
-        if (sameMethodPayments.size()>0){
-            this.payments.removeAll(sameMethodPayments);
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public boolean deleteByValue(double value) {
-        List<Payment> sameValuePayments = findByValue(value);
-        if (sameValuePayments.size()>0){
-            this.payments.removeAll(sameValuePayments);
-            return true;
-        }
-        return false;
-    }
 }

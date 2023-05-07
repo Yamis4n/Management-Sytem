@@ -9,7 +9,6 @@ public interface InvoiceCRUD extends CRUD<Invoice> {
 
     public Invoice findByOrder(int orderId);
     public List<Invoice> findByValue(double value);
-    public boolean deleteById(int id);
     public boolean deleteByOrder(int orderId);
-    public boolean deleteByValue(double value);
+
 }

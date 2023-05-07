@@ -39,16 +39,6 @@ public class InvoiceListImpl implements InvoiceCRUD{
     }
 
     @Override
-    public boolean deleteMany() {
-        this.newId = 0;
-        if (this.invoices.size() > 0){
-            this.invoices = new ArrayList<Invoice>();
-            return true;
-        }
-        return false;
-    }
-
-    @Override
     public Invoice findById(int id) {
         for (Invoice invoice : this.invoices){
             if (invoice.getId() == id){
@@ -102,10 +92,10 @@ public class InvoiceListImpl implements InvoiceCRUD{
     }
 
     @Override
-    public boolean deleteByValue(double value) {
-        List<Invoice> sameValueInvoices = this.findByValue(value);
-        if (sameValueInvoices.size() > 0){
-            this.invoices.removeAll(sameValueInvoices);
+    public boolean deleteMany() {
+        this.newId = 0;
+        if (this.invoices.size() > 0){
+            this.invoices = new ArrayList<Invoice>();
             return true;
         }
         return false;
