@@ -1,4 +1,4 @@
-package com.evertonvsf.managementsystem.dao.stock.buyorder;
+package com.evertonvsf.managementsystem.dao.CRUD.stock.buyorder;
 
 import com.evertonvsf.managementsystem.dao.CRUD;
 import com.evertonvsf.managementsystem.models.stock.BuyOrder;

@@ -1,4 +1,4 @@
-package com.evertonvsf.managementsystem.dao.users.technician;
+package com.evertonvsf.managementsystem.dao.CRUD.users.technician;
 
 import com.evertonvsf.managementsystem.models.users.Technician;
 
@@ -15,7 +15,23 @@ public class TechnicianListImpl implements TechnicianCRUD{
         this.technicians = new ArrayList<Technician>();
         this.newId = 0;
     }
+    // uso na persistência:
+    public List<Technician> getTechnicians() {
+        return technicians;
+    }
 
+    public void setTechnicians(List<Technician> technicians) {
+        this.technicians = technicians;
+    }
+
+    public int getNewId() {
+        return newId;
+    }
+
+    public void setNewId(int newId) {
+        this.newId = newId;
+    }
+    // =================
     @Override
     public Technician create(Technician technician) {
         technician.setId(this.newId);

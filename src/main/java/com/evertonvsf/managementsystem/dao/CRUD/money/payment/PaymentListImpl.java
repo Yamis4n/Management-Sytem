@@ -1,4 +1,4 @@
-package com.evertonvsf.managementsystem.dao.money.payment;
+package com.evertonvsf.managementsystem.dao.CRUD.money.payment;
 
 import com.evertonvsf.managementsystem.models.money.Payment;
 

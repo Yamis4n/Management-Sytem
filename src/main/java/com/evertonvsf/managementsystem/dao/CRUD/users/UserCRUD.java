@@ -1,7 +1,6 @@
-package com.evertonvsf.managementsystem.dao.users;
+package com.evertonvsf.managementsystem.dao.CRUD.users;
 
 import com.evertonvsf.managementsystem.dao.CRUD;
-import com.evertonvsf.managementsystem.models.users.Client;
 
 import java.util.List;
 

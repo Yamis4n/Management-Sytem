@@ -1,4 +1,4 @@
-package com.evertonvsf.managementsystem.dao.task.serviceorder;
+package com.evertonvsf.managementsystem.dao.CRUD.task.serviceorder;
 
 import com.evertonvsf.managementsystem.dao.CRUD;
 import com.evertonvsf.managementsystem.models.task.ServiceOrder;

@@ -1,8 +1,6 @@
-package com.evertonvsf.managementsystem.dao.stock.component;
+package com.evertonvsf.managementsystem.dao.CRUD.stock.component;
 
-import com.evertonvsf.managementsystem.models.stock.Component;
 import com.evertonvsf.managementsystem.models.stock.ComponentStock;
-import com.evertonvsf.managementsystem.models.users.Client;
 
 import java.util.ArrayList;
 import java.util.List;
