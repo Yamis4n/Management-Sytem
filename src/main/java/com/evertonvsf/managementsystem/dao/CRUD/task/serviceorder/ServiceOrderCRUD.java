@@ -1,6 +1,6 @@
 package com.evertonvsf.managementsystem.dao.CRUD.task.serviceorder;
 
-import com.evertonvsf.managementsystem.dao.CRUD;
+import com.evertonvsf.managementsystem.dao.CRUD.CRUD;
 import com.evertonvsf.managementsystem.models.task.ServiceOrder;
 
 import java.util.List;
