@@ -76,6 +76,13 @@ public class Technician {
 
     @Override
     public String toString() {
-        return "Id: " + this.id + "\nNome: " + this.name + "\nEmail: " + this.emailAddress;
+        return "Technician{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", emailAddress='" + emailAddress + '\'' +
+                ", password='" + password + '\'' +
+                ", OrdersIds=" + OrdersIds.toString() +
+                ", actualOrderId=" + actualOrderId +
+                '}';
     }
 }

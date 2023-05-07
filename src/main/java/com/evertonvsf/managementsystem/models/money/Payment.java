@@ -51,4 +51,14 @@ public class Payment {
     public void setValue(double value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "id=" + id +
+                ", invoiceId=" + invoiceId +
+                ", paymentMethod=" + paymentMethod.getMethod() +
+                ", value=" + value +
+                '}';
+    }
 }

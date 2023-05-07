@@ -42,4 +42,13 @@ public class ComponentStock {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "ComponentStock{" +
+                "component=" + component.getName() +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                '}';
+    }
 }

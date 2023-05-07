@@ -102,4 +102,19 @@ public class Service {
     public void setPrice() {
         this.price = this.category.getPrice();
     }
+
+    @Override
+    public String toString() {
+        return "Service{" +
+                "id=" + id +
+                ", rating=" + rating +
+                ", necessaryComponentId=" + necessaryComponentId +
+                ", invoiceId=" + invoiceId +
+                ", category=" + category.getServiceName() +
+                ", status=" + status.getStatusName() +
+                ", beginningTime=" + beginningTime.toString() +
+                ", timeToConclude=" + timeToConclude +
+                ", price=" + price +
+                '}';
+    }
 }

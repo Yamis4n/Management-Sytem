@@ -43,7 +43,13 @@ public class Client {
         this.phoneNumber = phoneNumber;
     }
 
-    public String toString(){
-    return "Nome: " + this.name +  "\nNúmero: " + this.phoneNumber + "\nId: " + this.id;
+    @Override
+    public String toString() {
+        return "Client{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", emailAddress='" + emailAddress + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
     }
 }

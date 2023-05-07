@@ -92,5 +92,17 @@ public class ServiceOrder {
         this.servicesIds = servicesIds;
     }
 
-
+    @Override
+    public String toString() {
+        return "ServiceOrder{" +
+                "id=" + id +
+                ", clientId=" + clientId +
+                ", technicianId=" + technicianId +
+                ", invoiceId=" + invoiceId +
+                ", servicesIds=" + servicesIds.toString() +
+                ", beginningTime=" + beginningTime.toString() +
+                ", timeToConclude=" + timeToConclude +
+                ", status=" + status.getStatusName() +
+                '}';
+    }
 }
