@@ -10,6 +10,10 @@ public class ComponentListImpl implements ComponentCRUD{
     private static final ComponentPersistence persistence = new ComponentPersistence();
     private List<ComponentStock> components;
 
+    public ComponentListImpl() {
+        this.components = persistence.loadFiles();
+    }
+
     @Override
     public ComponentStock create(ComponentStock component) {
         this.components.add(component);
