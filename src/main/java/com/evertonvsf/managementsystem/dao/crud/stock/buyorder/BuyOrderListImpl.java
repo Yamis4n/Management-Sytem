@@ -1,6 +1,7 @@
 package com.evertonvsf.managementsystem.dao.crud.stock.buyorder;
 
 import com.evertonvsf.managementsystem.dao.persistence.stock.buyorder.BuyOrderPersistence;
+import com.evertonvsf.managementsystem.models.money.Payment;
 import com.evertonvsf.managementsystem.models.stock.BuyOrder;
 
 import java.util.ArrayList;
@@ -12,8 +13,14 @@ public class BuyOrderListImpl implements BuyOrderCRUD{
     private int newId;
 
     public BuyOrderListImpl() {
-        this.buyOrders = new ArrayList<BuyOrder>();
-        this.newId = 0;
+        this.buyOrders = persistence.loadFiles();
+        int newId = -1;
+        for (BuyOrder buyOrder : buyOrders){
+            if (buyOrder.getId() > newId){
+                newId = buyOrder.getId();
+            }
+        }
+        this.newId = newId +1;
     }
 
     @Override
