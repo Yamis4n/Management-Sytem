@@ -12,8 +12,14 @@ public class InvoiceListImpl implements InvoiceCRUD{
     private List<Invoice> invoices;
 
     public InvoiceListImpl() {
-        this.newId = 0;
-        this.invoices = new ArrayList<Invoice>();
+        this.invoices = persistence.loadFiles();
+        int newId = -1;
+        for (Invoice invoice : invoices){
+            if (invoice.getId() > newId){
+                newId = invoice.getId();
+            }
+        }
+        this.newId = newId +1;
     }
 
     @Override
