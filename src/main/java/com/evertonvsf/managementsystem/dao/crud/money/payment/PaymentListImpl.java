@@ -1,6 +1,7 @@
 package com.evertonvsf.managementsystem.dao.crud.money.payment;
 
 import com.evertonvsf.managementsystem.dao.persistence.money.payment.PaymentPersistence;
+import com.evertonvsf.managementsystem.models.money.Invoice;
 import com.evertonvsf.managementsystem.models.money.Payment;
 
 import java.util.ArrayList;
@@ -13,8 +14,14 @@ public class PaymentListImpl implements PaymentCRUD {
     private int newId;
 
     public PaymentListImpl() {
-        this.payments = new ArrayList<Payment>();
-        this.newId = 0;
+        this.payments = persistence.loadFiles();
+        int newId = -1;
+        for (Payment payment : payments){
+            if (payment.getId() > newId){
+                newId = payment.getId();
+            }
+        }
+        this.newId = newId +1;
     }
 
     @Override
