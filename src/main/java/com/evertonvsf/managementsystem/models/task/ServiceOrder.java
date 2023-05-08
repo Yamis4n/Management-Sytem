@@ -1,11 +1,12 @@
 package com.evertonvsf.managementsystem.models.task;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.zip.Inflater;
 
-public class ServiceOrder {
+public class ServiceOrder implements Serializable {
     private int id, clientId, technicianId, invoiceId;
     private List<Integer> servicesIds;
     private Date beginningTime;

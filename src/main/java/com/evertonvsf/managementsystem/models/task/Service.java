@@ -1,8 +1,9 @@
 package com.evertonvsf.managementsystem.models.task;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Service {
+public class Service implements Serializable {
     private int id, rating, necessaryComponentId, invoiceId;
     private ServiceCategory category;
     private Status status;
