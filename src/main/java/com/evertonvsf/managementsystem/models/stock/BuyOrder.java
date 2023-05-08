@@ -1,6 +1,8 @@
 package com.evertonvsf.managementsystem.models.stock;
 
-public class BuyOrder {
+import java.io.Serializable;
+
+public class BuyOrder implements Serializable {
     private int id, componentId, quantity;
     private final int technicianId;
     private double unitaryCost;

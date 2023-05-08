@@ -1,6 +1,8 @@
 package com.evertonvsf.managementsystem.models.stock;
 
-public class ComponentStock {
+import java.io.Serializable;
+
+public class ComponentStock implements Serializable {
     private Component component;
     private int quantity;
     private double price;
