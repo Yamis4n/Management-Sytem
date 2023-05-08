@@ -1,6 +1,7 @@
 package com.evertonvsf.managementsystem.dao.crud.task.serviceorder;
 
 import com.evertonvsf.managementsystem.dao.persistence.task.serviceorder.ServiceOrderPersistence;
+import com.evertonvsf.managementsystem.models.money.Payment;
 import com.evertonvsf.managementsystem.models.task.ServiceOrder;
 
 import java.util.ArrayList;
@@ -13,8 +14,14 @@ public class ServiceOrderListImpl implements ServiceOrderCRUD{
     private int newId;
 
     public ServiceOrderListImpl() {
-        this.serviceOrders = new ArrayList<ServiceOrder>();
-        this.newId = 0;
+        this.serviceOrders = persistence.loadFiles();
+        int newId = -1;
+        for (ServiceOrder serviceOrder : serviceOrders){
+            if (serviceOrder.getId() > newId){
+                newId = serviceOrder.getId();
+            }
+        }
+        this.newId = newId +1;
     }
     @Override
     public void writePersistence(){
