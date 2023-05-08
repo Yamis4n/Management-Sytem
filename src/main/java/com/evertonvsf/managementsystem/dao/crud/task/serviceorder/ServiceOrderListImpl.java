@@ -1,5 +1,6 @@
 package com.evertonvsf.managementsystem.dao.crud.task.serviceorder;
 
+import com.evertonvsf.managementsystem.dao.persistence.task.serviceorder.ServiceOrderPersistence;
 import com.evertonvsf.managementsystem.models.task.ServiceOrder;
 
 import java.util.ArrayList;
@@ -7,6 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class ServiceOrderListImpl implements ServiceOrderCRUD{
+    private static final ServiceOrderPersistence persistence = new ServiceOrderPersistence();
     private List<ServiceOrder> serviceOrders;
     private int newId;
 
