@@ -22,7 +22,10 @@ public class ServiceListImpl implements ServiceCRUD{
         }
         this.newId = newId+1;
     }
-
+    @Override
+    public void writePersistence(){
+        persistence.writeFiles(this.services);
+    }
     @Override
     public Service create(Service service) {
         service.setId(this.newId);

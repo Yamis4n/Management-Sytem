@@ -14,7 +14,10 @@ public class ServiceOrderListImpl implements ServiceOrderCRUD{
         this.serviceOrders = new ArrayList<ServiceOrder>();
         this.newId = 0;
     }
-
+    @Override
+    public void writePersistence(){
+        persistence.writeFiles(this.serviceOrders);
+    }
     @Override
     public ServiceOrder create(ServiceOrder serviceOrder) {
         serviceOrder.setId(this.newId);

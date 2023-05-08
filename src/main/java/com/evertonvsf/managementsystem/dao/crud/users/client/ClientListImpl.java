@@ -8,10 +8,11 @@ import java.util.List;
 import java.util.Objects;
 
 public class ClientListImpl implements ClientCRUD{
+    private static final ClientPersistence persistence = new ClientPersistence();
     private List<Client> clients;
     private int newId;
     public ClientListImpl(){
-        this.clients = new ClientPersistence().loadFiles();
+        this.clients = persistence.loadFiles();
         int newId = -1;
         for (Client client : clients){
             if (client.getId() > newId){
@@ -20,6 +21,12 @@ public class ClientListImpl implements ClientCRUD{
         }
         this.newId = newId+1;
     }
+
+    @Override
+    public void writePersistence(){
+        persistence.writeFiles(this.clients);
+    }
+
     @Override
     public Client create(Client client) {
         client.setId(this.newId);

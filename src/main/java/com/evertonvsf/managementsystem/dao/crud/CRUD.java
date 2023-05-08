@@ -9,4 +9,5 @@ public interface CRUD<Generic> {
     public boolean update(Generic object);
     public boolean deleteMany();
     public boolean deleteById(int id);
+    public void writePersistence();
 }

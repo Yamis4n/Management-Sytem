@@ -12,9 +12,10 @@ public class Technician {
     private int actualOrderId;
 
 
-    public Technician(String name, String password) {
+    public Technician(String name, String password, String emailAddress) {
         this.name = name;
         this.password = password;
+        this.emailAddress = emailAddress;
         this.actualOrderId = -1;
     }
 

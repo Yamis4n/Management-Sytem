@@ -1,7 +1,6 @@
 package com.evertonvsf.managementsystem.dao.crud.users.technician;
 
 import com.evertonvsf.managementsystem.dao.persistence.users.technician.TechnicianPersistence;
-import com.evertonvsf.managementsystem.models.task.Service;
 import com.evertonvsf.managementsystem.models.users.Technician;
 
 import java.util.ArrayList;
@@ -23,7 +22,10 @@ public class TechnicianListImpl implements TechnicianCRUD{
         }
         this.newId = newId + 1;
     }
-    
+    @Override
+    public void writePersistence(){
+        persistence.writeFiles(this.technicians);
+    }
     @Override
     public Technician create(Technician technician) {
         technician.setId(this.newId);
