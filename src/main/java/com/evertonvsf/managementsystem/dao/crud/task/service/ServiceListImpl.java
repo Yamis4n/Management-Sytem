@@ -13,7 +13,7 @@ public class ServiceListImpl implements ServiceCRUD{
     private int newId;
 
     public ServiceListImpl() {
-        this.services = persistence.loadFiles();
+        this.services = persistence.loadFiles(persistence.fileName);
         newId = -1;
         for (Service service : services){
             if (service.getId() > newId){
@@ -24,7 +24,7 @@ public class ServiceListImpl implements ServiceCRUD{
     }
     @Override
     public void writePersistence(){
-        persistence.writeFiles(this.services);
+        persistence.writeFiles(this.services, persistence.fileName);
     }
     @Override
     public Service create(Service service) {

@@ -14,7 +14,7 @@ public class PaymentListImpl implements PaymentCRUD {
     private int newId;
 
     public PaymentListImpl() {
-        this.payments = persistence.loadFiles();
+        this.payments = persistence.loadFiles(persistence.fileName);
         int newId = -1;
         for (Payment payment : payments){
             if (payment.getId() > newId){
@@ -26,7 +26,7 @@ public class PaymentListImpl implements PaymentCRUD {
 
     @Override
     public void writePersistence(){
-        persistence.writeFiles(this.payments);
+        persistence.writeFiles(this.payments, persistence.fileName);
     }
 
     @Override

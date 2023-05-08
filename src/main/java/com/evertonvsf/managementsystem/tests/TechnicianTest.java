@@ -21,11 +21,14 @@ public class TechnicianTest {
             System.out.println(tech2);
             DAO.getTechnicianDAO().writePersistence();
         }
-        else {
+        else if (choice == 2){
             List<Technician> technicians = DAO.getTechnicianDAO().findMany();
             for (Technician tech : technicians){
                 System.out.println(tech);
             }
+        }
+        else {
+            System.out.println("bye");
         }
 
     }

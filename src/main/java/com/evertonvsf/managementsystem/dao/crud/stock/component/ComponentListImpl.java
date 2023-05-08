@@ -11,7 +11,7 @@ public class ComponentListImpl implements ComponentCRUD{
     private List<ComponentStock> components;
 
     public ComponentListImpl() {
-        this.components = persistence.loadFiles();
+        this.components = persistence.loadFiles(persistence.fileName);
     }
 
     @Override
@@ -21,7 +21,7 @@ public class ComponentListImpl implements ComponentCRUD{
     }
     @Override
     public void writePersistence(){
-        persistence.writeFiles(this.components);
+        persistence.writeFiles(this.components, persistence.fileName);
     }
     @Override
     public List<ComponentStock> findMany() {

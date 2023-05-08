@@ -13,7 +13,7 @@ public class BuyOrderListImpl implements BuyOrderCRUD{
     private int newId;
 
     public BuyOrderListImpl() {
-        this.buyOrders = persistence.loadFiles();
+        this.buyOrders = persistence.loadFiles(persistence.fileName);
         int newId = -1;
         for (BuyOrder buyOrder : buyOrders){
             if (buyOrder.getId() > newId){
@@ -25,7 +25,7 @@ public class BuyOrderListImpl implements BuyOrderCRUD{
 
     @Override
     public void writePersistence(){
-        persistence.writeFiles(this.buyOrders);
+        persistence.writeFiles(this.buyOrders, persistence.fileName);
     }
 
     @Override

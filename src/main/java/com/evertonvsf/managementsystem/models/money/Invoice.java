@@ -1,7 +1,9 @@
 package com.evertonvsf.managementsystem.models.money;
 
 
-public class Invoice {
+import java.io.Serializable;
+
+public class Invoice implements Serializable {
     private int id, ServiceOrderId;
     private double totalValue, paidValue;
 

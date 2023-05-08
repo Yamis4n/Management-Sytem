@@ -4,6 +4,6 @@ import com.evertonvsf.managementsystem.dao.persistence.Persistence;
 import com.evertonvsf.managementsystem.models.money.Invoice;
 
 public class InvoicePersistence extends Persistence<Invoice> {
-    private final String fileName = "Invoice.byte";
+    public final String fileName = "src/main/java/com/evertonvsf/managementsystem/files/Invoice.byte";
 
 }

@@ -4,6 +4,6 @@ import com.evertonvsf.managementsystem.dao.persistence.Persistence;
 import com.evertonvsf.managementsystem.models.task.ServiceOrder;
 
 public class ServiceOrderPersistence extends Persistence<ServiceOrder> {
-    private final String fileName = "ServiceOrder.byte";
+    public final String fileName = "src/main/java/com/evertonvsf/managementsystem/files/ServiceOrder.byte";
 
 }

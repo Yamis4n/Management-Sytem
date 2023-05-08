@@ -1,6 +1,8 @@
 package com.evertonvsf.managementsystem.models.money;
 
-public class Payment {
+import java.io.Serializable;
+
+public class Payment implements Serializable {
 
     private int id;
     private int invoiceId;

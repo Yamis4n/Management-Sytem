@@ -12,7 +12,7 @@ public class ClientListImpl implements ClientCRUD{
     private List<Client> clients;
     private int newId;
     public ClientListImpl(){
-        this.clients = persistence.loadFiles();
+        this.clients = persistence.loadFiles(persistence.fileName);
         int newId = -1;
         for (Client client : clients){
             if (client.getId() > newId){
@@ -24,7 +24,7 @@ public class ClientListImpl implements ClientCRUD{
 
     @Override
     public void writePersistence(){
-        persistence.writeFiles(this.clients);
+        persistence.writeFiles(this.clients, persistence.fileName);
     }
 
     @Override

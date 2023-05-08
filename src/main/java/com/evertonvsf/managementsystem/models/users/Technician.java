@@ -1,9 +1,10 @@
 package com.evertonvsf.managementsystem.models.users;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Technician {
+public class Technician implements Serializable {
     private int id;
     private String name;
     private String emailAddress;
@@ -17,6 +18,7 @@ public class Technician {
         this.password = password;
         this.emailAddress = emailAddress;
         this.actualOrderId = -1;
+        this.OrdersIds = new ArrayList<Integer>();
     }
 
     public String getEmailAddress() {
