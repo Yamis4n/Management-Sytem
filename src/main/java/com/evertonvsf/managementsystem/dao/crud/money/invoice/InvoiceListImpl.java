@@ -1,11 +1,13 @@
 package com.evertonvsf.managementsystem.dao.crud.money.invoice;
 
+import com.evertonvsf.managementsystem.dao.persistence.money.invoice.InvoicePersistence;
 import com.evertonvsf.managementsystem.models.money.Invoice;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class InvoiceListImpl implements InvoiceCRUD{
+    private static final InvoicePersistence persistence = new InvoicePersistence();
     private int newId;
     private List<Invoice> invoices;
 
@@ -13,6 +15,12 @@ public class InvoiceListImpl implements InvoiceCRUD{
         this.newId = 0;
         this.invoices = new ArrayList<Invoice>();
     }
+
+    @Override
+    public void writePersistence(){
+        persistence.writeFiles(this.invoices);
+    }
+
 
     @Override
     public Invoice create(Invoice invoice) {

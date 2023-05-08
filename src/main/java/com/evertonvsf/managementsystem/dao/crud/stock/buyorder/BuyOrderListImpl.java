@@ -1,17 +1,24 @@
 package com.evertonvsf.managementsystem.dao.crud.stock.buyorder;
 
+import com.evertonvsf.managementsystem.dao.persistence.stock.buyorder.BuyOrderPersistence;
 import com.evertonvsf.managementsystem.models.stock.BuyOrder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BuyOrderListImpl implements BuyOrderCRUD{
+    private static final BuyOrderPersistence persistence = new BuyOrderPersistence();
     private List<BuyOrder> buyOrders;
     private int newId;
 
     public BuyOrderListImpl() {
         this.buyOrders = new ArrayList<BuyOrder>();
         this.newId = 0;
+    }
+
+    @Override
+    public void writePersistence(){
+        persistence.writeFiles(this.buyOrders);
     }
 
     @Override

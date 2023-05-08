@@ -1,11 +1,13 @@
 package com.evertonvsf.managementsystem.dao.crud.stock.component;
 
+import com.evertonvsf.managementsystem.dao.persistence.stock.componentstock.ComponentPersistence;
 import com.evertonvsf.managementsystem.models.stock.ComponentStock;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ComponentListImpl implements ComponentCRUD{
+    private static final ComponentPersistence persistence = new ComponentPersistence();
     private List<ComponentStock> components;
 
     @Override
@@ -13,7 +15,10 @@ public class ComponentListImpl implements ComponentCRUD{
         this.components.add(component);
         return component;
     }
-
+    @Override
+    public void writePersistence(){
+        persistence.writeFiles(this.components);
+    }
     @Override
     public List<ComponentStock> findMany() {
         return new ArrayList<ComponentStock>(this.components);
