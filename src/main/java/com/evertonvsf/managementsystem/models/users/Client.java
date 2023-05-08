@@ -1,6 +1,8 @@
 package com.evertonvsf.managementsystem.models.users;
 
-public class Client {
+import java.io.Serializable;
+
+public class Client implements Serializable {
     private String name;
     private int id;
     private String emailAddress;
