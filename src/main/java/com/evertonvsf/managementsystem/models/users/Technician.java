@@ -4,6 +4,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Representa um Técnico da assistência técnica
+ * 
+ * @author Everton Vinícius da Silva Ferreira
+ * @version 2.5
+ * 
+ */
 public class Technician implements Serializable {
     private int id;
     private String name;
@@ -11,8 +18,13 @@ public class Technician implements Serializable {
     private String password;
     private List<Integer> OrdersIds;
     private int actualOrderId;
-
-
+/**
+ * Construtor da classe <code>Technician<code>.
+ *
+ * @param name Nome do <code>Technician<code>.
+ * @param password Senha do <code>Technician<code>.
+ * @param emailAddress Email do <code>Technician<code>;
+ */
     public Technician(String name, String password, String emailAddress) {
         this.name = name;
         this.password = password;
@@ -30,7 +42,7 @@ public class Technician implements Serializable {
     }
 
     public void setOrdersIds(List<Integer> ordersIds) {
-        OrdersIds = ordersIds;
+        this.OrdersIds = ordersIds;
     }
 
 
@@ -76,14 +88,17 @@ public class Technician implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
+    /**
+     * Gera uma <code>String<code> contendo as informações mais importantes do <code>Technician<code>.
+     *
+     * @return informações do <code>Technician<code>;
+     */
     @Override
     public String toString() {
         return "Technician{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", emailAddress='" + emailAddress + '\'' +
-                ", password='" + password + '\'' +
                 ", OrdersIds=" + OrdersIds.toString() +
                 ", actualOrderId=" + actualOrderId +
                 '}';
