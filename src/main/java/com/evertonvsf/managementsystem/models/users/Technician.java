@@ -19,11 +19,11 @@ public class Technician implements Serializable {
     private List<Integer> OrdersIds;
     private int actualOrderId;
 /**
- * Construtor da classe <code>Technician<code>.
+ * Construtor da classe <code>Technician</code>.
  *
- * @param name Nome do <code>Technician<code>.
- * @param password Senha do <code>Technician<code>.
- * @param emailAddress Email do <code>Technician<code>;
+ * @param name Nome do <code>Technician</code>.
+ * @param password Senha do <code>Technician</code>.
+ * @param emailAddress Email do <code>Technician</code>;
  */
     public Technician(String name, String password, String emailAddress) {
         this.name = name;
@@ -89,9 +89,9 @@ public class Technician implements Serializable {
         this.password = password;
     }
     /**
-     * Gera uma <code>String<code> contendo as informações mais importantes do <code>Technician<code>.
+     * Gera uma <code>String</code> contendo as informações mais importantes do <code>Technician</code>.
      *
-     * @return informações do <code>Technician<code>;
+     * @return informações do <code>Technician</code>;
      */
     @Override
     public String toString() {

@@ -15,7 +15,7 @@ public class Client implements Serializable {
   private String emailAddress;
   private String phoneNumber;
   /**
-   * Construtor da classe <code>Client<code>.
+   * Construtor da classe <code>Client</code>.
    *
    * @param name Nome do cliente. 
    * @param address Endereço de morada do cliente.
@@ -60,9 +60,9 @@ public class Client implements Serializable {
     this.phoneNumber = phoneNumber;
   }
   /**
-   * Gera uma <code>String<code> contendo as informações do <code>Client<code>
+   * Gera uma <code>String</code> contendo as informações do <code>Client</code>
    * 
-   * @return informações do <code>Client<code>
+   * @return informações do <code>Client</code>
    */
   @Override
   public String toString() {
