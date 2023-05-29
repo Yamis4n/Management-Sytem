@@ -6,13 +6,27 @@ import java.util.Date;
 import java.util.List;
 import java.util.zip.Inflater;
 
+/**
+ * Representa uma Ordem de serviço da Assistência Técnica
+ * Ela possui um status representado pela classe <code>Status</code>
+ * @author Everton Vinícius da Silva Ferreira
+ * @version 2.5
+ *
+ * @see <code>Status</code>
+ */
 public class ServiceOrder implements Serializable {
     private int id, clientId, technicianId, invoiceId;
     private List<Integer> servicesIds;
     private Date beginningTime;
     private long timeToConclude;
     private Status status;
-
+    /**
+     * Construtor da classe <code>ServiceOrder</code>
+     *
+     * @param clientId indica o id do <code>Client</code>
+     * @param technicianId indica o id do <code>Technician</code>
+     * @param servicesIds indica uma lista de id's dos serviços prestados nesta <code>ServiceOrder</code>
+     */
     public ServiceOrder(int clientId, int technicianId, List<Integer> servicesIds) {
         this.clientId = clientId;
         this.technicianId = technicianId;
@@ -74,7 +88,13 @@ public class ServiceOrder implements Serializable {
     public String getStatus() {
         return status.getStatusName();
     }
-
+   /**
+    * Define o status da <code>ServiceOrder</code> com base na enumeração presente em <code>Status</code>.
+    *
+    * @param statusId Número indicando qual status a <code>ServideOrder</code> está.
+    *
+    * @see <code>Status</code>
+    */ 
     public void setStatus(int statusId) {
         switch (statusId){
             case 0 -> this.status = Status.WAITING;
@@ -93,6 +113,11 @@ public class ServiceOrder implements Serializable {
         this.servicesIds = servicesIds;
     }
 
+    /**
+     * Gera uma <code>String</code> contendo as informações da <code>ServiceOrder</code>.
+     *
+     * @return Informações da <code>ServiceOrder</code>;
+     */
     @Override
     public String toString() {
         return "ServiceOrder{" +
