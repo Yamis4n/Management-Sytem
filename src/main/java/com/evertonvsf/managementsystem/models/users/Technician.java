@@ -14,7 +14,7 @@ import java.util.List;
 public class Technician implements Serializable {
     private int id;
     private String name;
-    private String emailAddress;
+    private String username;
     private String password;
     private List<Integer> OrdersIds;
     private int actualOrderId;
@@ -23,22 +23,22 @@ public class Technician implements Serializable {
  *
  * @param name Nome do <code>Technician</code>.
  * @param password Senha do <code>Technician</code>.
- * @param emailAddress Email do <code>Technician</code>;
+ * @param username Email do <code>Technician</code>;
  */
-    public Technician(String name, String password, String emailAddress) {
+    public Technician(String name, String password, String username) {
         this.name = name;
         this.password = password;
-        this.emailAddress = emailAddress;
+        this.username = username;
         this.actualOrderId = -1;
         this.OrdersIds = new ArrayList<Integer>();
     }
 
-    public String getEmailAddress() {
-        return emailAddress;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setOrdersIds(List<Integer> ordersIds) {
@@ -98,7 +98,7 @@ public class Technician implements Serializable {
         return "Technician{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", emailAddress='" + emailAddress + '\'' +
+                ", emailAddress='" + username + '\'' +
                 ", OrdersIds=" + OrdersIds.toString() +
                 ", actualOrderId=" + actualOrderId +
                 '}';

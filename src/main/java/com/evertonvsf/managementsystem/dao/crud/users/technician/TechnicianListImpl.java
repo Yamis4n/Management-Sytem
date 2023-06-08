@@ -92,14 +92,4 @@ public class TechnicianListImpl implements TechnicianCRUD{
         return false;
     }
 
-
-    @Override
-    public boolean deleteByName(String name) {
-        List<Technician> sameNameTechnicians = findByName(name);
-        if (sameNameTechnicians.size() > 0){
-            this.technicians.removeAll(sameNameTechnicians);
-            return true;
-        }
-        return false;
-    }
 }

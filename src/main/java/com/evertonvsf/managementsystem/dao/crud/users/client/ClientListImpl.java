@@ -93,13 +93,5 @@ public class ClientListImpl implements ClientCRUD{
         return false;
     }
 
-    @Override
-    public boolean deleteByName(String name) {
-        List<Client> sameNameClients = this.findByName(name);
-        if (sameNameClients.size() > 0){
-            this.clients.removeAll(sameNameClients);
-            return true;
-        }
-        return false;
-    }
+
 }
