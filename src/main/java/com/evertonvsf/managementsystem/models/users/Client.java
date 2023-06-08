@@ -12,19 +12,18 @@ public class Client implements Serializable {
 
   private String name;
   private int id;
-  private String emailAddress;
+  private String address;
   private String phoneNumber;
   /**
    * Construtor da classe <code>Client</code>.
    *
    * @param name Nome do cliente. 
    * @param address Endereço de morada do cliente.
-   * @param emailAddress Email do cliente.
    * @param phoneNumber Número de telefone do cliente;
    * */
-  public Client(String name, String address, String emailAddress, String phoneNumber){
+  public Client(String name, String address, String phoneNumber){
     this.name = name;
-    this.emailAddress = emailAddress;
+    this.address = address;
     this.phoneNumber = phoneNumber;
   }
 
@@ -44,12 +43,12 @@ public class Client implements Serializable {
     this.id = id;
   }
 
-  public String getEmailAddress() {
-    return emailAddress;
+  public String getAddress() {
+    return address;
   }
 
-  public void setEmailAddress(String emailAddress) {
-    this.emailAddress = emailAddress;
+  public void setAddress(String address) {
+    this.address = address;
   }
 
   public String getPhoneNumber() {
@@ -69,7 +68,7 @@ public class Client implements Serializable {
     return "Client{" +
       "name='" + name + '\'' +
       ", id=" + id +
-      ", emailAddress='" + emailAddress + '\'' +
+      ", address='" + address + '\'' +
       ", phoneNumber='" + phoneNumber + '\'' +
       '}';
   }
