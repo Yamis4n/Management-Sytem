@@ -28,56 +28,56 @@ public class DAO {
     private static TechnicianCRUD technicianDAO;
 
 
-    public static InvoiceCRUD getInvoiceDAO() {
+    public static InvoiceCRUD fromInvoice() {
         if (invoiceDAO == null){
             invoiceDAO = new InvoiceListImpl();
         }
         return invoiceDAO;
     }
 
-    public static PaymentCRUD getPaymentDAO() {
+    public static PaymentCRUD fromPayment() {
         if (paymentDAO == null){
             paymentDAO = new PaymentListImpl();
         }
         return paymentDAO;
     }
 
-    public static BuyOrderCRUD getBuyOrderDAO() {
+    public static BuyOrderCRUD fromBuyOrder() {
         if (buyOrderDAO == null){
             buyOrderDAO = new BuyOrderListImpl();
         }
         return buyOrderDAO;
     }
 
-    public static ComponentCRUD getComponentDAO() {
+    public static ComponentCRUD fromComponent() {
         if (componentDAO == null){
             componentDAO = new ComponentListImpl();
         }
         return componentDAO;
     }
 
-    public static ServiceCRUD getServiceDao() {
+    public static ServiceCRUD fromService() {
         if (serviceDao == null){
             serviceDao = new ServiceListImpl();
         }
         return serviceDao;
     }
 
-    public static ServiceOrderCRUD getServiceOrderDAO() {
+    public static ServiceOrderCRUD fromServiceOrder() {
         if (serviceOrderDAO == null){
             serviceOrderDAO = new ServiceOrderListImpl();
         }
         return serviceOrderDAO;
     }
 
-    public static ClientCRUD getClientDAO() {
+    public static ClientCRUD fromClient() {
         if (clientDAO == null){
             clientDAO = new ClientListImpl();
         }
         return clientDAO;
     }
 
-    public static TechnicianCRUD getTechnicianDAO() {
+    public static TechnicianCRUD fromTechnician() {
         if (technicianDAO == null){
             technicianDAO = new TechnicianListImpl();
         }
