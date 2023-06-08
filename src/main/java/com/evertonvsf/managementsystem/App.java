@@ -1,4 +1,40 @@
 package com.evertonvsf.managementsystem;
 
-public class App {
+import com.evertonvsf.managementsystem.controllers.MainController;
+import java.io.IOException;
+import java.util.Objects;
+
+import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+
+
+
+
+public class App extends Application {
+    public static void main(String[] args) {
+        launch(args);
+    }
+    @Override
+    public void start(Stage stage) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/login.fxml")));
+        Scene loginScene = new Scene(root);
+
+        stage.setResizable(false);
+        stage.setScene(loginScene);
+        stage.show();
+
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent windowEvent) {
+                MainController.saveInfo();
+            }
+        });
+
+    }
+
 }
