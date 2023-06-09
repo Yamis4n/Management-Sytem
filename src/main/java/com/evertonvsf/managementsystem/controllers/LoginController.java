@@ -37,6 +37,8 @@ public class LoginController {
     @FXML
     private Label feedbackInfo;
 
+
+
     @FXML
     private void validate() throws IOException {
         String username = usernameField.getText();
@@ -55,8 +57,11 @@ public class LoginController {
             return;
         }
         else {
+            feedbackInfo.setText("Logado!");
+        feedbackInfo.setTextFill(Color.GREEN);
             MainController.loggedTechnician = foundedTechnician;
             Parent homeView = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/home.fxml")));
+
             MainController.stage.setScene(new Scene(homeView));
         }
 
