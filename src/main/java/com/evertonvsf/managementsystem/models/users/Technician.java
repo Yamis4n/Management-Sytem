@@ -65,7 +65,7 @@ public class Technician implements Serializable {
         this.OrdersIds.add(orderId);
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

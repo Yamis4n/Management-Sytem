@@ -13,6 +13,16 @@ public class BuyOrderListImpl implements BuyOrderCRUD{
     private int newId;
 
     public BuyOrderListImpl() {
+        this.loadPersistence();
+    }
+
+    @Override
+    public void writePersistence(){
+        persistence.writeFiles(this.buyOrders, persistence.fileName);
+    }
+
+    @Override
+    public void loadPersistence() {
         this.buyOrders = persistence.loadFiles(persistence.fileName);
         int newId = -1;
         for (BuyOrder buyOrder : buyOrders){
@@ -22,12 +32,6 @@ public class BuyOrderListImpl implements BuyOrderCRUD{
         }
         this.newId = newId +1;
     }
-
-    @Override
-    public void writePersistence(){
-        persistence.writeFiles(this.buyOrders, persistence.fileName);
-    }
-
     @Override
     public BuyOrder create(BuyOrder buyOrder) {
         buyOrder.setId(this.newId);

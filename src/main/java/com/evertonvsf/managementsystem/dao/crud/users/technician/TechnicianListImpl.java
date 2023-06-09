@@ -13,6 +13,15 @@ public class TechnicianListImpl implements TechnicianCRUD{
     private int newId;
 
     public TechnicianListImpl() {
+        this.loadPersistence();
+    }
+    @Override
+    public void writePersistence(){
+        persistence.writeFiles(this.technicians, persistence.fileName);
+    }
+
+    @Override
+    public void loadPersistence() {
         this.technicians = persistence.loadFiles(persistence.fileName);
         newId = -1;
         for (Technician technician : technicians) {
@@ -21,10 +30,6 @@ public class TechnicianListImpl implements TechnicianCRUD{
             }
         }
         this.newId = newId + 1;
-    }
-    @Override
-    public void writePersistence(){
-        persistence.writeFiles(this.technicians, persistence.fileName);
     }
     @Override
     public Technician create(Technician technician) {

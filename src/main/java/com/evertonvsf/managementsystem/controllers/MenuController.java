@@ -86,6 +86,7 @@ public class MenuController {
         MainController.loggedTechnician = null;
         Parent loginView = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/login.fxml")));
         MainController.stage.setScene(new Scene(loginView));
+        MainController.saveInfo();
 
     }
 

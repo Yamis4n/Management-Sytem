@@ -14,6 +14,15 @@ public class ServiceOrderListImpl implements ServiceOrderCRUD{
     private int newId;
 
     public ServiceOrderListImpl() {
+        this.loadPersistence();
+    }
+    @Override
+    public void writePersistence(){
+        persistence.writeFiles(this.serviceOrders, persistence.fileName);
+    }
+
+    @Override
+    public void loadPersistence (){
         this.serviceOrders = persistence.loadFiles(persistence.fileName);
         int newId = -1;
         for (ServiceOrder serviceOrder : serviceOrders){
@@ -22,10 +31,6 @@ public class ServiceOrderListImpl implements ServiceOrderCRUD{
             }
         }
         this.newId = newId +1;
-    }
-    @Override
-    public void writePersistence(){
-        persistence.writeFiles(this.serviceOrders, persistence.fileName);
     }
     @Override
     public ServiceOrder create(ServiceOrder serviceOrder) {

@@ -12,6 +12,15 @@ public class ClientListImpl implements ClientCRUD{
     private List<Client> clients;
     private int newId;
     public ClientListImpl(){
+        this.loadPersistence();
+    }
+
+    @Override
+    public void writePersistence(){
+        persistence.writeFiles(this.clients, persistence.fileName);
+    }
+    @Override
+    public void loadPersistence() {
         this.clients = persistence.loadFiles(persistence.fileName);
         int newId = -1;
         for (Client client : clients){
@@ -21,12 +30,6 @@ public class ClientListImpl implements ClientCRUD{
         }
         this.newId = newId+1;
     }
-
-    @Override
-    public void writePersistence(){
-        persistence.writeFiles(this.clients, persistence.fileName);
-    }
-
     @Override
     public Client create(Client client) {
         client.setId(this.newId);

@@ -12,6 +12,16 @@ public class InvoiceListImpl implements InvoiceCRUD{
     private List<Invoice> invoices;
 
     public InvoiceListImpl() {
+        this.loadPersistence();
+    }
+
+    @Override
+    public void writePersistence(){
+        persistence.writeFiles(this.invoices, persistence.fileName);
+    }
+
+    @Override
+    public void loadPersistence() {
         this.invoices = persistence.loadFiles(persistence.fileName);
         int newId = -1;
         for (Invoice invoice : invoices){
@@ -21,12 +31,6 @@ public class InvoiceListImpl implements InvoiceCRUD{
         }
         this.newId = newId +1;
     }
-
-    @Override
-    public void writePersistence(){
-        persistence.writeFiles(this.invoices, persistence.fileName);
-    }
-
 
     @Override
     public Invoice create(Invoice invoice) {

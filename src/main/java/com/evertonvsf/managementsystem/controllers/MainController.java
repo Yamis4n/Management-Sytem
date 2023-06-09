@@ -21,4 +21,18 @@ public abstract class MainController {
         DAO.fromInvoice().writePersistence();
         DAO.fromPayment().writePersistence();
     }
+
+    public static void loadInfo() {
+        DAO.fromClient().loadPersistence();
+        DAO.fromTechnician().loadPersistence();
+
+        DAO.fromService().loadPersistence();
+        DAO.fromServiceOrder().loadPersistence();
+
+        DAO.fromBuyOrder().loadPersistence();
+        DAO.fromComponent().loadPersistence();
+
+        DAO.fromInvoice().loadPersistence();
+        DAO.fromPayment().loadPersistence();
+    }
 }

@@ -10,4 +10,5 @@ public interface CRUD<Generic> {
     public boolean deleteMany();
     public boolean deleteById(int id);
     public void writePersistence();
+    public void loadPersistence();
 }
