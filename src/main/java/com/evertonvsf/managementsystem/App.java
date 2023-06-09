@@ -1,8 +1,6 @@
 package com.evertonvsf.managementsystem;
 
 import com.evertonvsf.managementsystem.controllers.MainController;
-import java.io.IOException;
-import java.util.Objects;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -12,8 +10,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-
-
+import java.io.IOException;
+import java.util.Objects;
 
 public class App extends Application {
     public static void main(String[] args) {
@@ -27,6 +25,7 @@ public class App extends Application {
         stage.setResizable(false);
         stage.setScene(loginScene);
         stage.show();
+        MainController.stage = stage;
 
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override

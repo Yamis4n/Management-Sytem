@@ -4,6 +4,6 @@ import com.evertonvsf.managementsystem.dao.persistence.Persistence;
 import com.evertonvsf.managementsystem.models.stock.BuyOrder;
 
 public class BuyOrderPersistence extends Persistence<BuyOrder> {
-    public final String fileName = "src/main/java/com/evertonvsf/managementsystem/files/BuyOrder.byte";
+    public final String fileName = "/files/BuyOrder.byte";
 
 }

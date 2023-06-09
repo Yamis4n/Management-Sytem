@@ -92,4 +92,12 @@ public class TechnicianListImpl implements TechnicianCRUD{
         return false;
     }
 
+    public Technician findByUsername(String username) {
+        for (Technician technician: this.technicians){
+            if (Objects.equals(technician.getUsername(), username)){
+                return technician;
+            }
+        }
+        return null;
+    }
 }
