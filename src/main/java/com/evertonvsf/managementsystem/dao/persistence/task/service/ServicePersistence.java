@@ -4,5 +4,5 @@ import com.evertonvsf.managementsystem.dao.persistence.Persistence;
 import com.evertonvsf.managementsystem.models.task.Service;
 
 public class ServicePersistence extends Persistence<Service> {
-    public final String fileName = "/files/Service.byte";
+    public final String fileName = "src/main/resources/files/Service.byte";
 }

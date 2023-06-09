@@ -78,8 +78,8 @@ public class DAO {
     }
 
     public static TechnicianCRUD fromTechnician() {
-        if (technicianDAO == null){
-            technicianDAO = new TechnicianListImpl();
+        if (DAO.technicianDAO == null){
+            DAO.technicianDAO = new TechnicianListImpl();
         }
         return technicianDAO;
     }

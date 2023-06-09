@@ -7,7 +7,7 @@ import java.util.List;
 
 public class TechnicianPersistence extends Persistence<Technician> {
 
-    public final String fileName = "/files/Technician.byte";
+    public final String fileName = "src/main/resources/files/Technician.byte";
 
 
 }

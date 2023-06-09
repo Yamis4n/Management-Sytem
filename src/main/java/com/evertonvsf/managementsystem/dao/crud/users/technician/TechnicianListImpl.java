@@ -31,7 +31,9 @@ public class TechnicianListImpl implements TechnicianCRUD{
         technician.setId(this.newId);
         this.newId++;
         this.technicians.add(technician);
+        writePersistence();
         return technician;
+
     }
 
     @Override
