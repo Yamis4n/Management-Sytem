@@ -2,6 +2,7 @@ package com.evertonvsf.managementsystem.controllers;
 
 import com.evertonvsf.managementsystem.dao.DAO;
 import com.evertonvsf.managementsystem.models.users.Technician;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -73,12 +74,13 @@ public class RegisterController {
 
         feedbackInfo.setText("Cadastro Efetuado!");
         feedbackInfo.setTextFill(Color.GREEN);
+
         return true;
 
     }
 
     @FXML
-    private void register(){
+    private void register() throws IOException, InterruptedException {
         String name = nameField.getText();
         String username = usernameField.getText();
         String password = passwordField.getText();
@@ -87,7 +89,9 @@ public class RegisterController {
         boolean dataIsValid = validateInfo(name, username, password, passwordConfirmation);
 
         if ( dataIsValid ){
+
             DAO.fromTechnician().create(new Technician(name, password, username));
+
         }
     }
 }
