@@ -46,7 +46,7 @@
             <Font name="Open Sans Extrabold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="myData" layoutX="-2.0" layoutY="387.0" mnemonicParsing="false" onAction="#gotoData" prefHeight="37.0" prefWidth="205.0" style="-fx-background-color: null;" text="MEUS DADOS" textFill="WHITE">
+      <Button fx:id="myData" layoutX="-2.0" layoutY="387.0" mnemonicParsing="false" onAction="#gotoData" prefHeight="37.0" prefWidth="205.0" style="-fx-background-color: null;" text="FUNCIONÁRIOS" textFill="WHITE">
          <font>
             <Font name="Open Sans Extrabold" size="13.0" />
          </font>

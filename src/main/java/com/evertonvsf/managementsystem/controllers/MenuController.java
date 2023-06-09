@@ -2,10 +2,12 @@ package com.evertonvsf.managementsystem.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -33,6 +35,12 @@ public class MenuController {
     @FXML
     private Button myData;
 
+
+    public static void showUser( Label usernameLabel ){
+        usernameLabel.setAlignment(Pos.BASELINE_CENTER);
+        usernameLabel.setText(MainController.loggedTechnician.getUsername());
+        usernameLabel.setTextFill(Color.WHITE);
+    }
     @FXML
     private void gotoClients() throws IOException {
         Parent clientsView = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/clients.fxml")));
@@ -80,6 +88,8 @@ public class MenuController {
         MainController.stage.setScene(new Scene(loginView));
 
     }
+
+
 
 
 }

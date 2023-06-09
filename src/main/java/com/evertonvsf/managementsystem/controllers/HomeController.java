@@ -1,5 +1,16 @@
 package com.evertonvsf.managementsystem.controllers;
 
-public class HomeController extends MenuController{
+import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
 
+public class HomeController extends MenuController {
+    @FXML
+    private Label usernameLabel;
+
+    @FXML
+    private void initialize() {
+        MenuController.showUser(usernameLabel);
+    }
 }
