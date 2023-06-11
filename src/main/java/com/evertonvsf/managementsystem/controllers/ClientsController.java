@@ -1,5 +1,6 @@
 package com.evertonvsf.managementsystem.controllers;
 
+import com.evertonvsf.managementsystem.dao.DAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -15,11 +16,19 @@ import java.util.Objects;
 
 public class ClientsController extends MenuController{
 
+    public static int actualClient = -1;
+
     @FXML
     private Label usernameLabel;
+
+    @FXML
+    private Label feedbackLabel;
+
+
     @FXML
     private void initialize(){
         MenuController.showUser(usernameLabel);
+        this.feedbackLabel.setAlignment(Pos.BASELINE_CENTER);
 
 
 
@@ -38,7 +47,17 @@ public class ClientsController extends MenuController{
     }
 
     @FXML
-    private void deleteClient(){}
+    private void deleteClient(){
+        boolean response = DAO.fromClient().deleteById(ClientsController.actualClient);
+        if ( response ){
+            feedbackLabel.setTextFill(Color.GREEN);
+            feedbackLabel.setText("Cliente deletado com sucesso!");
+        }
+        else {
+            feedbackLabel.setTextFill(Color.RED);
+            feedbackLabel.setText("Cliente não encontrado!");
+        }
+    }
 
     public void popUp(Parent root){
         Stage stage = new Stage();
