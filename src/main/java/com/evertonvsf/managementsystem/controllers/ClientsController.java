@@ -90,15 +90,10 @@ public class ClientsController extends MenuController{
                     else if ( client.getAddress().toLowerCase().contains(lowerCaseFilter) ){
                         return true;
                     }
-                    else if ( Long.toString(client.getCPF()).contains(lowerCaseFilter) ){
+                    else if ( client.getCPF().contains(lowerCaseFilter) ){
                         return true;
                     }
-                    else if ( Long.toString(client.getPhoneNumber()).contains(lowerCaseFilter) ){
-                        return true;
-                    }
-                    else{
-                        return false;
-                    }
+                    else return client.getPhoneNumber().contains(lowerCaseFilter);
 
                 });
 
@@ -178,8 +173,8 @@ public class ClientsController extends MenuController{
     public void showClient(Client client){
         this.nameLabel.setText(client.getName());
         this.addressLabel.setText(client.getAddress());
-        this.phoneLabel.setText( Long.toString(client.getPhoneNumber()) );
-        this.cpfLabel.setText( Long.toString(client.getCPF() ));
+        this.phoneLabel.setText( client.getPhoneNumber() );
+        this.cpfLabel.setText( client.getCPF() );
 
     }
 

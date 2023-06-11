@@ -86,7 +86,7 @@ public class ClientCreateController {
 
         if ( validateInfo( this.nameField.getText(), this.addressField.getText(), this.phoneField.getText(), this.cpfField.getText() ) ){
             DAO.fromClient().create(new Client(this.nameField.getText(), this.addressField.getText(),
-                    Long.parseLong(this.phoneField.getText()), Long.parseLong(this.cpfField.getText())));
+                    this.phoneField.getText(), this.cpfField.getText()));
             MainController.saveInfo();
             MainController.loadInfo();
             this.cancel();
@@ -134,7 +134,7 @@ public class ClientCreateController {
             feedbackLabel.setText("CPF inválido!");
             return false;
         }
-        if ( DAO.fromClient().findByCpf(cpfLong) != null ) {
+        if ( DAO.fromClient().findByCpf(cpf) != null ) {
             feedbackLabel.setText("Este Cliente já existe!");
             return false;
         }
