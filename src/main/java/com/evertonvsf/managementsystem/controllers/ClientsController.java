@@ -4,24 +4,21 @@ import com.evertonvsf.managementsystem.dao.DAO;
 import com.evertonvsf.managementsystem.models.users.Client;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.LongStringConverter;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Objects;
 
 public class ClientsController extends MenuController{
@@ -33,6 +30,18 @@ public class ClientsController extends MenuController{
 
     @FXML
     private Label feedbackLabel;
+
+    @FXML
+    private Label nameLabel;
+
+    @FXML
+    private Label addressLabel;
+
+    @FXML
+    private Label phoneLabel;
+
+    @FXML
+    private Label cpfLabel;
 
     @FXML
     private TableView<Client> clientsTable;
@@ -115,8 +124,24 @@ public class ClientsController extends MenuController{
         for ( Client client : clientsObservable){
             this.clientsTable.getItems().add(client);
         }
+
+        this.clientsTable.onMouseClickedProperty().setValue(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Client client = clientsTable.getSelectionModel().getSelectedItem();
+                ClientsController.actualClient = client.getId();
+                showClient(client);
+            }
+        });
     }
 
+    public void showClient(Client client){
+        this.nameLabel.setText(client.getName());
+        this.addressLabel.setText(client.getAddress());
+        this.phoneLabel.setText( Long.toString(client.getPhoneNumber()) );
+        this.cpfLabel.setText( Long.toString(client.getCPF() ));
+
+    }
 
 
 }
