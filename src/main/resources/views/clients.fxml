@@ -98,7 +98,7 @@
                     <columns>
                       <TableColumn fx:id="nameColumn" editable="false" prefWidth="75.0" sortable="false" text="NOME" />
                       <TableColumn fx:id="phoneColumn" editable="false" prefWidth="75.0" sortable="false" text="TELEFONE" />
-                        <TableColumn fx:id="addressCollumn" editable="false" prefWidth="75.0" sortable="false" text="ENDEREÇO" />
+                        <TableColumn fx:id="addressColumn" editable="false" prefWidth="75.0" sortable="false" text="ENDEREÇO" />
                         <TableColumn fx:id="cpfColumn" editable="false" prefWidth="75.0" sortable="false" text="CPF" />
                     </columns>
                      <columnResizePolicy>
