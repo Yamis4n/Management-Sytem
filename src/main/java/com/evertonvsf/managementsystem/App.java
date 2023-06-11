@@ -25,7 +25,7 @@ public class App extends Application {
         stage.setResizable(false);
         stage.setScene(loginScene);
         stage.show();
-        MainController.stage = stage;
+        MainController.STAGE = stage;
 
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override

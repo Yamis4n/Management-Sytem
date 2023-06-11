@@ -114,8 +114,8 @@ public class EditTechnicianController {
     @FXML
     private void cancel() throws IOException {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
-        MainController.stage.setScene(new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/data.fxml")))));
-        MainController.stage.show();
+        MainController.STAGE.setScene(new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/data.fxml")))));
+        MainController.STAGE.show();
         stage.close();
     }
 }

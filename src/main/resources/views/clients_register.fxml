@@ -6,24 +6,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #4fb4ff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #4fb4ff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.evertonvsf.managementsystem.controllers.ClientCreateController">
    <children>
-      <Button layoutX="123.0" layoutY="324.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="92.0" style="-fx-background-color: lightgreen;" text="SALVAR" textFill="#737373">
+      <Button fx:id="saveButton" layoutX="123.0" layoutY="324.0" mnemonicParsing="false" onAction="#saveClient" prefHeight="56.0" prefWidth="92.0" style="-fx-background-color: lightgreen;" text="SALVAR" textFill="#737373">
          <font>
             <Font name="Open Sans Extrabold" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="389.0" layoutY="324.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="92.0" style="-fx-background-color: coral;" text="CANCELAR" textFill="#737373">
+      <Button fx:id="cancelButton" layoutX="389.0" layoutY="324.0" mnemonicParsing="false" onAction="#cancel" prefHeight="56.0" prefWidth="92.0" style="-fx-background-color: coral;" text="CANCELAR" textFill="#737373">
          <font>
             <Font name="Open Sans Extrabold" size="13.0" />
          </font>
       </Button>
-      <TextField layoutX="42.0" layoutY="107.0" prefHeight="40.0" prefWidth="516.0" promptText="Nome" />
-      <TextField layoutX="42.0" layoutY="174.0" prefHeight="40.0" prefWidth="516.0" promptText="Endereço" />
-      <TextField layoutX="42.0" layoutY="240.0" prefHeight="40.0" prefWidth="251.0" promptText="Telefonte" />
-      <TextField layoutX="308.0" layoutY="240.0" prefHeight="40.0" prefWidth="251.0" promptText="CPF" />
-      <Label layoutX="42.0" layoutY="288.0" prefHeight="27.0" prefWidth="516.0" textFill="RED">
+      <TextField fx:id="nameField" layoutX="42.0" layoutY="107.0" prefHeight="40.0" prefWidth="516.0" promptText="Nome" />
+      <TextField fx:id="addressField" layoutX="42.0" layoutY="174.0" prefHeight="40.0" prefWidth="516.0" promptText="Endereço" />
+      <TextField fx:id="phoneField" layoutX="42.0" layoutY="240.0" prefHeight="40.0" prefWidth="251.0" promptText="Telefonte" />
+      <TextField fx:id="cpfField" layoutX="308.0" layoutY="240.0" prefHeight="40.0" prefWidth="251.0" promptText="CPF" />
+      <Label fx:id="feedbackLabel" layoutX="42.0" layoutY="288.0" prefHeight="27.0" prefWidth="516.0" textFill="RED">
          <font>
             <Font name="Open Sans Extrabold" size="13.0" />
          </font>
@@ -32,7 +31,7 @@
       <Label layoutX="42.0" layoutY="147.0" prefHeight="27.0" prefWidth="63.0" text="Endereço:" />
       <Label layoutX="42.0" layoutY="214.0" prefHeight="27.0" prefWidth="63.0" text="Telefone:" />
       <Label layoutX="308.0" layoutY="214.0" prefHeight="27.0" prefWidth="43.0" text="CPF:" />
-      <Label layoutX="129.0" layoutY="14.0" prefHeight="56.0" prefWidth="342.0">
+      <Label fx:id="titleLabel" layoutX="129.0" layoutY="14.0" prefHeight="56.0" prefWidth="342.0">
          <font>
             <Font name="Open Sans Extrabold" size="22.0" />
          </font>

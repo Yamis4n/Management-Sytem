@@ -85,7 +85,7 @@ public class LoginController {
             MainController.loggedTechnician = foundedTechnician;
             Parent homeView = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/home.fxml")));
 
-            MainController.stage.setScene(new Scene(homeView));
+            MainController.STAGE.setScene(new Scene(homeView));
         }
     }
 
@@ -93,7 +93,7 @@ public class LoginController {
     private void signUp() throws IOException {
 
         Parent signUpView = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/sign_up.fxml")));
-        MainController.stage.setScene(new Scene(signUpView));
+        MainController.STAGE.setScene(new Scene(signUpView));
 
     }
     

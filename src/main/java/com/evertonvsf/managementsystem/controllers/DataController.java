@@ -190,7 +190,7 @@ public class DataController extends  MenuController {
 
         Stage stage = new Stage();
         stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(MainController.stage);
+        stage.initOwner(MainController.STAGE);
         stage.setScene(new Scene(root));
         stage.setResizable(false);
 

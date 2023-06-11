@@ -2,11 +2,13 @@ package com.evertonvsf.managementsystem.controllers;
 
 import com.evertonvsf.managementsystem.dao.DAO;
 import com.evertonvsf.managementsystem.models.users.Technician;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public abstract class MainController {
-    public static Stage stage;
+    public static Stage STAGE;
     public static Technician loggedTechnician;
     public static void saveInfo() {
         DAO.fromClient().writePersistence();
@@ -34,5 +36,15 @@ public abstract class MainController {
 
         DAO.fromInvoice().loadPersistence();
         DAO.fromPayment().loadPersistence();
+    }
+
+    public static void popUp(Parent root){
+        Stage stage = new Stage();
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(MainController.STAGE);
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+
+        stage.show();
     }
 }

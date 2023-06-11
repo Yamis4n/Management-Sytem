@@ -47,12 +47,11 @@ public class RegisterController {
     @FXML
     private void goToLogin() throws IOException {
         Parent loginView = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/login.fxml")));
-        MainController.stage.setScene(new Scene(loginView));
+        MainController.STAGE.setScene(new Scene(loginView));
     }
 
 
     private boolean validateInfo(String name, String username, String password, String passwordConfirmation){
-        Technician newTechnician = DAO.fromTechnician().findByUsername(username);
 
         if ( name.length() == 0 || username.length() == 0 || password.length() == 0 || passwordConfirmation.length() == 0 ){
             feedbackInfo.setText("Dados incompletos!");
@@ -66,7 +65,7 @@ public class RegisterController {
             return false;
         }
 
-        if ( newTechnician != null ){
+        if ( DAO.fromTechnician().findByUsername(username) != null ){
             feedbackInfo.setText("Técnico já cadastrado!");
             feedbackInfo.setTextFill(Color.RED);
             return false;

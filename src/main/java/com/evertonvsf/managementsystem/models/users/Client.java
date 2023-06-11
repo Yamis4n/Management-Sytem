@@ -13,8 +13,8 @@ public class Client implements Serializable {
   private String name;
   private int id;
   private String address;
-  private String phoneNumber;
-  private Integer CPF;
+  private long phoneNumber;
+  private long CPF;
   /**
    * Construtor da classe <code>Client</code>.
    *
@@ -23,14 +23,14 @@ public class Client implements Serializable {
    * @param phoneNumber Número de telefone do cliente.
    * @param cpf Número do CPF do Cliente;
    * */
-  public Client(String name, String address, String phoneNumber, Integer cpf){
+  public Client(String name, String address, long phoneNumber, long cpf){
     this.name = name;
     this.address = address;
     this.phoneNumber = phoneNumber;
     this.CPF = cpf;
   }
 
-  public Integer getCPF() {
+  public long getCPF() {
     return this.CPF;
   }
   public void setCPF(Integer cpf){
@@ -60,11 +60,11 @@ public class Client implements Serializable {
     this.address = address;
   }
 
-  public String getPhoneNumber() {
+  public long getPhoneNumber() {
     return phoneNumber;
   }
 
-  public void setPhoneNumber(String phoneNumber) {
+  public void setPhoneNumber(Integer phoneNumber) {
     this.phoneNumber = phoneNumber;
   }
   /**

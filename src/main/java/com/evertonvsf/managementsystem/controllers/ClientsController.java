@@ -2,6 +2,8 @@ package com.evertonvsf.managementsystem.controllers;
 
 import com.evertonvsf.managementsystem.dao.DAO;
 import com.evertonvsf.managementsystem.models.users.Client;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -16,8 +18,10 @@ import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
+import javafx.util.converter.LongStringConverter;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 
 public class ClientsController extends MenuController{
@@ -40,12 +44,12 @@ public class ClientsController extends MenuController{
     private TableColumn<Client, String> addressColumn;
 
     @FXML
-    private TableColumn<Client, String> phoneColumn;
+    private TableColumn<Client, Long> phoneColumn;
 
     @FXML
-    private TableColumn<Client, Integer> cpfColumn;
+    private TableColumn<Client, Long> cpfColumn;
 
-
+    private final ObservableList<Client> clientsObservable = FXCollections.observableArrayList();
     @FXML
     private void initialize(){
         MenuController.showUser(usernameLabel);
@@ -59,14 +63,14 @@ public class ClientsController extends MenuController{
     @FXML
     private void gotoRegister() throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/clients_register.fxml")));
-        popUp(root);
+        MainController.popUp(root);
 
     }
 
     @FXML
     private void gotoEdit() throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/clients_edit.fxml")));
-        popUp(root);
+        MainController.popUp(root);
     }
 
     @FXML
@@ -82,35 +86,33 @@ public class ClientsController extends MenuController{
         }
     }
 
-    
+    @FXML
+    private void searchClients(){
+        this.clientsTable.getItems().removeAll();
 
-    public void popUp(Parent root){
-        Stage stage = new Stage();
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(MainController.stage);
-        stage.setScene(new Scene(root));
-        stage.setResizable(false);
-
-        stage.show();
     }
 
+
+
     public void initialize_table(){
+
         this.nameColumn.setCellValueFactory(new PropertyValueFactory<Client, String>("name"));
         this.addressColumn.setCellValueFactory(new PropertyValueFactory<Client, String>("address"));
-        this.phoneColumn.setCellValueFactory(new PropertyValueFactory<Client, String>("phoneNumber"));
-        this.cpfColumn.setCellValueFactory(new PropertyValueFactory<Client, Integer>("CPF"));
+        this.phoneColumn.setCellValueFactory(new PropertyValueFactory<Client, Long>("phoneNumber"));
+        this.cpfColumn.setCellValueFactory(new PropertyValueFactory<Client, Long>("CPF"));
 
         this.nameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         this.addressColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        this.phoneColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        this.cpfColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        this.phoneColumn.setCellFactory(TextFieldTableCell.forTableColumn(new LongStringConverter()));
+        this.cpfColumn.setCellFactory(TextFieldTableCell.forTableColumn(new LongStringConverter()));
 
         this.nameColumn.setStyle("-fx-alignment: CENTER;");
         this.addressColumn.setStyle("-fx-alignment: CENTER;");
         this.phoneColumn.setStyle("-fx-alignment: CENTER;");
         this.cpfColumn.setStyle("-fx-alignment: CENTER;");
 
-        for ( Client client : DAO.fromClient().findMany()){
+        this.clientsObservable.addAll(DAO.fromClient().findMany());
+        for ( Client client : clientsObservable){
             this.clientsTable.getItems().add(client);
         }
     }
