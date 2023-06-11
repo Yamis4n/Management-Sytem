@@ -6,11 +6,16 @@ import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 
 public class ClientsController extends MenuController{
+
     @FXML
     private Label usernameLabel;
     @FXML
     private void initialize(){
         MenuController.showUser(usernameLabel);
+
+
+
     }
 
+   
 }

@@ -97,4 +97,24 @@ public class ClientListImpl implements ClientCRUD{
     }
 
 
+    @Override
+    public Client findByCpf(Integer cpf) {
+        for (Client client : this.clients){
+            if (Objects.equals(client.getCPF(), cpf)){
+                return client;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public boolean deleteByCpf(Integer cpf) {
+        for (int index = 0; index < this.clients.size(); index++){
+            if (Objects.equals(this.clients.get(index).getCPF(), cpf)){
+                this.clients.remove(index);
+                return true;
+            }
+        }
+        return false;
+    }
 }

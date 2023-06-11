@@ -57,15 +57,6 @@
          </font>
       </Button>
       <AnchorPane fx:id="workWindow" layoutX="203.0" prefHeight="504.0" prefWidth="645.0" style="-fx-background-color: white;">
-         <children>
-            <TableView layoutX="148.0" layoutY="131.0" prefHeight="504.0" prefWidth="645.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-              <columns>
-                <TableColumn fx:id="serviceOrderIdPlace" prefWidth="129.0" text="ID" />
-                <TableColumn fx:id="serviceOrderClientPlace" prefWidth="139.0" text="CLIENTE" />
-                  <TableColumn fx:id="serviceOrderServicesPlace" prefWidth="376.0" text="SERVICES" />
-              </columns>
-            </TableView>
-         </children>
       </AnchorPane>
    </children>
 </AnchorPane>
