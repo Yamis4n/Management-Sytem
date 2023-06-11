@@ -4,6 +4,8 @@ import com.evertonvsf.managementsystem.dao.DAO;
 import com.evertonvsf.managementsystem.models.users.Client;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
@@ -23,7 +26,10 @@ import java.util.Objects;
 
 public class ClientsController extends MenuController{
 
-    public static int actualClient = -1;
+    public static int actualClient;
+
+    @FXML
+    private TextField searchBox;
 
     @FXML
     private Label usernameLabel;
@@ -61,11 +67,47 @@ public class ClientsController extends MenuController{
     private final ObservableList<Client> clientsObservable = FXCollections.observableArrayList();
     @FXML
     private void initialize(){
+        ClientsController.actualClient = -1;
         MenuController.showUser(usernameLabel);
         this.feedbackLabel.setAlignment(Pos.BASELINE_CENTER);
 
-        initialize_table();
+        initializeTable();
+        clientsObservable.addAll(DAO.fromClient().findMany());
 
+        FilteredList<Client> filteredList = new FilteredList<Client>(clientsObservable, b -> true);
+
+            this.searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
+                filteredList.setPredicate(client -> {
+
+                    if ( newValue == null || newValue.isEmpty() ){
+                        return true;
+                    }
+                    String lowerCaseFilter = newValue.toLowerCase();
+
+                    if ( client.getName().toLowerCase().contains(lowerCaseFilter) ){
+                        return true;
+                    }
+                    else if ( client.getAddress().toLowerCase().contains(lowerCaseFilter) ){
+                        return true;
+                    }
+                    else if ( Long.toString(client.getCPF()).contains(lowerCaseFilter) ){
+                        return true;
+                    }
+                    else if ( Long.toString(client.getPhoneNumber()).contains(lowerCaseFilter) ){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+
+                });
+
+        });
+        SortedList<Client> sortedList = new SortedList<Client>(filteredList);
+
+        sortedList.comparatorProperty().bind(clientsTable.comparatorProperty());
+
+        clientsTable.setItems(sortedList);
 
 
     }
@@ -88,6 +130,7 @@ public class ClientsController extends MenuController{
         if ( response ){
             feedbackLabel.setTextFill(Color.GREEN);
             feedbackLabel.setText("Cliente deletado com sucesso!");
+
         }
         else {
             feedbackLabel.setTextFill(Color.RED);
@@ -103,7 +146,7 @@ public class ClientsController extends MenuController{
 
 
 
-    public void initialize_table(){
+    public void initializeTable(){
 
         this.nameColumn.setCellValueFactory(new PropertyValueFactory<Client, String>("name"));
         this.addressColumn.setCellValueFactory(new PropertyValueFactory<Client, String>("address"));
@@ -120,11 +163,6 @@ public class ClientsController extends MenuController{
         this.phoneColumn.setStyle("-fx-alignment: CENTER;");
         this.cpfColumn.setStyle("-fx-alignment: CENTER;");
 
-        this.clientsObservable.addAll(DAO.fromClient().findMany());
-        for ( Client client : clientsObservable){
-            this.clientsTable.getItems().add(client);
-        }
-
         this.clientsTable.onMouseClickedProperty().setValue(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -133,7 +171,9 @@ public class ClientsController extends MenuController{
                 showClient(client);
             }
         });
+
     }
+
 
     public void showClient(Client client){
         this.nameLabel.setText(client.getName());
