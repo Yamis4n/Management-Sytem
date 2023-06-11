@@ -59,10 +59,10 @@ public class ClientsController extends MenuController{
     private TableColumn<Client, String> addressColumn;
 
     @FXML
-    private TableColumn<Client, Long> phoneColumn;
+    private TableColumn<Client, String> phoneColumn;
 
     @FXML
-    private TableColumn<Client, Long> cpfColumn;
+    private TableColumn<Client, String> cpfColumn;
 
     private final ObservableList<Client> clientsObservable = FXCollections.observableArrayList();
     @FXML
@@ -125,6 +125,9 @@ public class ClientsController extends MenuController{
         if ( response ){
             feedbackLabel.setTextFill(Color.GREEN);
             feedbackLabel.setText("Cliente deletado com sucesso!");
+            clientsObservable.removeIf(client -> client.getId() == ClientsController.actualClient);
+            showClient(null);
+            ClientsController.actualClient = -1;
 
         }
         else {
@@ -133,25 +136,19 @@ public class ClientsController extends MenuController{
         }
     }
 
-    @FXML
-    private void searchClients(){
-        this.clientsTable.getItems().removeAll();
-
-    }
-
 
 
     public void initializeTable(){
 
         this.nameColumn.setCellValueFactory(new PropertyValueFactory<Client, String>("name"));
         this.addressColumn.setCellValueFactory(new PropertyValueFactory<Client, String>("address"));
-        this.phoneColumn.setCellValueFactory(new PropertyValueFactory<Client, Long>("phoneNumber"));
-        this.cpfColumn.setCellValueFactory(new PropertyValueFactory<Client, Long>("CPF"));
+        this.phoneColumn.setCellValueFactory(new PropertyValueFactory<Client, String>("phoneNumber"));
+        this.cpfColumn.setCellValueFactory(new PropertyValueFactory<Client, String>("CPF"));
 
         this.nameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         this.addressColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        this.phoneColumn.setCellFactory(TextFieldTableCell.forTableColumn(new LongStringConverter()));
-        this.cpfColumn.setCellFactory(TextFieldTableCell.forTableColumn(new LongStringConverter()));
+        this.phoneColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        this.cpfColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 
         this.nameColumn.setStyle("-fx-alignment: CENTER;");
         this.addressColumn.setStyle("-fx-alignment: CENTER;");
@@ -161,9 +158,11 @@ public class ClientsController extends MenuController{
         this.clientsTable.onMouseClickedProperty().setValue(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                Client client = clientsTable.getSelectionModel().getSelectedItem();
-                ClientsController.actualClient = client.getId();
-                showClient(client);
+                if (clientsTable.getSelectionModel().getSelectedItem() != null) {
+                    Client client = clientsTable.getSelectionModel().getSelectedItem();
+                    ClientsController.actualClient = client.getId();
+                    showClient(client);
+                }
             }
         });
 
@@ -171,10 +170,18 @@ public class ClientsController extends MenuController{
 
 
     public void showClient(Client client){
-        this.nameLabel.setText(client.getName());
-        this.addressLabel.setText(client.getAddress());
-        this.phoneLabel.setText( client.getPhoneNumber() );
-        this.cpfLabel.setText( client.getCPF() );
+        if (client != null) {
+            this.nameLabel.setText(client.getName());
+            this.addressLabel.setText(client.getAddress());
+            this.phoneLabel.setText(client.getPhoneNumber());
+            this.cpfLabel.setText(client.getCPF());
+        }
+        else {
+            this.nameLabel.setText("Nome");
+            this.addressLabel.setText("Endereço");
+            this.phoneLabel.setText("Telefone");
+            this.cpfLabel.setText("CPF");
+        }
 
     }
 

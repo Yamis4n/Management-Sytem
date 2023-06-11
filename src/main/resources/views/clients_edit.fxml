@@ -8,12 +8,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #4fb4ff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.evertonvsf.managementsystem.controllers.EditClientsController">
    <children>
-      <Button fx:id="saveButton" layoutX="123.0" layoutY="324.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="92.0" style="-fx-background-color: lightgreen;" text="SALVAR" textFill="#737373">
+      <Button fx:id="saveButton" layoutX="123.0" layoutY="324.0" mnemonicParsing="false" onAction="#saveClient" prefHeight="56.0" prefWidth="92.0" style="-fx-background-color: lightgreen;" text="SALVAR" textFill="#737373">
          <font>
             <Font name="Open Sans Extrabold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="cancelButton" layoutX="389.0" layoutY="324.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="92.0" style="-fx-background-color: coral;" text="CANCELAR" textFill="#737373">
+      <Button fx:id="cancelButton" layoutX="389.0" layoutY="324.0" mnemonicParsing="false" onAction="#cancel" prefHeight="56.0" prefWidth="92.0" style="-fx-background-color: coral;" text="CANCELAR" textFill="#737373">
          <font>
             <Font name="Open Sans Extrabold" size="13.0" />
          </font>
