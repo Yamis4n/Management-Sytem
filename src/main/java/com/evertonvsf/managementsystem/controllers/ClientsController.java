@@ -67,43 +67,13 @@ public class ClientsController extends MenuController{
     private final ObservableList<Client> clientsObservable = FXCollections.observableArrayList();
     @FXML
     private void initialize(){
+        clientsObservable.addAll(DAO.fromClient().findMany());
         ClientsController.actualClient = -1;
         MenuController.showUser(usernameLabel);
         this.feedbackLabel.setAlignment(Pos.BASELINE_CENTER);
 
         initializeTable();
-        clientsObservable.addAll(DAO.fromClient().findMany());
-
-        FilteredList<Client> filteredList = new FilteredList<Client>(clientsObservable, b -> true);
-
-            this.searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
-                filteredList.setPredicate(client -> {
-
-                    if ( newValue == null || newValue.isEmpty() ){
-                        return true;
-                    }
-                    String lowerCaseFilter = newValue.toLowerCase();
-
-                    if ( client.getName().toLowerCase().contains(lowerCaseFilter) ){
-                        return true;
-                    }
-                    else if ( client.getAddress().toLowerCase().contains(lowerCaseFilter) ){
-                        return true;
-                    }
-                    else if ( client.getCPF().contains(lowerCaseFilter) ){
-                        return true;
-                    }
-                    else return client.getPhoneNumber().contains(lowerCaseFilter);
-
-                });
-
-        });
-        SortedList<Client> sortedList = new SortedList<Client>(filteredList);
-
-        sortedList.comparatorProperty().bind(clientsTable.comparatorProperty());
-
-        clientsTable.setItems(sortedList);
-
+        initializeSearch();
 
     }
     @FXML
@@ -166,7 +136,7 @@ public class ClientsController extends MenuController{
     }
 
 
-    public void showClient(Client client){
+    private void showClient(Client client){
         if (client != null) {
             this.nameLabel.setText(client.getName());
             this.addressLabel.setText(client.getAddress());
@@ -180,6 +150,37 @@ public class ClientsController extends MenuController{
             this.cpfLabel.setText("CPF");
         }
 
+    }
+    private void initializeSearch(){
+        FilteredList<Client> filteredClientList = new FilteredList<Client>(clientsObservable, b -> true);
+
+        this.searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredClientList.setPredicate(client -> {
+
+                if ( newValue == null || newValue.isEmpty() ){
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if ( client.getName().toLowerCase().contains(lowerCaseFilter) ){
+                    return true;
+                }
+                else if ( client.getAddress().toLowerCase().contains(lowerCaseFilter) ){
+                    return true;
+                }
+                else if ( client.getCPF().contains(lowerCaseFilter) ){
+                    return true;
+                }
+                else return client.getPhoneNumber().contains(lowerCaseFilter);
+
+            });
+
+        });
+        SortedList<Client> sortedClientList = new SortedList<Client>(filteredClientList);
+
+        sortedClientList.comparatorProperty().bind(clientsTable.comparatorProperty());
+
+        clientsTable.setItems(sortedClientList);
     }
 
 

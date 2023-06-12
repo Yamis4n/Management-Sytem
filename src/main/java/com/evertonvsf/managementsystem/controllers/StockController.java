@@ -4,8 +4,6 @@ import com.evertonvsf.managementsystem.dao.DAO;
 import com.evertonvsf.managementsystem.models.stock.Component;
 import com.evertonvsf.managementsystem.models.stock.ComponentStock;
 import com.evertonvsf.managementsystem.models.stock.ComponentType;
-import com.evertonvsf.managementsystem.models.users.Client;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
