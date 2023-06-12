@@ -1,27 +1,38 @@
 package com.evertonvsf.managementsystem.models.stock;
 
-public enum Component {
-    OTHER(0, "OTHER"),
-    RAM(1, "RAM"),
-    HD_SSD(2, "HD/SSD"),
-    MOTHERBOARD(3, "MOTHERBOARD"),
-    POWER_SUPPLY (4, "POWER SUPPLY"),
-    VIDEO_CARD (5, "VIDEO CARD");
+import java.util.Objects;
 
-    private final int id;
-    private final String name;
+public class Component {
+    private String description;
+    private ComponentType type;
 
-    Component(int id, String name){
-        this.id = id;
-        this.name = name;
-    };
-
-
-    public int getId() {
-        return id;
+    Component(String description, ComponentType type){
+        this.description = description;
+        this.type = type;
     }
 
-    public String getName() {
-        return name;
+    public String getDescription(){
+        return this.description;
     }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public ComponentType getType() {
+        return type;
+    }
+
+    public void setType(ComponentType type) {
+        this.type = type;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Component component = (Component) o;
+        return Objects.equals(description.toLowerCase(), component.description.toLowerCase()) && type == component.type;
+    }
+
 }

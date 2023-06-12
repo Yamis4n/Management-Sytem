@@ -1,6 +1,7 @@
 package com.evertonvsf.managementsystem.dao.crud.stock.component;
 
 import com.evertonvsf.managementsystem.dao.persistence.stock.componentstock.ComponentPersistence;
+import com.evertonvsf.managementsystem.models.stock.Component;
 import com.evertonvsf.managementsystem.models.stock.ComponentStock;
 
 import java.util.ArrayList;
@@ -10,14 +11,20 @@ public class ComponentListImpl implements ComponentCRUD{
     private static final ComponentPersistence persistence = new ComponentPersistence();
     private List<ComponentStock> components;
 
+    private int newId;
+
     public ComponentListImpl() {
         this.loadPersistence();
     }
 
     @Override
     public ComponentStock create(ComponentStock component) {
+        component.setId(this.newId);
         this.components.add(component);
+        this.newId++;
+        this.writePersistence();
         return component;
+
     }
     @Override
     public void writePersistence(){
@@ -27,6 +34,13 @@ public class ComponentListImpl implements ComponentCRUD{
     @Override
     public void loadPersistence(){
         this.components = persistence.loadFiles(persistence.fileName);
+        this.newId = -1;
+        for (ComponentStock componentStock : this.components){
+            if (componentStock.getId() > this.newId){
+                this.newId = componentStock.getId();
+            }
+        }
+        this.newId++;
 
     }
 
@@ -38,7 +52,7 @@ public class ComponentListImpl implements ComponentCRUD{
     @Override
     public boolean update(ComponentStock component) {
         for (int index =0; index < this.components.size(); index++){
-            if (this.components.get(index).getComponent().getId() == component.getComponent().getId()){
+            if (this.components.get(index).getId() == component.getId()){
                 this.components.add(index, component);
                 return true;
             }
@@ -49,39 +63,18 @@ public class ComponentListImpl implements ComponentCRUD{
     @Override
     public ComponentStock findById(int id) {
         for (ComponentStock component : this.components){
-            if (component.getComponent().getId() == id){
+            if (component.getId() == id){
                 return component;
             }
         }
         return null;
     }
 
-    @Override
-    public List<ComponentStock> findByQuantity(int quantity) {
-        List<ComponentStock> sameQuantityComponents = new ArrayList<ComponentStock>();
-        for (ComponentStock component : this.components){
-            if (component.getQuantity() == quantity){
-                sameQuantityComponents.add(component);
-            }
-        }
-        return sameQuantityComponents;
-    }
-
-    @Override
-    public List<ComponentStock> findByPrice(double price) {
-        List<ComponentStock> samePriceComponents = new ArrayList<ComponentStock>();
-        for (ComponentStock component : this.components){
-            if (component.getPrice() == price){
-                samePriceComponents.add(component);
-            }
-        }
-        return samePriceComponents;
-    }
 
     @Override
     public boolean deleteById(int id) {
         for (int index = 0; index < this.components.size(); index++){
-            if (this.components.get(index).getComponent().getId() == id){
+            if (this.components.get(index).getId() == id){
                 this.components.remove(index);
                 return true;
             }
@@ -96,5 +89,15 @@ public class ComponentListImpl implements ComponentCRUD{
             return true;
         }
         return false;
+    }
+
+    @Override
+    public ComponentStock findByComponent(Component component) {
+        for (ComponentStock componentStock : this.components){
+            if (componentStock.getComponent().equals(component)){
+                return componentStock;
+            }
+        }
+        return null;
     }
 }

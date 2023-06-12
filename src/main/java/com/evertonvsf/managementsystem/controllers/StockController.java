@@ -2,13 +2,13 @@ package com.evertonvsf.managementsystem.controllers;
 
 import com.evertonvsf.managementsystem.dao.DAO;
 import com.evertonvsf.managementsystem.models.stock.Component;
+import com.evertonvsf.managementsystem.models.stock.ComponentStock;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
 
 public class StockController extends MenuController{
@@ -16,19 +16,27 @@ public class StockController extends MenuController{
     private Label usernameLabel;
 
     @FXML
+    private Label feedbackLabel;
+
+    @FXML
     private TextField searchBox;
 
     @FXML
-    private Button editButton;
+    private TableView<ComponentStock> componentsTable;
 
     @FXML
-    private Button deleteButton;
+    private TableColumn<ComponentStock, String> typeColumn;
 
     @FXML
-    private Button buyButton;
+    private TableColumn<ComponentStock, String> descriptionColumn;
 
     @FXML
-    private Label feedbackLabel;
+    private TableColumn<ComponentStock, String> quantityColumn;
+
+    @FXML
+    private TableColumn<ComponentStock, String> priceColumn;
+
+
 
     public static int selectedComponent;
     private final ObservableList<Component> componentsObservable = FXCollections.observableArrayList();
@@ -37,6 +45,8 @@ public class StockController extends MenuController{
     private void initialize(){
         StockController.selectedComponent = -1;
         MenuController.showUser(usernameLabel);
+
+        initializeTable();
     }
 
     @FXML
@@ -58,6 +68,11 @@ public class StockController extends MenuController{
             this.feedbackLabel.setText("Não foi possível deletar!");
         }
     }
-    
+
+    private void initializeTable( ){
+        typeColumn.setCellValueFactory(new PropertyValueFactory<ComponentStock, String>());
+
+    }
+
     private void showComponent( Component component ) {}
 }

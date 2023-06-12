@@ -3,31 +3,23 @@ package com.evertonvsf.managementsystem.models.stock;
 import java.io.Serializable;
 
 public class ComponentStock implements Serializable {
+    private int id;
     private Component component;
-    private String description;
     private int quantity;
     private double price;
 
-    public ComponentStock(int quantity, double price, int componentId, String description) {
+    public ComponentStock(int quantity, double price, Component component) {
         this.quantity = quantity;
         this.price = price;
-        this.description = description;
-        this.setComponent(componentId);
+        this.component = component;
     }
 
     public Component getComponent(){
         return this.component;
     }
 
-    public void setComponent(int componentId) {
-        switch (componentId) {
-            case 0 -> this.component = Component.OTHER;
-            case 1 -> this.component = Component.RAM;
-            case 2 -> this.component = Component.HD_SSD;
-            case 3 -> this.component = Component.MOTHERBOARD;
-            case 4 -> this.component = Component.POWER_SUPPLY;
-            default -> this.component = Component.VIDEO_CARD;
-        }
+    public void setComponent(Component component) {
+        this.component = component;
 
     }
 
@@ -50,17 +42,17 @@ public class ComponentStock implements Serializable {
     @Override
     public String toString() {
         return "ComponentStock{" +
-                "component=" + component.getName() +
+                "component=" + component.getDescription() +
                 ", quantity=" + quantity +
                 ", price=" + price +
                 '}';
     }
 
-    public String getDescription() {
-        return description;
+    public int getId() {
+        return id;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setId(int id) {
+        this.id = id;
     }
 }
