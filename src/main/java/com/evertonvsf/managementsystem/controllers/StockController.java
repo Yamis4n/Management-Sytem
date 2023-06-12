@@ -4,20 +4,32 @@ import com.evertonvsf.managementsystem.dao.DAO;
 import com.evertonvsf.managementsystem.models.stock.Component;
 import com.evertonvsf.managementsystem.models.stock.ComponentStock;
 import com.evertonvsf.managementsystem.models.stock.ComponentType;
-import com.evertonvsf.managementsystem.models.users.Client;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
+
+import java.io.IOException;
+import java.text.FieldPosition;
+import java.text.Format;
+import java.text.NumberFormat;
+import java.text.ParsePosition;
+import java.util.Arrays;
+import java.util.Locale;
+
 
 public class StockController extends MenuController{
     @FXML
@@ -44,13 +56,26 @@ public class StockController extends MenuController{
     @FXML
     private TableColumn<ComponentStock, Double> priceColumn;
 
+    @FXML
+    private Label descriptionLabel;
+
+    @FXML
+    private Label typeLabel;
+
+    @FXML
+    private Label quantityLabel;
+
+    @FXML
+    private Label priceLabel;
 
 
     public static int selectedComponent;
     private final ObservableList<ComponentStock> componentsObservable = FXCollections.observableArrayList();
 
+
     @FXML
     private void initialize(){
+        this.feedbackLabel.setAlignment(Pos.BASELINE_CENTER);
         StockController.selectedComponent = -1;
         MenuController.showUser(usernameLabel);
 
@@ -62,10 +87,12 @@ public class StockController extends MenuController{
     }
 
     @FXML
-    private void gotoBuy(){
+    private void gotoBuy() throws IOException {
         DAO.fromComponent().create(new ComponentStock(10, 20, new Component("none", ComponentType.HD_SSD)));
         MainController.saveInfo();
         MainController.loadInfo();
+
+
 
     }
 
@@ -82,6 +109,7 @@ public class StockController extends MenuController{
             showComponent( null );
         }
         else {
+            this.feedbackLabel.setTextFill(Color.RED);
             this.feedbackLabel.setText("Não foi possível deletar!");
         }
     }
@@ -150,6 +178,12 @@ public class StockController extends MenuController{
 
 
     private void showComponent( ComponentStock componentStock ) {
+        if (componentStock != null) {
 
+            this.descriptionLabel.setText(componentStock.getComponentDescription());
+            this.typeLabel.setText(componentStock.getComponentType());
+            this.quantityLabel.setText(componentStock.getQuantity().toString());
+            this.priceLabel.setText("R$ " + componentStock.getPrice().toString());
+        }
     }
 }
