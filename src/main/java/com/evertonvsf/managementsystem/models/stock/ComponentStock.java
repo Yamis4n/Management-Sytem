@@ -5,10 +5,10 @@ import java.io.Serializable;
 public class ComponentStock implements Serializable {
     private int id;
     private Component component;
-    private int quantity;
-    private double price;
+    private Integer quantity;
+    private Double price;
 
-    public ComponentStock(int quantity, double price, Component component) {
+    public ComponentStock(Integer quantity, double price, Component component) {
         this.quantity = quantity;
         this.price = price;
         this.component = component;
@@ -23,19 +23,19 @@ public class ComponentStock implements Serializable {
 
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

@@ -24,7 +24,7 @@ import javafx.util.converter.LongStringConverter;
 import java.io.IOException;
 import java.util.Objects;
 
-public class ClientsController extends MenuController{
+public class ClientsController extends MenuController {
 
     public static int actualClient;
 

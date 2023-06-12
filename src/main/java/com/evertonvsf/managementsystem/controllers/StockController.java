@@ -4,8 +4,11 @@ import com.evertonvsf.managementsystem.dao.DAO;
 import com.evertonvsf.managementsystem.models.stock.Component;
 import com.evertonvsf.managementsystem.models.stock.ComponentStock;
 import com.evertonvsf.managementsystem.models.stock.ComponentType;
+import com.evertonvsf.managementsystem.models.users.Client;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -52,11 +55,19 @@ public class StockController extends MenuController{
         MenuController.showUser(usernameLabel);
 
         initializeTable();
+        initializeSearch();
+        componentsObservable.addAll(DAO.fromComponent().findMany());
+
         showComponent(null);
     }
 
     @FXML
-    private void gotoBuy(){}
+    private void gotoBuy(){
+        DAO.fromComponent().create(new ComponentStock(10, 20, new Component("none", ComponentType.HD_SSD)));
+        MainController.saveInfo();
+        MainController.loadInfo();
+
+    }
 
     @FXML
     private void gotoEdit(){}
@@ -102,8 +113,41 @@ public class StockController extends MenuController{
             }
         });
 
-        this.componentsTable.getItems().add(new ComponentStock(10, 20, new Component("none", ComponentType.HD_SSD)));
+
     }
+
+    private void initializeSearch(){
+        FilteredList<ComponentStock> filteredComponentStockList = new FilteredList<ComponentStock>(componentsObservable, b -> true);
+
+        this.searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredComponentStockList.setPredicate(componentStock -> {
+
+                if ( newValue == null || newValue.isEmpty() ){
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if ( componentStock.getComponentType().toLowerCase().contains(lowerCaseFilter) ){
+                    return true;
+                }
+                else if ( componentStock.getComponentDescription().toLowerCase().contains(lowerCaseFilter) ){
+                    return true;
+                }
+                else if ( componentStock.getQuantity().toString().contains(lowerCaseFilter) ){
+                    return true;
+                }
+                else return componentStock.getPrice().toString().contains(lowerCaseFilter);
+
+            });
+
+        });
+        SortedList<ComponentStock> sortedComponentStockList = new SortedList<ComponentStock>(filteredComponentStockList);
+
+        sortedComponentStockList.comparatorProperty().bind(componentsTable.comparatorProperty());
+
+        componentsTable.setItems(sortedComponentStockList);
+    }
+
 
     private void showComponent( ComponentStock componentStock ) {
 
