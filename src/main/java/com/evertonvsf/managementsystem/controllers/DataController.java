@@ -188,14 +188,7 @@ public class DataController extends  MenuController {
     public void editTechnician() throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/editTechnician.fxml")));
 
-        Stage stage = new Stage();
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(MainController.STAGE);
-        stage.setScene(new Scene(root));
-        stage.setResizable(false);
-
-        stage.show();
-
+        MainController.popUp(root);
 
 
     }

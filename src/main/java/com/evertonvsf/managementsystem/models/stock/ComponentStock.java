@@ -55,4 +55,11 @@ public class ComponentStock implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String getComponentDescription(){
+        return  this.component.getDescription();
+    }
+    public String getComponentType(){
+        return this.component.getType().getName();
+    }
 }

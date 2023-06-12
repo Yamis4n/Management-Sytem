@@ -6,7 +6,7 @@ public class Component {
     private String description;
     private ComponentType type;
 
-    Component(String description, ComponentType type){
+    public Component(String description, ComponentType type){
         this.description = description;
         this.type = type;
     }

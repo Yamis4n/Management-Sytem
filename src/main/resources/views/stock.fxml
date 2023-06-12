@@ -87,7 +87,7 @@
             <AnchorPane layoutY="424.0" prefHeight="80.0" prefWidth="645.0" style="-fx-background-color: none;">
                <children>
                   <Label fx:id="quantityLabel" layoutX="373.0" layoutY="45.0" prefHeight="18.0" prefWidth="103.0" style="-fx-background-color: lightgrey;" text="Quantidade" />
-                  <Label fx:id="priceLabel" layoutX="500.0" layoutY="45.0" prefHeight="18.0" prefWidth="126.0" style="-fx-background-color: lightgrey;" text="Preço" />
+                  <Label fx:id="priceLabel" layoutX="500.0" layoutY="45.0" prefHeight="18.0" prefWidth="126.0" style="-fx-background-color: lightgrey;" text="Preço - R$" />
                   <Label fx:id="typeLabel" layoutX="27.0" layoutY="44.0" prefHeight="18.0" prefWidth="317.0" style="-fx-background-color: lightgrey;" text="Tipo" />
                   <Label fx:id="descriptionLabel" layoutX="26.0" layoutY="13.0" prefHeight="18.0" prefWidth="601.0" style="-fx-background-color: lightgrey;" text="Descrição" />
                </children>

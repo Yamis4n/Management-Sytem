@@ -150,10 +150,7 @@ public class ClientsController extends MenuController{
         this.phoneColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         this.cpfColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        this.nameColumn.setStyle("-fx-alignment: CENTER;");
-        this.addressColumn.setStyle("-fx-alignment: CENTER;");
-        this.phoneColumn.setStyle("-fx-alignment: CENTER;");
-        this.cpfColumn.setStyle("-fx-alignment: CENTER;");
+
 
         this.clientsTable.onMouseClickedProperty().setValue(new EventHandler<MouseEvent>() {
             @Override
