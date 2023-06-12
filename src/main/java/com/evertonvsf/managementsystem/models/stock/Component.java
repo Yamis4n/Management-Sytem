@@ -1,7 +1,7 @@
 package com.evertonvsf.managementsystem.models.stock;
 
 public enum Component {
-    NONE(0, "NONE"),
+    OTHER(0, "OTHER"),
     RAM(1, "RAM"),
     HD_SSD(2, "HD/SSD"),
     MOTHERBOARD(3, "MOTHERBOARD"),
