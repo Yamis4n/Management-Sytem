@@ -46,7 +46,6 @@ public class EditTechnicianController {
     @FXML
     private void initialize(){
 
-        feedbackLabel.setText(DataController.techId.toString());
         feedbackLabel.setAlignment(Pos.BASELINE_CENTER);
         feedbackLabel.setTextFill(Color.RED);
 
@@ -58,6 +57,10 @@ public class EditTechnicianController {
             newPasswordField.setEditable(false);
 
             saveButton.setDisable(true);
+        }
+        else {
+            newUserField.setText(DAO.fromTechnician().findById(DataController.techId).getUsername());
+            newNameField.setText(DAO.fromTechnician().findById(DataController.techId).getName());
         }
 
         if (Objects.equals(DataController.techId, DAO.fromTechnician().findByUsername("admin").getId())){
