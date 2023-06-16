@@ -8,6 +8,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -44,8 +45,14 @@ public class ClientCreateController {
     @FXML
     private TextField cpfField;
 
+    private Stage STAGE;
+    private Parent ROOT;
+    
+
     @FXML
-    private void initialize(){
+    private void initialize() throws IOException {
+        ROOT = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/clients.fxml")));
+        STAGE = (Stage) this.cancelButton.getScene().getWindow();
 
         setOnActionProperties();
 
@@ -98,10 +105,7 @@ public class ClientCreateController {
 
     @FXML
     private void cancel() throws IOException {
-        Stage stage = (Stage) this.cancelButton.getScene().getWindow();
-        MainController.STAGE.setScene(new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/clients.fxml")))));
-        MainController.STAGE.show();
-        stage.close();
+        MainController.closePopUp(STAGE, ROOT);
     }
 
     public boolean validateInfo( String name, String address, String phone, String cpf) {

@@ -2,10 +2,13 @@ package com.evertonvsf.managementsystem.controllers.utils;
 
 import com.evertonvsf.managementsystem.dao.DAO;
 import com.evertonvsf.managementsystem.models.users.Technician;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.util.Objects;
 
 public abstract class MainController {
     public static Stage STAGE;
@@ -46,5 +49,11 @@ public abstract class MainController {
         stage.setResizable(false);
 
         stage.show();
+    }
+
+    public static void closePopUp(Stage stage, Parent root){
+        MainController.STAGE.setScene(new Scene(root));
+        MainController.STAGE.show();
+        stage.close();
     }
 }

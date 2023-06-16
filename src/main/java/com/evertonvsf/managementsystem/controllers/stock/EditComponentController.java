@@ -63,7 +63,7 @@ public class EditComponentController {
 
     @FXML
     private void cancel(){
-        System.out.println("hello");
+
     }
 
     private void initialize_choices(){
