@@ -125,8 +125,6 @@ public class ClientsEditController {
     @FXML
     private void cancel() throws IOException {
         Stage stage = (Stage) this.cancelButton.getScene().getWindow();
-        MainController.STAGE.setScene(new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/clients.fxml")))));
-        MainController.STAGE.show();
         stage.close();
     }
 

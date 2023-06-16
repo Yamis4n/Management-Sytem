@@ -49,7 +49,8 @@ public class BuyOrderListImpl implements BuyOrderCRUD{
     public boolean update(BuyOrder buyOrder) {
         for (int index = 0; index < this.buyOrders.size(); index++){
             if (this.buyOrders.get(index).getId() == buyOrder.getId()){
-                this.buyOrders.add(index, buyOrder);
+                this.buyOrders.remove(index);
+                this.buyOrders.add(buyOrder);
                 return true;
             }
         }

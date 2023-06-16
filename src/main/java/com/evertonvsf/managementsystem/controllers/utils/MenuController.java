@@ -7,12 +7,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.util.Objects;
 
-public abstract class MenuController {
+public class MenuController {
+    @FXML
+    private AnchorPane workflow;
 
     @FXML
     private Button homeButton;
@@ -35,50 +38,48 @@ public abstract class MenuController {
     @FXML
     private Button myData;
 
+    @FXML
+    private Label usernameLabel;
 
-    public static void showUser( Label usernameLabel ){
+    @FXML
+    private void initialize( ) throws IOException {
         usernameLabel.setAlignment(Pos.BASELINE_CENTER);
         usernameLabel.setText(MainController.loggedTechnician.getUsername());
         usernameLabel.setTextFill(Color.WHITE);
+        gotoHome();
     }
     @FXML
     private void gotoClients() throws IOException {
-        Parent clientsView = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/clients.fxml")));
-        MainController.STAGE.setScene(new Scene(clientsView));
+        changePanel(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/clients.fxml"))));
+
     }
 
     @FXML
     private void gotoServices() throws IOException {
-        Parent servicesView = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/services.fxml")));
-        MainController.STAGE.setScene(new Scene(servicesView));
+        changePanel(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/services.fxml"))));
     }
 
     @FXML
-    private void gotoData() throws IOException {
-        Parent dataView = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/data.fxml")));
-        MainController.STAGE.setScene(new Scene(dataView));
+    private void gotoTechnicians() throws IOException {
+        changePanel(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/data.fxml"))));
 
     }
 
     @FXML
     private void gotoHome() throws IOException {
-        Parent homeView = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/home.fxml")));
-        MainController.STAGE.setScene(new Scene(homeView));
+        changePanel(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/home.fxml"))));
 
     }
 
     @FXML
     private void gotoInvoices() throws IOException {
-        Parent invoicesView = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/invoices.fxml")));
-        MainController.STAGE.setScene(new Scene(invoicesView));
+        changePanel(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/invoices.fxml"))));
 
     }
 
     @FXML
     private void gotoStock() throws IOException {
-        Parent stockView = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/stock.fxml")));
-        MainController.STAGE.setScene(new Scene(stockView));
-
+        changePanel(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/stock.fxml"))));
     }
 
     @FXML
@@ -90,6 +91,12 @@ public abstract class MenuController {
 
     }
 
+    private void changePanel(Parent root){
+        if (this.workflow.getChildren() != null) {
+            this.workflow.getChildren().removeAll();
+        }
+        this.workflow.getChildren().add(root);
+    }
 
 
 

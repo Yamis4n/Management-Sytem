@@ -26,7 +26,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class ClientsController extends MenuController {
+public class ClientsController {
 
     public static int actualClient;
 
@@ -71,7 +71,7 @@ public class ClientsController extends MenuController {
     private void initialize(){
         clientsObservable.addAll(DAO.fromClient().findMany());
         ClientsController.actualClient = -1;
-        MenuController.showUser(usernameLabel);
+
         this.feedbackLabel.setAlignment(Pos.BASELINE_CENTER);
 
         initializeTable();

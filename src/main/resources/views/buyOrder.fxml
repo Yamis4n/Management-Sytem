@@ -8,12 +8,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="workWindow" prefHeight="504.0" prefWidth="645.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.evertonvsf.managementsystem.controllers.stock.StockController">
+<AnchorPane fx:id="workWindow" prefHeight="504.0" prefWidth="645.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.evertonvsf.managementsystem.controllers.stock.BuyOrderController">
    <children>
       <AnchorPane prefHeight="80.0" prefWidth="645.0" style="-fx-background-color: lightgrey;">
          <children>
-            <Button fx:id="buyOrderButton" layoutX="531.0" layoutY="13.0" mnemonicParsing="false" onAction="#gotoBuyOrders" prefHeight="38.0" prefWidth="74.0" style="-fx-background-color: YELLOW;" text="ORDENS" textFill="#737373">
+            <Button fx:id="backButton" layoutX="531.0" layoutY="13.0" mnemonicParsing="false" onAction="#goBack" prefHeight="38.0" prefWidth="74.0" style="-fx-background-color: CORAL;" text="VOLTAR" textFill="#737373">
                <font>
                   <Font name="Open Sans Extrabold" size="11.0" />
                </font>
@@ -23,8 +22,8 @@
                   <Font name="Open Sans Extrabold" size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="searchBox" layoutX="14.0" layoutY="13.0" prefHeight="38.0" prefWidth="429.0" />
-            <Button fx:id="buyButton1" layoutX="450.0" layoutY="13.0" mnemonicParsing="false" onAction="#gotoBuy" prefHeight="38.0" prefWidth="74.0" style="-fx-background-color: lightgreen;" text="COMPRAR" textFill="#737373">
+            <TextField fx:id="searchBox" layoutX="14.0" layoutY="13.0" prefHeight="38.0" prefWidth="409.0" />
+            <Button fx:id="updateButton" layoutX="440.0" layoutY="13.0" mnemonicParsing="false" onAction="#arrive" prefHeight="38.0" prefWidth="74.0" style="-fx-background-color: LIGHTGREEN;" text="CHEGOU" textFill="#737373">
                <font>
                   <Font name="Open Sans Extrabold" size="11.0" />
                </font>
@@ -34,19 +33,21 @@
       <AnchorPane layoutY="424.0" prefHeight="80.0" prefWidth="645.0" style="-fx-background-color: none;">
          <children>
             <Label fx:id="quantityLabel" layoutX="387.0" layoutY="44.0" prefHeight="18.0" prefWidth="103.0" style="-fx-background-color: lightgrey;" text="Quantidade" />
-            <Label fx:id="typeLabel" layoutX="27.0" layoutY="44.0" prefHeight="18.0" prefWidth="328.0" style="-fx-background-color: lightgrey;" text="Tipo" />
-            <Label fx:id="descriptionLabel" layoutX="26.0" layoutY="13.0" prefHeight="18.0" prefWidth="601.0" style="-fx-background-color: lightgrey;" text="Descrição" />
+            <Label fx:id="typeLabel" layoutX="27.0" layoutY="44.0" prefHeight="18.0" prefWidth="103.0" style="-fx-background-color: lightgrey;" text="Tipo" />
+            <Label fx:id="descriptionLabel" layoutX="26.0" layoutY="13.0" prefHeight="18.0" prefWidth="603.0" style="-fx-background-color: lightgrey;" text="Descrição" />
             <Label fx:id="valueLabel" layoutX="524.0" layoutY="44.0" prefHeight="18.0" prefWidth="103.0" style="-fx-background-color: lightgrey;" text="Preço - R$" />
+            <Label fx:id="technicianLabel" layoutX="165.0" layoutY="44.0" prefHeight="18.0" prefWidth="190.0" style="-fx-background-color: lightgrey;" text="Técnico" />
          </children>
       </AnchorPane>
       <AnchorPane layoutY="81.0" prefHeight="317.0" prefWidth="645.0">
          <children>
-            <TableView fx:id="componentsTable" prefHeight="349.0" prefWidth="645.0">
+            <TableView fx:id="buyOrdersTable" prefHeight="349.0" prefWidth="645.0">
                <columns>
+                  <TableColumn fx:id="technicianColumn" editable="false" prefWidth="75.0" sortable="false" text="TECNICO" />
                   <TableColumn fx:id="typeColumn" editable="false" prefWidth="75.0" sortable="false" text="TIPO" />
-                  <TableColumn fx:id="descriptionColumn" editable="false" prefWidth="75.0" sortable="false" text="DESCRIÇÃO" />
                   <TableColumn fx:id="priceColumn" editable="false" prefWidth="75.0" sortable="false" text="PREÇO" />
                   <TableColumn fx:id="quantityColumn" editable="false" prefWidth="75.0" sortable="false" text="QUANTIDADE" />
+                  <TableColumn fx:id="statusColumn" editable="false" prefWidth="75.0" sortable="false" text="STATUS" />
                </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

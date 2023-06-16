@@ -5,6 +5,7 @@ import com.evertonvsf.managementsystem.models.users.Technician;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -52,10 +53,11 @@ public abstract class MainController {
 
     }
 
-    public static void closePopUp(Stage stage, String parentPath) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(MainController.class.getResource(parentPath)));
-        MainController.STAGE.setScene(new Scene(root));
-        MainController.STAGE.show();
-        stage.close();
+    public static void changePanel(AnchorPane workWindow, Parent root) throws IOException {
+        workWindow.getChildren().removeAll();
+        workWindow.getChildren().add(root);
+        MainController.saveInfo();
+        MainController.loadInfo();
     }
+
 }

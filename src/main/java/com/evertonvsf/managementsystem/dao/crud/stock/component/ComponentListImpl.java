@@ -2,9 +2,11 @@ package com.evertonvsf.managementsystem.dao.crud.stock.component;
 
 import com.evertonvsf.managementsystem.dao.persistence.stock.componentstock.ComponentPersistence;
 import com.evertonvsf.managementsystem.models.stock.Component;
+import com.evertonvsf.managementsystem.models.stock.ComponentType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ComponentListImpl implements ComponentCRUD{
     private static final ComponentPersistence persistence = new ComponentPersistence();
@@ -91,4 +93,17 @@ public class ComponentListImpl implements ComponentCRUD{
         return false;
     }
 
+    @Override
+    public Component findByComponent(String description, ComponentType type) {
+
+        for (Component component : this.components){
+            if (component.getType() == type){
+                if (type == ComponentType.OTHER && !Objects.equals(component.getDescription(), description)){
+                    return null;
+                }
+                return component;
+            }
+        }
+        return null;
+    }
 }

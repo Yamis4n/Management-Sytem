@@ -84,7 +84,7 @@ public class LoginController {
             feedbackInfo.setText("Logado!");
         feedbackInfo.setTextFill(Color.GREEN);
             MainController.loggedTechnician = foundedTechnician;
-            Parent homeView = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/home.fxml")));
+            Parent homeView = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/menu.fxml")));
 
             MainController.STAGE.setScene(new Scene(homeView));
         }

@@ -6,14 +6,12 @@ public class Component implements Serializable {
     private int id;
     private ComponentType type;
     private Integer quantity;
-    private Double buyPrice; // valor de compra
-    private Double value; // valor de venda
+    private Double buyPrice;
     private String description;
 
-    public Component(Integer quantity, double price, String description, ComponentType type, double value) {
+    public Component(Integer quantity, double price, String description, ComponentType type) {
         this.quantity = quantity;
         this.buyPrice = price;
-        this.value = value;
         this.type = type;
         this.description = description;
     }
@@ -50,14 +48,6 @@ public class Component implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Double getValue() {
-        return value;
-    }
-
-    public void setValue(Double value) {
-        this.value = value;
     }
 
     public String getDescription() {

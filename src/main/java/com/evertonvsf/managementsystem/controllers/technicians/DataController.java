@@ -27,7 +27,7 @@ import java.io.IOException;
 import java.util.*;
 
 
-public class DataController extends MenuController {
+public class DataController  {
 
     public static Integer techId;
 
@@ -45,7 +45,7 @@ public class DataController extends MenuController {
 
         DataController.techId = -1;
 
-        MenuController.showUser(usernameLabel);
+
 
         TableView<Technician> technicianTable = createTechnicianTable();
 

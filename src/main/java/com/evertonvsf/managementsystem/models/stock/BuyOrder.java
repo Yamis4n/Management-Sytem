@@ -3,9 +3,13 @@ package com.evertonvsf.managementsystem.models.stock;
 import java.io.Serializable;
 
 public class BuyOrder implements Serializable {
-    private int id, componentId, quantity;
-    private final int technicianId;
-    private double unitaryCost;
+    private int id;
+    private final int componentId, quantity;
+    private final String technicianUsername;
+    private final String componentType;
+    private final double unitaryCost;
+    private boolean status;
+
 
     public int getId() {
         return id;
@@ -15,40 +19,32 @@ public class BuyOrder implements Serializable {
         this.id = id;
     }
 
-    public BuyOrder(int technicianId, int componentId, int quantity, double unitaryCost) {
-        this.technicianId = technicianId;
+    public BuyOrder(String technicianUsername, int componentId, int quantity, String componentType, double unitaryCost) {
+        this.technicianUsername = technicianUsername;
         this.componentId = componentId;
         this.quantity = quantity;
+        this.componentType = componentType;
         this.unitaryCost = unitaryCost;
+        this.status = false;
     }
 
-    public int getTechnicianId() {
-        return technicianId;
+    public String getTechnicianUsername() {
+        return technicianUsername;
     }
 
-    public int getComponentId() {
+    public Integer getComponentId() {
         return componentId;
     }
 
-    public void setComponentId(int componentId) {
-        this.componentId = componentId;
-    }
-
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public double getUnitaryCost() {
+    public Double getUnitaryCost() {
         return unitaryCost;
     }
 
-    public void setUnitaryCost(double unitaryCost) {
-        this.unitaryCost = unitaryCost;
-    }
+
 
     @Override
     public String toString() {
@@ -56,8 +52,21 @@ public class BuyOrder implements Serializable {
                 "id=" + id +
                 ", componentId=" + componentId +
                 ", quantity=" + quantity +
-                ", technicianId=" + technicianId +
+                ", technicianId=" + technicianUsername +
                 ", unitaryCost=" + unitaryCost +
                 '}';
+    }
+
+
+    public Boolean isArrived() {
+        return this.status;
+    }
+
+    public void setArrived(boolean arrived) {
+        this.status = arrived;
+    }
+
+    public String getComponentType() {
+        return componentType;
     }
 }

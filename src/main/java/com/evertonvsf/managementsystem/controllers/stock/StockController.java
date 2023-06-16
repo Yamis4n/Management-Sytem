@@ -21,6 +21,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Window;
+import javafx.util.StringConverter;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 
@@ -28,7 +31,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 
-public class StockController extends MenuController {
+public class StockController  {
     @FXML
     private Label usernameLabel;
 
@@ -42,7 +45,7 @@ public class StockController extends MenuController {
     private TableView<Component> componentsTable;
 
     @FXML
-    private TableColumn<Component, String> typeColumn;
+    private TableColumn<Component, ComponentType> typeColumn;
 
     @FXML
     private TableColumn<Component, String> descriptionColumn;
@@ -63,18 +66,18 @@ public class StockController extends MenuController {
     private Label quantityLabel;
 
     @FXML
-    private Label priceLabel;
+    private AnchorPane workWindow;
 
 
     public static Component selectedComponent;
     private final ObservableList<Component> componentsObservable = FXCollections.observableArrayList();
 
-
+// Lucas 22:19
     @FXML
     private void initialize(){
         this.feedbackLabel.setAlignment(Pos.BASELINE_CENTER);
         StockController.selectedComponent = null;
-        MenuController.showUser(usernameLabel);
+
 
         initializeTable();
         initializeSearch();
@@ -85,17 +88,35 @@ public class StockController extends MenuController {
 
     @FXML
     private void gotoBuy() throws IOException {
-        MainController.popUp(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/buyComponent.fxml"))));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/buyComponent.fxml")));
+        MainController.changePanel(this.workWindow, root);
 
     }
 
-    private void initializeTable( ){
-        this.typeColumn.setCellValueFactory(new PropertyValueFactory<Component, String>("componentType"));
-        this.descriptionColumn.setCellValueFactory(new PropertyValueFactory<Component, String>("componentDescription"));
-        this.quantityColumn.setCellValueFactory(new PropertyValueFactory<Component, Integer>("quantity"));
-        this.priceColumn.setCellValueFactory(new PropertyValueFactory<Component, Double>("Buyprice"));
+    @FXML
+    private void gotoBuyOrders() throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/buyOrder.fxml")));
+        MainController.changePanel(workWindow, root);
+    }
 
-        this.typeColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+    private void initializeTable( ){
+        this.typeColumn.setCellValueFactory(new PropertyValueFactory<Component, ComponentType>("type"));
+        this.descriptionColumn.setCellValueFactory(new PropertyValueFactory<Component, String>("description"));
+        this.quantityColumn.setCellValueFactory(new PropertyValueFactory<Component, Integer>("quantity"));
+        this.priceColumn.setCellValueFactory(new PropertyValueFactory<Component, Double>("buyPrice"));
+
+        this.typeColumn.setCellFactory(TextFieldTableCell.forTableColumn(new StringConverter<ComponentType>() {
+            @Override
+            public String toString(ComponentType componentType) {
+                return componentType.getName();
+            }
+
+            @Override
+            public ComponentType fromString(String s) {
+                return ComponentType.valueOf(s);
+            }
+
+        }));
         this.descriptionColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         this.quantityColumn.setCellFactory(TextFieldTableCell.forTableColumn( new IntegerStringConverter() ));
         this.priceColumn.setCellFactory(TextFieldTableCell.forTableColumn( new DoubleStringConverter() ));
@@ -158,7 +179,6 @@ public class StockController extends MenuController {
             this.descriptionLabel.setText(componentStock.getDescription());
             this.typeLabel.setText(componentStock.getType().getName());
             this.quantityLabel.setText(componentStock.getQuantity().toString() +" unidades");
-            this.priceLabel.setText("R$ " + componentStock.getBuyPrice().toString());
         }
     }
 }

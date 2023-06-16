@@ -9,63 +9,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="window" fx:id="window" prefHeight="504.0" prefWidth="846.0" style="-fx-background-color: #4fb4ff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.evertonvsf.managementsystem.controllers.ServicesController">
+<AnchorPane fx:id="workWindow" prefHeight="504.0" prefWidth="645.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.evertonvsf.managementsystem.controllers.ServicesController">
    <children>
-      <ImageView fitHeight="104.0" fitWidth="146.0" layoutX="42.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/user_icon.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="usernameLabel" layoutX="7.0" layoutY="158.0" prefHeight="25.0" prefWidth="169.0" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font name="Open Sans Extrabold" size="13.0" />
-         </font>
-      </Label>
-      <Button fx:id="homeButton" layoutX="-2.0" layoutY="202.0" mnemonicParsing="false" onAction="#gotoHome" prefHeight="37.0" prefWidth="205.0" style="-fx-background-color: null;" text="INICIO" textFill="WHITE">
-         <font>
-            <Font name="Open Sans Extrabold" size="13.0" />
-         </font>
-      </Button>
-      <Button fx:id="clientsButton" layoutX="-2.0" layoutY="239.0" mnemonicParsing="false" onAction="#gotoClients" prefHeight="37.0" prefWidth="205.0" style="-fx-background-color: null;" text="CLIENTES" textFill="WHITE">
-         <font>
-            <Font name="Open Sans Extrabold" size="13.0" />
-         </font>
-      </Button>
-      <Button fx:id="stockButton" layoutX="-2.0" layoutY="276.0" mnemonicParsing="false" onAction="#gotoStock" prefHeight="37.0" prefWidth="205.0" style="-fx-background-color: null;" text="ESTOQUE" textFill="WHITE">
-         <font>
-            <Font name="Open Sans Extrabold" size="13.0" />
-         </font>
-      </Button>
-      <Button fx:id="servicesButton" layoutX="-2.0" layoutY="313.0" mnemonicParsing="false" onAction="#gotoServices" prefHeight="37.0" prefWidth="205.0" style="-fx-background-color: null;" text="SERVIÇOS" textFill="#737373">
-         <font>
-            <Font name="Open Sans Extrabold" size="13.0" />
-         </font>
-      </Button>
-      <Button fx:id="invoicesButton" layoutX="-2.0" layoutY="350.0" mnemonicParsing="false" onAction="#gotoInvoices" prefHeight="37.0" prefWidth="205.0" style="-fx-background-color: null;" text="FATURAMENTO" textFill="WHITE">
-         <font>
-            <Font name="Open Sans Extrabold" size="13.0" />
-         </font>
-      </Button>
-      <Button fx:id="myData" layoutX="-2.0" layoutY="387.0" mnemonicParsing="false" onAction="#gotoData" prefHeight="37.0" prefWidth="205.0" style="-fx-background-color: null;" text="FUNCIONÁRIOS" textFill="WHITE">
-         <font>
-            <Font name="Open Sans Extrabold" size="13.0" />
-         </font>
-      </Button>
-      <Button fx:id="logOutButton" layoutX="-2.0" layoutY="424.0" mnemonicParsing="false" onAction="#logOut" prefHeight="37.0" prefWidth="205.0" style="-fx-background-color: null;" text="SAIR" textFill="WHITE">
-         <font>
-            <Font name="Open Sans Extrabold" size="13.0" />
-         </font>
-      </Button>
-      <AnchorPane fx:id="workWindow" layoutX="203.0" prefHeight="504.0" prefWidth="645.0" style="-fx-background-color: white;">
-         <children>
-            <TableView layoutX="148.0" layoutY="131.0" prefHeight="504.0" prefWidth="645.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-              <columns>
-                <TableColumn fx:id="serviceOrderIdPlace" prefWidth="129.0" text="ID" />
-                <TableColumn fx:id="serviceOrderClientPlace" prefWidth="139.0" text="CLIENTE" />
-                  <TableColumn fx:id="serviceOrderServicesPlace" prefWidth="376.0" text="SERVICES" />
-              </columns>
-            </TableView>
-         </children>
-      </AnchorPane>
+      <TableView layoutX="148.0" layoutY="131.0" prefHeight="504.0" prefWidth="645.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="serviceOrderIdPlace" prefWidth="129.0" text="ID" />
+          <TableColumn fx:id="serviceOrderClientPlace" prefWidth="139.0" text="CLIENTE" />
+            <TableColumn fx:id="serviceOrderServicesPlace" prefWidth="376.0" text="SERVICES" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
