@@ -4,7 +4,6 @@ import com.evertonvsf.managementsystem.controllers.utils.MainController;
 import com.evertonvsf.managementsystem.controllers.utils.MenuController;
 import com.evertonvsf.managementsystem.dao.DAO;
 import com.evertonvsf.managementsystem.models.stock.Component;
-import com.evertonvsf.managementsystem.models.stock.ComponentStock;
 import com.evertonvsf.managementsystem.models.stock.ComponentType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,7 +11,9 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
@@ -24,7 +25,7 @@ import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 
 import java.io.IOException;
-
+import java.util.Objects;
 
 
 public class StockController extends MenuController {
@@ -38,19 +39,19 @@ public class StockController extends MenuController {
     private TextField searchBox;
 
     @FXML
-    private TableView<ComponentStock> componentsTable;
+    private TableView<Component> componentsTable;
 
     @FXML
-    private TableColumn<ComponentStock, String> typeColumn;
+    private TableColumn<Component, String> typeColumn;
 
     @FXML
-    private TableColumn<ComponentStock, String> descriptionColumn;
+    private TableColumn<Component, String> descriptionColumn;
 
     @FXML
-    private TableColumn<ComponentStock, Integer> quantityColumn;
+    private TableColumn<Component, Integer> quantityColumn;
 
     @FXML
-    private TableColumn<ComponentStock, Double> priceColumn;
+    private TableColumn<Component, Double> priceColumn;
 
     @FXML
     private Label descriptionLabel;
@@ -65,8 +66,8 @@ public class StockController extends MenuController {
     private Label priceLabel;
 
 
-    public static ComponentStock selectedComponent;
-    private final ObservableList<ComponentStock> componentsObservable = FXCollections.observableArrayList();
+    public static Component selectedComponent;
+    private final ObservableList<Component> componentsObservable = FXCollections.observableArrayList();
 
 
     @FXML
@@ -84,17 +85,15 @@ public class StockController extends MenuController {
 
     @FXML
     private void gotoBuy() throws IOException {
-        DAO.fromComponent().create(new ComponentStock(10, 20, new Component("none", ComponentType.HD_SSD), 30));
-        MainController.saveInfo();
-        MainController.loadInfo();
+        MainController.popUp(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/buyComponent.fxml"))));
 
     }
 
     private void initializeTable( ){
-        this.typeColumn.setCellValueFactory(new PropertyValueFactory<ComponentStock, String>("componentType"));
-        this.descriptionColumn.setCellValueFactory(new PropertyValueFactory<ComponentStock, String>("componentDescription"));
-        this.quantityColumn.setCellValueFactory(new PropertyValueFactory<ComponentStock, Integer>("quantity"));
-        this.priceColumn.setCellValueFactory(new PropertyValueFactory<ComponentStock, Double>("Buyprice"));
+        this.typeColumn.setCellValueFactory(new PropertyValueFactory<Component, String>("componentType"));
+        this.descriptionColumn.setCellValueFactory(new PropertyValueFactory<Component, String>("componentDescription"));
+        this.quantityColumn.setCellValueFactory(new PropertyValueFactory<Component, Integer>("quantity"));
+        this.priceColumn.setCellValueFactory(new PropertyValueFactory<Component, Double>("Buyprice"));
 
         this.typeColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         this.descriptionColumn.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -110,7 +109,7 @@ public class StockController extends MenuController {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 if (componentsTable.getSelectionModel().getSelectedItem() != null) {
-                    ComponentStock componentStock = componentsTable.getSelectionModel().getSelectedItem();
+                    Component componentStock = componentsTable.getSelectionModel().getSelectedItem();
                     StockController.selectedComponent = componentStock;
                     showComponent(componentStock);
                 }
@@ -121,7 +120,7 @@ public class StockController extends MenuController {
     }
 
     private void initializeSearch(){
-        FilteredList<ComponentStock> filteredComponentStockList = new FilteredList<ComponentStock>(componentsObservable, b -> true);
+        FilteredList<Component> filteredComponentStockList = new FilteredList<Component>(componentsObservable, b -> true);
 
         this.searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredComponentStockList.setPredicate(componentStock -> {
@@ -131,10 +130,10 @@ public class StockController extends MenuController {
                 }
                 String lowerCaseFilter = newValue.toLowerCase();
 
-                if ( componentStock.getComponentType().toLowerCase().contains(lowerCaseFilter) ){
+                if ( componentStock.getType().getName().toLowerCase().contains(lowerCaseFilter) ){
                     return true;
                 }
-                else if ( componentStock.getComponentDescription().toLowerCase().contains(lowerCaseFilter) ){
+                else if ( componentStock.getDescription().toLowerCase().contains(lowerCaseFilter) ){
                     return true;
                 }
                 else if ( componentStock.getQuantity().toString().contains(lowerCaseFilter) ){
@@ -145,7 +144,7 @@ public class StockController extends MenuController {
             });
 
         });
-        SortedList<ComponentStock> sortedComponentStockList = new SortedList<ComponentStock>(filteredComponentStockList);
+        SortedList<Component> sortedComponentStockList = new SortedList<Component>(filteredComponentStockList);
 
         sortedComponentStockList.comparatorProperty().bind(componentsTable.comparatorProperty());
 
@@ -153,11 +152,11 @@ public class StockController extends MenuController {
     }
 
 
-    private void showComponent( ComponentStock componentStock ) {
+    private void showComponent( Component componentStock ) {
         if (componentStock != null) {
 
-            this.descriptionLabel.setText(componentStock.getComponentDescription());
-            this.typeLabel.setText(componentStock.getComponentType());
+            this.descriptionLabel.setText(componentStock.getDescription());
+            this.typeLabel.setText(componentStock.getType().getName());
             this.quantityLabel.setText(componentStock.getQuantity().toString() +" unidades");
             this.priceLabel.setText("R$ " + componentStock.getBuyPrice().toString());
         }
