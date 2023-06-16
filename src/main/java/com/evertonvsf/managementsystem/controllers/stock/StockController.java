@@ -12,9 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
@@ -22,12 +20,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 
 import java.io.IOException;
-import java.util.Objects;
+
 
 
 public class StockController extends MenuController {
@@ -87,40 +84,17 @@ public class StockController extends MenuController {
 
     @FXML
     private void gotoBuy() throws IOException {
-        DAO.fromComponent().create(new ComponentStock(10, 20, new Component("none", ComponentType.HD_SSD)));
+        DAO.fromComponent().create(new ComponentStock(10, 20, new Component("none", ComponentType.HD_SSD), 30));
         MainController.saveInfo();
         MainController.loadInfo();
 
-
-
-    }
-
-    @FXML
-    private void gotoEdit() throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/editStock.fxml")));
-        MainController.popUp(root);
-    }
-
-    @FXML
-    private void deleteComponent(){
-        if (StockController.selectedComponent != null && DAO.fromComponent().deleteById(StockController.selectedComponent.getId())){
-            this.feedbackLabel.setTextFill(Color.GREEN);
-            this.feedbackLabel.setText("Componente deletado com sucesso!");
-            componentsObservable.removeIf(componentStock -> componentStock.getId() == StockController.selectedComponent.getId());
-            StockController.selectedComponent = null;
-            showComponent( null );
-        }
-        else {
-            this.feedbackLabel.setTextFill(Color.RED);
-            this.feedbackLabel.setText("Não foi possível deletar!");
-        }
     }
 
     private void initializeTable( ){
         this.typeColumn.setCellValueFactory(new PropertyValueFactory<ComponentStock, String>("componentType"));
         this.descriptionColumn.setCellValueFactory(new PropertyValueFactory<ComponentStock, String>("componentDescription"));
         this.quantityColumn.setCellValueFactory(new PropertyValueFactory<ComponentStock, Integer>("quantity"));
-        this.priceColumn.setCellValueFactory(new PropertyValueFactory<ComponentStock, Double>("price"));
+        this.priceColumn.setCellValueFactory(new PropertyValueFactory<ComponentStock, Double>("Buyprice"));
 
         this.typeColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         this.descriptionColumn.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -166,7 +140,7 @@ public class StockController extends MenuController {
                 else if ( componentStock.getQuantity().toString().contains(lowerCaseFilter) ){
                     return true;
                 }
-                else return componentStock.getPrice().toString().contains(lowerCaseFilter);
+                else return componentStock.getBuyPrice().toString().contains(lowerCaseFilter);
 
             });
 
@@ -185,7 +159,7 @@ public class StockController extends MenuController {
             this.descriptionLabel.setText(componentStock.getComponentDescription());
             this.typeLabel.setText(componentStock.getComponentType());
             this.quantityLabel.setText(componentStock.getQuantity().toString() +" unidades");
-            this.priceLabel.setText("R$ " + componentStock.getPrice().toString());
+            this.priceLabel.setText("R$ " + componentStock.getBuyPrice().toString());
         }
     }
 }

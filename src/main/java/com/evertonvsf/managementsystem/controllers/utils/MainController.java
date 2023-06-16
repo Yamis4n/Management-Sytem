@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public abstract class MainController {
@@ -47,11 +48,12 @@ public abstract class MainController {
         stage.initOwner(MainController.STAGE);
         stage.setScene(new Scene(root));
         stage.setResizable(false);
-
         stage.show();
+
     }
 
-    public static void closePopUp(Stage stage, Parent root){
+    public static void closePopUp(Stage stage, String parentPath) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(MainController.class.getResource(parentPath)));
         MainController.STAGE.setScene(new Scene(root));
         MainController.STAGE.show();
         stage.close();

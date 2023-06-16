@@ -53,7 +53,8 @@ public class ComponentListImpl implements ComponentCRUD{
     public boolean update(ComponentStock component) {
         for (int index =0; index < this.components.size(); index++){
             if (this.components.get(index).getId() == component.getId()){
-                this.components.add(index, component);
+                this.components.remove(index);
+                this.components.add(component);
                 return true;
             }
         }

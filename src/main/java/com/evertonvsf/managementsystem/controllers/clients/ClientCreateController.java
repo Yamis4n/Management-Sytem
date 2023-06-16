@@ -45,14 +45,9 @@ public class ClientCreateController {
     @FXML
     private TextField cpfField;
 
-    private Stage STAGE;
-    private Parent ROOT;
-    
 
     @FXML
     private void initialize() throws IOException {
-        ROOT = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/clients.fxml")));
-        STAGE = (Stage) this.cancelButton.getScene().getWindow();
 
         setOnActionProperties();
 
@@ -105,7 +100,10 @@ public class ClientCreateController {
 
     @FXML
     private void cancel() throws IOException {
-        MainController.closePopUp(STAGE, ROOT);
+        Stage stage = (Stage) this.cancelButton.getScene().getWindow();
+        MainController.STAGE.setScene(new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/clients.fxml")))));
+        MainController.STAGE.show();
+        stage.close();
     }
 
     public boolean validateInfo( String name, String address, String phone, String cpf) {

@@ -6,12 +6,14 @@ public class ComponentStock implements Serializable {
     private int id;
     private Component component;
     private Integer quantity;
-    private Double price;
+    private Double buyPrice; // valor de compra
+    private Double value; // valor de venda
 
-    public ComponentStock(Integer quantity, double price, Component component) {
+    public ComponentStock(Integer quantity, double price, Component component, double value) {
         this.quantity = quantity;
-        this.price = price;
+        this.buyPrice = price;
         this.component = component;
+        this.value = value;
     }
 
     public Component getComponent(){
@@ -31,12 +33,12 @@ public class ComponentStock implements Serializable {
         this.quantity = quantity;
     }
 
-    public Double getPrice() {
-        return price;
+    public Double getBuyPrice() {
+        return buyPrice;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setBuyPrice(Double buyPrice) {
+        this.buyPrice = buyPrice;
     }
 
     @Override
@@ -44,7 +46,7 @@ public class ComponentStock implements Serializable {
         return "ComponentStock{" +
                 "component=" + component.getDescription() +
                 ", quantity=" + quantity +
-                ", price=" + price +
+                ", price=" + buyPrice +
                 '}';
     }
 
@@ -61,5 +63,13 @@ public class ComponentStock implements Serializable {
     }
     public String getComponentType(){
         return this.component.getType().getName();
+    }
+
+    public Double getValue() {
+        return value;
+    }
+
+    public void setValue(Double value) {
+        this.value = value;
     }
 }
