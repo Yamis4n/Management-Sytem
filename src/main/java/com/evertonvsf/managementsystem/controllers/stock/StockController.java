@@ -1,5 +1,7 @@
-package com.evertonvsf.managementsystem.controllers;
+package com.evertonvsf.managementsystem.controllers.stock;
 
+import com.evertonvsf.managementsystem.controllers.utils.MainController;
+import com.evertonvsf.managementsystem.controllers.utils.MenuController;
 import com.evertonvsf.managementsystem.dao.DAO;
 import com.evertonvsf.managementsystem.models.stock.Component;
 import com.evertonvsf.managementsystem.models.stock.ComponentStock;
@@ -10,7 +12,9 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
@@ -23,15 +27,10 @@ import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 
 import java.io.IOException;
-import java.text.FieldPosition;
-import java.text.Format;
-import java.text.NumberFormat;
-import java.text.ParsePosition;
-import java.util.Arrays;
-import java.util.Locale;
+import java.util.Objects;
 
 
-public class StockController extends MenuController{
+public class StockController extends MenuController {
     @FXML
     private Label usernameLabel;
 
@@ -69,14 +68,14 @@ public class StockController extends MenuController{
     private Label priceLabel;
 
 
-    public static int selectedComponent;
+    public static ComponentStock selectedComponent;
     private final ObservableList<ComponentStock> componentsObservable = FXCollections.observableArrayList();
 
 
     @FXML
     private void initialize(){
         this.feedbackLabel.setAlignment(Pos.BASELINE_CENTER);
-        StockController.selectedComponent = -1;
+        StockController.selectedComponent = null;
         MenuController.showUser(usernameLabel);
 
         initializeTable();
@@ -97,15 +96,18 @@ public class StockController extends MenuController{
     }
 
     @FXML
-    private void gotoEdit(){}
+    private void gotoEdit() throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/editStock.fxml")));
+        MainController.popUp(root);
+    }
 
     @FXML
     private void deleteComponent(){
-        if (DAO.fromComponent().deleteById(StockController.selectedComponent)){
+        if (StockController.selectedComponent != null && DAO.fromComponent().deleteById(StockController.selectedComponent.getId())){
             this.feedbackLabel.setTextFill(Color.GREEN);
             this.feedbackLabel.setText("Componente deletado com sucesso!");
-            componentsObservable.removeIf(componentStock -> componentStock.getId() == StockController.selectedComponent);
-            StockController.selectedComponent = -1;
+            componentsObservable.removeIf(componentStock -> componentStock.getId() == StockController.selectedComponent.getId());
+            StockController.selectedComponent = null;
             showComponent( null );
         }
         else {
@@ -135,7 +137,7 @@ public class StockController extends MenuController{
             public void handle(MouseEvent mouseEvent) {
                 if (componentsTable.getSelectionModel().getSelectedItem() != null) {
                     ComponentStock componentStock = componentsTable.getSelectionModel().getSelectedItem();
-                    StockController.selectedComponent = componentStock.getId();
+                    StockController.selectedComponent = componentStock;
                     showComponent(componentStock);
                 }
             }
@@ -182,7 +184,7 @@ public class StockController extends MenuController{
 
             this.descriptionLabel.setText(componentStock.getComponentDescription());
             this.typeLabel.setText(componentStock.getComponentType());
-            this.quantityLabel.setText(componentStock.getQuantity().toString());
+            this.quantityLabel.setText(componentStock.getQuantity().toString() +" unidades");
             this.priceLabel.setText("R$ " + componentStock.getPrice().toString());
         }
     }

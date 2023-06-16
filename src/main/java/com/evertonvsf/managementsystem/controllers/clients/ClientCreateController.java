@@ -1,5 +1,6 @@
-package com.evertonvsf.managementsystem.controllers;
+package com.evertonvsf.managementsystem.controllers.clients;
 
+import com.evertonvsf.managementsystem.controllers.utils.MainController;
 import com.evertonvsf.managementsystem.dao.DAO;
 import com.evertonvsf.managementsystem.models.users.Client;
 import javafx.event.ActionEvent;

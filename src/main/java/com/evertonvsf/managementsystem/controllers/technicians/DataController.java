@@ -1,20 +1,18 @@
-package com.evertonvsf.managementsystem.controllers;
+package com.evertonvsf.managementsystem.controllers.technicians;
 
 
+import com.evertonvsf.managementsystem.controllers.utils.MainController;
+import com.evertonvsf.managementsystem.controllers.utils.MenuController;
 import com.evertonvsf.managementsystem.dao.DAO;
 import com.evertonvsf.managementsystem.models.users.Technician;
 
 
-import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -23,15 +21,13 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 
 import java.io.IOException;
 import java.util.*;
 
 
-public class DataController extends  MenuController {
+public class DataController extends MenuController {
 
     public static Integer techId;
 

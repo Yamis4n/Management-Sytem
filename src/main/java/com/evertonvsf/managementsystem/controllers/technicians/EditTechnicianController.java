@@ -1,13 +1,12 @@
-package com.evertonvsf.managementsystem.controllers;
+package com.evertonvsf.managementsystem.controllers.technicians;
 
+import com.evertonvsf.managementsystem.controllers.utils.MainController;
 import com.evertonvsf.managementsystem.dao.DAO;
 import com.evertonvsf.managementsystem.models.users.Technician;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

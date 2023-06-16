@@ -1,5 +1,7 @@
-package com.evertonvsf.managementsystem.controllers;
+package com.evertonvsf.managementsystem.controllers.clients;
 
+import com.evertonvsf.managementsystem.controllers.utils.MainController;
+import com.evertonvsf.managementsystem.controllers.utils.MenuController;
 import com.evertonvsf.managementsystem.dao.DAO;
 import com.evertonvsf.managementsystem.models.users.Client;
 import javafx.collections.FXCollections;
@@ -19,7 +21,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.util.converter.LongStringConverter;
 
 import java.io.IOException;
 import java.util.Objects;

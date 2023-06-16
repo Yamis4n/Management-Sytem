@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="window" prefHeight="504.0" prefWidth="846.0" style="-fx-background-color: #4fb4ff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.evertonvsf.managementsystem.controllers.LoginController">
+<AnchorPane fx:id="window" prefHeight="504.0" prefWidth="846.0" style="-fx-background-color: #4fb4ff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.evertonvsf.managementsystem.controllers.technicians.LoginController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00000072" height="342.0" layoutX="285.0" layoutY="62.0" stroke="#ffffff13" strokeType="INSIDE" width="250.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="342.0" layoutX="277.0" layoutY="56.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="250.0" AnchorPane.leftAnchor="277.0" AnchorPane.topAnchor="56.0" />

@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 
 <?import javafx.scene.layout.BorderPane?>
-<AnchorPane id="window" fx:id="window" prefHeight="504.0" prefWidth="846.0" style="-fx-background-color: #4fb4ff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.evertonvsf.managementsystem.controllers.DataController">
+<AnchorPane id="window" fx:id="window" prefHeight="504.0" prefWidth="846.0" style="-fx-background-color: #4fb4ff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.evertonvsf.managementsystem.controllers.technicians.DataController">
    <children>
       <ImageView fitHeight="104.0" fitWidth="146.0" layoutX="42.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
          <image>

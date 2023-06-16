@@ -1,9 +1,10 @@
 package com.evertonvsf.managementsystem.controllers;
 
+import com.evertonvsf.managementsystem.controllers.utils.MenuController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class ServicesController extends MenuController{
+public class ServicesController extends MenuController {
     @FXML
     private Label usernameLabel;
 

@@ -1,6 +1,6 @@
 package com.evertonvsf.managementsystem;
 
-import com.evertonvsf.managementsystem.controllers.MainController;
+import com.evertonvsf.managementsystem.controllers.utils.MainController;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;

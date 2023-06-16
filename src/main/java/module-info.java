@@ -21,5 +21,13 @@ module com.evertonvsf.managementsystem {
 
     exports com.evertonvsf.managementsystem.models.money;
     opens com.evertonvsf.managementsystem.models.money to javafx.fxml;
+    exports com.evertonvsf.managementsystem.controllers.clients;
+    opens com.evertonvsf.managementsystem.controllers.clients to javafx.fxml;
+    exports com.evertonvsf.managementsystem.controllers.technicians;
+    opens com.evertonvsf.managementsystem.controllers.technicians to javafx.fxml;
+    exports com.evertonvsf.managementsystem.controllers.stock;
+    opens com.evertonvsf.managementsystem.controllers.stock to javafx.fxml;
+    exports com.evertonvsf.managementsystem.controllers.utils;
+    opens com.evertonvsf.managementsystem.controllers.utils to javafx.fxml;
 
 }
