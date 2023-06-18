@@ -49,7 +49,7 @@ public class TechnicianListImpl implements TechnicianCRUD{
     @Override
     public boolean update(Technician technician) {
         for (int index = 0; index < this.technicians.size(); index++){
-            if (this.technicians.get(index).getId() == technician.getId()){
+            if (Objects.equals(this.technicians.get(index).getId(), technician.getId())){
                 this.technicians.set(index, technician);
                 return true;
             }

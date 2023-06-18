@@ -102,6 +102,7 @@ public class NewServiceController {
             if (component != null && component.getQuantity() > 0){
                 service.setComponentId(component.getId());
                 component.setQuantity(component.getQuantity()-1);
+                DAO.fromComponent().update(component);
             }
             else {
                 feedbackLabel.setText("sem estoque!");
@@ -111,7 +112,6 @@ public class NewServiceController {
         serviceObservableList.add(service);
         services.add(service.getId());
         DAO.fromService().update(service);
-        DAO.fromComponent().update(component);
         feedbackLabel.setText("");
     }
     @FXML

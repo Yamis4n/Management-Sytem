@@ -36,7 +36,7 @@ public class ServiceOrder implements Serializable {
         this.servicesIds = servicesIds;
         this.beginningTime = new Date();
         this.payed = false;
-        this.setStatus(0);
+        this.status = Status.WAITING;
 
     }
 
@@ -91,23 +91,18 @@ public class ServiceOrder implements Serializable {
         this.technicianUsername = technicianUsername;
     }
 
-    public String getStatus() {
-        return status.getStatusName();
+    public Status getStatus() {
+        return status;
     }
    /**
     * Define o status da <code>ServiceOrder</code> com base na enumeração presente em <code>Status</code>.
     *
-    * @param statusId Número indicando qual status a <code>ServideOrder</code> está.
     *
     * @see <code>Status</code>
     */ 
-    public void setStatus(int statusId) {
-        switch (statusId){
-            case 0 -> this.status = Status.WAITING;
-            case 1 -> this.status = Status.INITIALIZED;
-            case 2 -> this.status = Status.FINISHED;
-            default -> this.status = Status.CANCELED;
-        }
+    public void setStatus(Status status) {
+        this.status = status;
+
     }
 
     public List<Integer> getServicesIds() {

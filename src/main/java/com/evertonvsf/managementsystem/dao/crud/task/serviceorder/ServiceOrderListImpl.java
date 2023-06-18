@@ -49,7 +49,8 @@ public class ServiceOrderListImpl implements ServiceOrderCRUD{
     public boolean update(ServiceOrder serviceOrder) {
         for (int index = 0; index<this.serviceOrders.size(); index++){
             if (this.serviceOrders.get(index).getId() == serviceOrder.getId()){
-                this.serviceOrders.add(index, serviceOrder);
+                this.serviceOrders.remove(index);
+                this.serviceOrders.add(serviceOrder);
                 return true;
             }
         }

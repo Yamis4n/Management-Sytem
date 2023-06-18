@@ -49,7 +49,8 @@ public class InvoiceListImpl implements InvoiceCRUD{
     public boolean update(Invoice invoice) {
         for (int index = 0; index < this.invoices.size(); index++){
             if (this.invoices.get(index).getId() == invoice.getId()){
-                this.invoices.add(index, invoice);
+                this.invoices.remove(index);
+                this.invoices.add(invoice);
                 return true;
             }
         }

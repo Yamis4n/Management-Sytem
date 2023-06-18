@@ -59,7 +59,8 @@ public class PaymentListImpl implements PaymentCRUD {
     public boolean update(Payment payment) {
         for (int index = 0; index < this.payments.size(); index++){
             if (this.payments.get(index).getId() == payment.getId()){
-                this.payments.add(index, payment);
+                this.payments.remove(index);
+                this.payments.add( payment);
                 return true;
             }
         }

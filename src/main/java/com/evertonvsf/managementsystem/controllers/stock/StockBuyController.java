@@ -61,7 +61,10 @@ public class StockBuyController {
 
     @FXML
     private void cancel() throws IOException {
+        Stage stage = (Stage) this.workWindow.getScene().getWindow();
         MainController.changePanel( FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/stock.fxml"))));
+        stage.close();
+
     }
 
     @FXML

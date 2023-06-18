@@ -57,7 +57,7 @@ public class DetailsController {
         }else {
             this.payedField.setText("NÃO");
         }
-        this.statusField.setText(ServiceOrdersController.selectedOrder.getStatus());
+        this.statusField.setText(ServiceOrdersController.selectedOrder.getStatus().getStatusName());
         this.techUsernameField.setText(ServiceOrdersController.selectedOrder.getTechnicianUsername());
 
        for (Integer serviceId : ServiceOrdersController.selectedOrder.getServicesIds()){

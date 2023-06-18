@@ -69,8 +69,8 @@ public class Service implements Serializable {
 
     }
 
-    public String getStatus() {
-        return status.getStatusName();
+    public Status getStatus() {
+        return status;
     }
 /**
  * Define o status do <code>Service</code> com base na enumeração presente em <code>Status</code>.

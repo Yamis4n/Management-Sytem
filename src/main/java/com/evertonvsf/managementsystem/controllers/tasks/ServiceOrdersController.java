@@ -55,7 +55,7 @@ public class ServiceOrdersController {
     private TableColumn<ServiceOrder, Boolean> payedColumn;
 
     @FXML
-    private TableColumn<ServiceOrder, String> statusColumn;
+    private TableColumn<ServiceOrder, Status> statusColumn;
 
     @FXML
     private TableColumn<ServiceOrder, String> technicianColumn;
@@ -70,7 +70,6 @@ public class ServiceOrdersController {
     @FXML
     private void initialize(){
         serviceOrdersObservable.addAll(DAO.fromServiceOrder().findMany());
-        serviceOrdersObservable.add((new ServiceOrder("111", new ArrayList<Integer>())));
         selectedOrder = null;
         initializeTable();
         initializeSearch();
@@ -81,7 +80,20 @@ public class ServiceOrdersController {
         this.technicianColumn.setCellValueFactory(new PropertyValueFactory<>("technicianUsername"));
         this.payedColumn.setCellValueFactory(new PropertyValueFactory<>("payed"));
 
-        this.statusColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        this.statusColumn.setCellFactory(TextFieldTableCell.forTableColumn(new StringConverter<Status>() {
+            @Override
+            public String toString(Status status) {
+                if (status != null) {
+                    return status.getStatusName();
+                }
+                return "";
+            }
+
+            @Override
+            public Status fromString(String s) {
+                return null;
+            }
+        }));
         this.clientColumn.setCellFactory(TextFieldTableCell.forTableColumn( ));
         this.technicianColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         this.payedColumn.setCellFactory(TextFieldTableCell.forTableColumn( new BooleanStringConverter()));
@@ -114,10 +126,10 @@ public class ServiceOrdersController {
                 }
                 String lowerCaseFilter = newValue.toLowerCase();
 
-                if ( order.getClientCPF().toString().contains(lowerCaseFilter) ){
+                if ( order.getClientCPF().contains(lowerCaseFilter) ){
                     return true;
                 }
-                else if ( order.getStatus().toLowerCase().contains(lowerCaseFilter) ){
+                else if ( order.getStatus().getStatusName().toLowerCase().contains(lowerCaseFilter) ){
                     return true;
                 }
                 else {
@@ -142,7 +154,12 @@ public class ServiceOrdersController {
 
     @FXML
     private void gotoEdit(ActionEvent actionEvent) throws IOException {
-        MainController.popUp(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/details.fxml"))));
+        if (selectedOrder.getStatus() != Status.CANCELED && selectedOrder.getStatus() != Status.FINISHED) {
+            MainController.popUp(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/updateOrder.fxml"))));
+        }
+        else {
+            this.feedbackLabel.setText("Impossível alterar esta ordem!");
+        }
     }
 
     @FXML

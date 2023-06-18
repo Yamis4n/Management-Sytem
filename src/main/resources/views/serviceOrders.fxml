@@ -19,7 +19,7 @@
                     </font>
                 </Button>
                 <TextField fx:id="searchBox" layoutX="47.0" layoutY="16.0" prefHeight="31.0" prefWidth="293.0" />
-                <Button fx:id="editButton" layoutX="444.0" layoutY="13.0" mnemonicParsing="false" onAction="#gotoEdit" prefHeight="38.0" prefWidth="69.0" style="-fx-background-color: yellow;" text="EDITAR" textFill="#737373">
+                <Button fx:id="editButton" layoutX="444.0" layoutY="13.0" mnemonicParsing="false" onAction="#gotoEdit" prefHeight="38.0" prefWidth="69.0" style="-fx-background-color: yellow;" text="ATUALIZAR" textFill="#737373">
                     <font>
                         <Font name="Open Sans Extrabold" size="11.0" />
                     </font>

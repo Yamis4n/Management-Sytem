@@ -47,7 +47,8 @@ public class ServiceListImpl implements ServiceCRUD{
     public boolean update(Service service) {
         for (int index = 0; index<this.services.size(); index++){
             if (this.services.get(index).getId() == service.getId()){
-                this.services.add(index, service);
+                this.services.remove(index);
+                this.services.add(service);
                 return true;
             }
         }
