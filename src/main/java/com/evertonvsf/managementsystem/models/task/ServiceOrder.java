@@ -15,24 +15,29 @@ import java.util.zip.Inflater;
  * @see <code>Status</code>
  */
 public class ServiceOrder implements Serializable {
-    private int id, clientId, technicianId, invoiceId;
+    private int id;
+    private Integer clientCPF;
+    private String technicianUsername;
+    private int invoiceId;
     private List<Integer> servicesIds;
     private Date beginningTime;
     private long timeToConclude;
     private Status status;
+    private Boolean payed;
     /**
      * Construtor da classe <code>ServiceOrder</code>
      *
-     * @param clientId indica o id do <code>Client</code>
-     * @param technicianId indica o id do <code>Technician</code>
+     * @param clientCPF indica o id do <code>Client</code>
      * @param servicesIds indica uma lista de id's dos serviços prestados nesta <code>ServiceOrder</code>
      */
-    public ServiceOrder(int clientId, int technicianId, List<Integer> servicesIds) {
-        this.clientId = clientId;
-        this.technicianId = technicianId;
+    public ServiceOrder(Integer clientCPF , List<Integer> servicesIds) {
+        this.clientCPF = clientCPF;
+        this.technicianUsername = "none";
         this.servicesIds = servicesIds;
         this.beginningTime = new Date();
+        this.payed = false;
         this.setStatus(0);
+
     }
 
 
@@ -44,21 +49,6 @@ public class ServiceOrder implements Serializable {
         this.id = id;
     }
 
-    public int getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(int clientId) {
-        this.clientId = clientId;
-    }
-
-    public int getTechnicianId() {
-        return technicianId;
-    }
-
-    public void setTechnicianId(int technicianId) {
-        this.technicianId = technicianId;
-    }
 
     public int getInvoiceId() {
         return invoiceId;
@@ -85,6 +75,22 @@ public class ServiceOrder implements Serializable {
         this.timeToConclude = (finished.getTime() - this.beginningTime.getTime()) / 60000;
     }
 
+    public Integer getClientCPF() {
+        return clientCPF;
+    }
+
+    public void setClientCPF(Integer clientCPF) {
+        this.clientCPF = clientCPF;
+    }
+
+    public String getTechnicianUsername() {
+        return technicianUsername;
+    }
+
+    public void setTechnicianUsername(String technicianUsername) {
+        this.technicianUsername = technicianUsername;
+    }
+
     public String getStatus() {
         return status.getStatusName();
     }
@@ -100,8 +106,7 @@ public class ServiceOrder implements Serializable {
             case 0 -> this.status = Status.WAITING;
             case 1 -> this.status = Status.INITIALIZED;
             case 2 -> this.status = Status.FINISHED;
-            case 3 -> this.status = Status.CANCELED;
-            default -> this.status = Status.PAID;
+            default -> this.status = Status.CANCELED;
         }
     }
 
@@ -122,13 +127,21 @@ public class ServiceOrder implements Serializable {
     public String toString() {
         return "ServiceOrder{" +
                 "id=" + id +
-                ", clientId=" + clientId +
-                ", technicianId=" + technicianId +
+                ", clientId=" + clientCPF +
+                ", technicianId=" + technicianUsername +
                 ", invoiceId=" + invoiceId +
                 ", servicesIds=" + servicesIds.toString() +
                 ", beginningTime=" + beginningTime.toString() +
                 ", timeToConclude=" + timeToConclude +
                 ", status=" + status.getStatusName() +
                 '}';
+    }
+
+    public Boolean getPayed() {
+        return payed;
+    }
+
+    public void setPayed(Boolean payed) {
+        this.payed = payed;
     }
 }

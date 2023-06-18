@@ -29,5 +29,7 @@ module com.evertonvsf.managementsystem {
     opens com.evertonvsf.managementsystem.controllers.stock to javafx.fxml;
     exports com.evertonvsf.managementsystem.controllers.utils;
     opens com.evertonvsf.managementsystem.controllers.utils to javafx.fxml;
+    exports com.evertonvsf.managementsystem.controllers.tasks;
+    opens com.evertonvsf.managementsystem.controllers.tasks to javafx.fxml;
 
 }

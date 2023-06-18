@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #4fb4ff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.evertonvsf.managementsystem.controllers.tasks.NewServiceController">
+   <children>
+      <Label layoutX="142.0" layoutY="31.0" text="NOVA ORDEM DE SERVIÇO" textFill="#737373">
+         <font>
+            <Font name="Open Sans Extrabold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="47.0" layoutY="98.0" text="CPF do Cliente:" />
+      <TextField fx:id="clientCpf" layoutX="47.0" layoutY="116.0" prefHeight="26.0" prefWidth="209.0" />
+      <ChoiceBox fx:id="serviceTypeChoice" layoutX="271.0" layoutY="116.0" prefWidth="150.0" />
+      <Button fx:id="includeButton" layoutX="443.0" layoutY="116.0" mnemonicParsing="false" onAction="#include" prefHeight="26.0" prefWidth="92.0" style="-fx-background-color: ORANGE;" text="INCLUIR" textFill="#737373">
+         <font>
+            <Font name="Open Sans Extrabold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="saveButton" layoutX="106.0" layoutY="336.0" mnemonicParsing="false" onAction="#save" prefHeight="48.0" prefWidth="92.0" style="-fx-background-color: LIGHTGREEN;" text="SALVAR" textFill="#737373">
+         <font>
+            <Font name="Open Sans Extrabold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="cancelButton" layoutX="384.0" layoutY="336.0" mnemonicParsing="false" onAction="#cancel" prefHeight="48.0" prefWidth="92.0" style="-fx-background-color: CORAL;" text="CANCELAR" textFill="#737373">
+         <font>
+            <Font name="Open Sans Extrabold" size="13.0" />
+         </font>
+      </Button>
+      <Label layoutX="271.0" layoutY="98.0" text="Serviço:" />
+      <ScrollPane layoutX="69.0" layoutY="163.0" prefHeight="140.0" prefWidth="462.0">
+         <content>
+            <TableView fx:id="servicesTable" prefHeight="138.0" prefWidth="460.0">
+              <columns>
+                <TableColumn fx:id="typeColumn" prefWidth="150.0" text="TIPO DE SERVIÇO" />
+                  <TableColumn fx:id="componentColumn" prefWidth="148.0" text="PEÇA NECESSÁRIA" />
+                  <TableColumn fx:id="priceColumn" prefWidth="100.0" text="PREÇO R$" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </content>
+      </ScrollPane>
+      <Label fx:id="feedbackLabel" layoutX="67.0" layoutY="312.0" prefHeight="18.0" prefWidth="462.0" textFill="RED" />
+   </children>
+</AnchorPane>

@@ -15,21 +15,21 @@ import java.util.Date;
  * @see <code>Status</code>
  */
 public class Service implements Serializable {
-    private int id, rating, necessaryComponentId, invoiceId;
+    private int id, rating, invoiceId;
     private ServiceCategory category;
+    private Integer componentId;
     private Status status;
     private Date beginningTime;
     long timeToConclude;
-    private double price;
+    private Double price;
 
     /**
      * Construtor da classe <code>Service</code>
      *
-     * @param category Numero indicando qual categoria o serviço pertence;
      */
-    public Service(int category) {
-        this.setCategory(category);
-        this.setStatus(0);
+    public Service(ServiceCategory serviceCategory) {
+        this.category = serviceCategory;
+        this.status = Status.WAITING;
         this.beginningTime = new Date();
     }
 
@@ -49,13 +49,6 @@ public class Service implements Serializable {
         this.rating = rating;
     }
 
-    public int getNecessaryComponentId() {
-        return necessaryComponentId;
-    }
-
-    public void setNecessaryComponentId() {
-        this.necessaryComponentId = this.category.getComponentId();
-    }
     public int getInvoiceId() {
         return invoiceId;
     }
@@ -70,19 +63,10 @@ public class Service implements Serializable {
 /**
  * Define a categoria do <code>Servce</code> com base na enumeração presente em <code>ServiceCategory</code>.
  *
- * @param category Número indicando qual categoria o <code>Service</code> pertence;
  */
-    public void setCategory(int category) {
-        switch (category){
-            case 0 -> this.category = ServiceCategory.MOUNTING_RAM;
-            case 1 -> this.category = ServiceCategory.MOUNTING_MOTHERBOARD;
-            case 2 -> this.category = ServiceCategory.MOUNTING_POWER_SUPPLY;
-            case 3 -> this.category = ServiceCategory.MOUNTING_VIDEO_CARD;
-            case 4 -> this.category = ServiceCategory.MOUNTING_HD_SSD;
-            case 5 -> this.category = ServiceCategory.FORMATTING_INSTALLATION_PROGRAMS;
-            case 6 -> this.category = ServiceCategory.FORMATTING_INSTALLATION_OS;
-            default -> this.category = ServiceCategory.CLEANING;
-        }
+    public void setCategory(ServiceCategory serviceCategory) {
+        this.category = serviceCategory;
+
     }
 
     public String getStatus() {
@@ -91,16 +75,9 @@ public class Service implements Serializable {
 /**
  * Define o status do <code>Service</code> com base na enumeração presente em <code>Status</code>.
  *
- * @param statusId Número indicando qual o <code>Status</code> do <code>Service</code>.
  */
-    public void setStatus(int statusId) {
-        switch (statusId){
-            case 0 -> this.status = Status.WAITING;
-            case 1 -> this.status = Status.INITIALIZED;
-            case 2 -> this.status = Status.FINISHED;
-            case 3 -> this.status = Status.CANCELED;
-            default -> this.status = Status.PAID;
-        }
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public Date getBeginning() {
@@ -120,7 +97,7 @@ public class Service implements Serializable {
         this.timeToConclude = (finished.getTime() - this.beginningTime.getTime()) / 60000;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
@@ -137,7 +114,6 @@ public class Service implements Serializable {
         return "Service{" +
                 "id=" + id +
                 ", rating=" + rating +
-                ", necessaryComponentId=" + necessaryComponentId +
                 ", invoiceId=" + invoiceId +
                 ", category=" + category.getServiceName() +
                 ", status=" + status.getStatusName() +
@@ -145,5 +121,13 @@ public class Service implements Serializable {
                 ", timeToConclude=" + timeToConclude +
                 ", price=" + price +
                 '}';
+    }
+
+    public Integer getComponentId() {
+        return componentId;
+    }
+
+    public void setComponentId(Integer componentId) {
+        this.componentId = componentId;
     }
 }

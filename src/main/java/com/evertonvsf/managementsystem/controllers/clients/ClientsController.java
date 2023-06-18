@@ -102,6 +102,8 @@ public class ClientsController {
             clientsObservable.removeIf(client -> client.getId() == ClientsController.actualClient);
             showClient(null);
             ClientsController.actualClient = -1;
+            MainController.saveInfo();
+            MainController.loadInfo();
 
         }
         else {
@@ -112,7 +114,7 @@ public class ClientsController {
 
 
 
-    public void initializeTable(){
+    private void initializeTable(){
 
         this.nameColumn.setCellValueFactory(new PropertyValueFactory<Client, String>("name"));
         this.addressColumn.setCellValueFactory(new PropertyValueFactory<Client, String>("address"));

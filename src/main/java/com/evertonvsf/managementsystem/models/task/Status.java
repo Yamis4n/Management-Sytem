@@ -4,8 +4,7 @@ public enum Status {
     WAITING("WAITING"),
     INITIALIZED("INITIALIZED"),
     FINISHED("FINISHED"),
-    CANCELED("CANCELED"),
-    PAID("PAID");
+    CANCELED("CANCELED");
     private final String statusName;
 
     Status(String statusName) {

@@ -61,8 +61,7 @@ public class StockBuyController {
 
     @FXML
     private void cancel() throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/stock.fxml")));
-        MainController.changePanel(this.workWindow, root);
+        MainController.changePanel( FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/stock.fxml"))));
     }
 
     @FXML

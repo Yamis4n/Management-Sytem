@@ -88,15 +88,13 @@ public class StockController  {
 
     @FXML
     private void gotoBuy() throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/buyComponent.fxml")));
-        MainController.changePanel(this.workWindow, root);
+        MainController.popUp(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/buyComponent.fxml"))));
 
     }
 
     @FXML
     private void gotoBuyOrders() throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/buyOrder.fxml")));
-        MainController.changePanel(workWindow, root);
+        MainController.changePanel(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/buyOrder.fxml"))));
     }
 
     private void initializeTable( ){

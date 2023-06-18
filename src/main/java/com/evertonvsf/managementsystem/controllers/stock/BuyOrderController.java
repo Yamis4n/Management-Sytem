@@ -85,7 +85,7 @@ public class BuyOrderController {
     @FXML
     public void goBack() throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/stock.fxml")));
-        MainController.changePanel(workWindow, root);
+        MainController.changePanel(root);
 
     }
 
@@ -142,8 +142,7 @@ public class BuyOrderController {
         DAO.fromComponent().update(component);
 
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/buyOrder.fxml")));
-        MainController.changePanel(workWindow, root);
+        MainController.changePanel(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/buyOrder.fxml"))));
 
 
 

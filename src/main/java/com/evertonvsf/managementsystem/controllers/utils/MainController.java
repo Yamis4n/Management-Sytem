@@ -3,17 +3,20 @@ package com.evertonvsf.managementsystem.controllers.utils;
 import com.evertonvsf.managementsystem.dao.DAO;
 import com.evertonvsf.managementsystem.models.users.Technician;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import javax.security.auth.login.AccountLockedException;
 import java.io.IOException;
 import java.util.Objects;
 
 public abstract class MainController {
-    public static Stage STAGE;
+    public static Stage STAGE;;
     public static Technician loggedTechnician;
     public static void saveInfo() {
         DAO.fromClient().writePersistence();
@@ -53,11 +56,22 @@ public abstract class MainController {
 
     }
 
-    public static void changePanel(AnchorPane workWindow, Parent root) throws IOException {
-        workWindow.getChildren().removeAll();
-        workWindow.getChildren().add(root);
+    public static void changePanel(Node root) throws IOException {
+        BorderPane borderPane = (BorderPane) STAGE.getScene().getRoot();
+        borderPane.setRight(root);
+        STAGE.setScene(STAGE.getScene());
         MainController.saveInfo();
         MainController.loadInfo();
+    }
+
+    public static void login() throws IOException {
+        BorderPane borderPane = new BorderPane();
+        Node left = FXMLLoader.load(Objects.requireNonNull(MainController.class.getResource("/views/menu.fxml")));
+        Node right = FXMLLoader.load(Objects.requireNonNull(MainController.class.getResource("/views/home.fxml")));
+        borderPane.setRight(right);
+        borderPane.setLeft(left);
+        Scene scene= new Scene(borderPane);
+        STAGE.setScene(scene);
     }
 
 }

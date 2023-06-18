@@ -46,40 +46,39 @@ public class MenuController {
         usernameLabel.setAlignment(Pos.BASELINE_CENTER);
         usernameLabel.setText(MainController.loggedTechnician.getUsername());
         usernameLabel.setTextFill(Color.WHITE);
-        gotoHome();
     }
     @FXML
     private void gotoClients() throws IOException {
-        changePanel(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/clients.fxml"))));
+         MainController.changePanel(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/clients.fxml"))));
 
     }
 
     @FXML
     private void gotoServices() throws IOException {
-        changePanel(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/services.fxml"))));
+         MainController.changePanel(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/serviceOrders.fxml"))));
     }
 
     @FXML
     private void gotoTechnicians() throws IOException {
-        changePanel(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/data.fxml"))));
+         MainController.changePanel(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/data.fxml"))));
 
     }
 
     @FXML
     private void gotoHome() throws IOException {
-        changePanel(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/home.fxml"))));
+         MainController.changePanel(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/home.fxml"))));
 
     }
 
     @FXML
     private void gotoInvoices() throws IOException {
-        changePanel(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/invoices.fxml"))));
+         MainController.changePanel(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/invoices.fxml"))));
 
     }
 
     @FXML
     private void gotoStock() throws IOException {
-        changePanel(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/stock.fxml"))));
+        MainController.changePanel(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/stock.fxml"))));
     }
 
     @FXML
@@ -91,12 +90,6 @@ public class MenuController {
 
     }
 
-    private void changePanel(Parent root){
-        if (this.workflow.getChildren() != null) {
-            this.workflow.getChildren().removeAll();
-        }
-        this.workflow.getChildren().add(root);
-    }
 
 
 

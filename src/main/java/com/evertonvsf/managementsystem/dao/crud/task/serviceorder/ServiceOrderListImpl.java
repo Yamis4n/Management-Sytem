@@ -87,10 +87,10 @@ public class ServiceOrderListImpl implements ServiceOrderCRUD{
     }
 
     @Override
-    public List<ServiceOrder> findByClient(int clientId) {
+    public List<ServiceOrder> findByClient(int clientCPF) {
         List<ServiceOrder> sameClientServiceOrders = new ArrayList<ServiceOrder>();
         for (ServiceOrder serviceOrder : this.serviceOrders){
-            if (serviceOrder.getClientId() == clientId){
+            if (serviceOrder.getClientCPF() == clientCPF){
                 sameClientServiceOrders.add(serviceOrder);
             }
         }
@@ -98,10 +98,10 @@ public class ServiceOrderListImpl implements ServiceOrderCRUD{
     }
 
     @Override
-    public List<ServiceOrder> findByTechnician(int technicianId) {
+    public List<ServiceOrder> findByTechnician(String techUsername) {
         List<ServiceOrder> sameTechnicianServiceOrders = new ArrayList<ServiceOrder>();
         for (ServiceOrder serviceOrder : this.serviceOrders){
-            if (serviceOrder.getTechnicianId() == technicianId){
+            if (Objects.equals(serviceOrder.getTechnicianUsername(), techUsername)){
                 sameTechnicianServiceOrders.add(serviceOrder);
             }
         }
