@@ -87,7 +87,7 @@ public class ServiceOrderListImpl implements ServiceOrderCRUD{
     }
 
     @Override
-    public List<ServiceOrder> findByClient(int clientCPF) {
+    public List<ServiceOrder> findByClient(String clientCPF) {
         List<ServiceOrder> sameClientServiceOrders = new ArrayList<ServiceOrder>();
         for (ServiceOrder serviceOrder : this.serviceOrders){
             if (serviceOrder.getClientCPF() == clientCPF){

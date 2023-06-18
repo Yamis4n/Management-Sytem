@@ -16,7 +16,7 @@ import java.util.zip.Inflater;
  */
 public class ServiceOrder implements Serializable {
     private int id;
-    private Integer clientCPF;
+    private String clientCPF;
     private String technicianUsername;
     private int invoiceId;
     private List<Integer> servicesIds;
@@ -30,9 +30,9 @@ public class ServiceOrder implements Serializable {
      * @param clientCPF indica o id do <code>Client</code>
      * @param servicesIds indica uma lista de id's dos serviços prestados nesta <code>ServiceOrder</code>
      */
-    public ServiceOrder(Integer clientCPF , List<Integer> servicesIds) {
+    public ServiceOrder(String clientCPF , List<Integer> servicesIds) {
         this.clientCPF = clientCPF;
-        this.technicianUsername = "none";
+        this.technicianUsername = "-----";
         this.servicesIds = servicesIds;
         this.beginningTime = new Date();
         this.payed = false;
@@ -75,11 +75,11 @@ public class ServiceOrder implements Serializable {
         this.timeToConclude = (finished.getTime() - this.beginningTime.getTime()) / 60000;
     }
 
-    public Integer getClientCPF() {
+    public String getClientCPF() {
         return clientCPF;
     }
 
-    public void setClientCPF(Integer clientCPF) {
+    public void setClientCPF(String clientCPF) {
         this.clientCPF = clientCPF;
     }
 

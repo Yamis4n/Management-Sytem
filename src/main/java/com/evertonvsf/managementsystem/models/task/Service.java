@@ -101,8 +101,8 @@ public class Service implements Serializable {
         return price;
     }
 
-    public void setPrice() {
-        this.price = this.category.getPrice();
+    public void setPrice(Double price) {
+        this.price = price;
     }
 /**
  * Gera uma <code>String</code> contendo as informações do <code>Service</code>.

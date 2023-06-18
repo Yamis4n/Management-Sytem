@@ -120,14 +120,6 @@ public class ClientsController {
         this.addressColumn.setCellValueFactory(new PropertyValueFactory<Client, String>("address"));
         this.phoneColumn.setCellValueFactory(new PropertyValueFactory<Client, String>("phoneNumber"));
         this.cpfColumn.setCellValueFactory(new PropertyValueFactory<Client, String>("CPF"));
-
-        this.nameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        this.addressColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        this.phoneColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        this.cpfColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-
-
-
         this.clientsTable.onMouseClickedProperty().setValue(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {

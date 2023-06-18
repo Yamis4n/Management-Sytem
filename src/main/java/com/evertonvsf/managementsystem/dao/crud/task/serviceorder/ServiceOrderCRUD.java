@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ServiceOrderCRUD extends CRUD<ServiceOrder> {
     public ServiceOrder findByInvoice(int invoiceId);
-    public List<ServiceOrder> findByClient(int clientCPF);
+    public List<ServiceOrder> findByClient(String clientCPF);
     public List<ServiceOrder> findByTechnician(String techUsername);
     public List<ServiceOrder> findByStatus(String orderStatus);
     public boolean deleteById(int id);

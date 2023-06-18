@@ -2,32 +2,21 @@ package com.evertonvsf.managementsystem.controllers.technicians;
 
 
 import com.evertonvsf.managementsystem.controllers.utils.MainController;
-import com.evertonvsf.managementsystem.controllers.utils.MenuController;
 import com.evertonvsf.managementsystem.dao.DAO;
-import com.evertonvsf.managementsystem.models.users.Client;
 import com.evertonvsf.managementsystem.models.users.Technician;
 
-
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import javafx.event.ActionEvent;
+
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.util.converter.IntegerStringConverter;
 
 import java.io.IOException;
@@ -159,6 +148,10 @@ public class DataController  {
 
     @FXML
     public void editTechnician() throws IOException {
+        if (!Objects.equals(selectedTechnician.getUsername(), MainController.loggedTechnician.getUsername()) && !Objects.equals(MainController.loggedTechnician.getUsername(), "admin")){
+            this.feedbackLabel.setText("Você não tem permissão para isso!");
+            return;
+        }
         MainController.popUp(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/editTechnician.fxml"))));
 
 

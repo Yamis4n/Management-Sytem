@@ -1,6 +1,7 @@
 package com.evertonvsf.managementsystem.controllers.tasks;
 
 import com.evertonvsf.managementsystem.controllers.clients.ClientsController;
+import com.evertonvsf.managementsystem.controllers.utils.MainController;
 import com.evertonvsf.managementsystem.dao.DAO;
 import com.evertonvsf.managementsystem.models.task.ServiceOrder;
 import com.evertonvsf.managementsystem.models.task.Status;
@@ -12,6 +13,7 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -21,8 +23,10 @@ import javafx.util.StringConverter;
 import javafx.util.converter.BooleanStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ServiceOrdersController {
 
@@ -45,7 +49,7 @@ public class ServiceOrdersController {
     private TableView<ServiceOrder> ordersTable;
 
     @FXML
-    private TableColumn<ServiceOrder, Integer> clientColumn;
+    private TableColumn<ServiceOrder, String> clientColumn;
 
     @FXML
     private TableColumn<ServiceOrder, Boolean> payedColumn;
@@ -66,7 +70,7 @@ public class ServiceOrdersController {
     @FXML
     private void initialize(){
         serviceOrdersObservable.addAll(DAO.fromServiceOrder().findMany());
-        serviceOrdersObservable.add((new ServiceOrder(111, new ArrayList<Integer>())));
+        serviceOrdersObservable.add((new ServiceOrder("111", new ArrayList<Integer>())));
         selectedOrder = null;
         initializeTable();
         initializeSearch();
@@ -78,7 +82,7 @@ public class ServiceOrdersController {
         this.payedColumn.setCellValueFactory(new PropertyValueFactory<>("payed"));
 
         this.statusColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        this.clientColumn.setCellFactory(TextFieldTableCell.forTableColumn( new IntegerStringConverter()));
+        this.clientColumn.setCellFactory(TextFieldTableCell.forTableColumn( ));
         this.technicianColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         this.payedColumn.setCellFactory(TextFieldTableCell.forTableColumn( new BooleanStringConverter()));
 
@@ -131,13 +135,20 @@ public class ServiceOrdersController {
         ordersTable.setItems(serviceOrdersSorted);
     }
 
-    public void gotoRegister(ActionEvent actionEvent) {
+    @FXML
+    private void gotoRegister(ActionEvent actionEvent) throws IOException {
+        MainController.popUp(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/newServerOrder.fxml"))));
     }
 
-    public void gotoEdit(ActionEvent actionEvent) {
+    @FXML
+    private void gotoEdit(ActionEvent actionEvent) throws IOException {
+        MainController.popUp(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/details.fxml"))));
     }
 
-    public void gotoDetails(ActionEvent actionEvent) {
+    @FXML
+    private void gotoDetails(ActionEvent actionEvent) throws IOException {
+        MainController.popUp(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/details.fxml"))));
     }
+
 
 }

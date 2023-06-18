@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #4fb4ff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.evertonvsf.managementsystem.controllers.tasks.NewServiceController">
    <children>
       <Label layoutX="142.0" layoutY="31.0" text="NOVA ORDEM DE SERVIÇO" textFill="#737373">
@@ -19,9 +18,9 @@
          </font>
       </Label>
       <Label layoutX="47.0" layoutY="98.0" text="CPF do Cliente:" />
-      <TextField fx:id="clientCpf" layoutX="47.0" layoutY="116.0" prefHeight="26.0" prefWidth="209.0" />
-      <ChoiceBox fx:id="serviceTypeChoice" layoutX="271.0" layoutY="116.0" prefWidth="150.0" />
-      <Button fx:id="includeButton" layoutX="443.0" layoutY="116.0" mnemonicParsing="false" onAction="#include" prefHeight="26.0" prefWidth="92.0" style="-fx-background-color: ORANGE;" text="INCLUIR" textFill="#737373">
+      <TextField fx:id="clientCpf" layoutX="47.0" layoutY="116.0" prefHeight="26.0" prefWidth="168.0" />
+      <ChoiceBox fx:id="serviceTypeChoice" layoutX="225.0" layoutY="116.0" prefWidth="150.0" />
+      <Button fx:id="includeButton" layoutX="384.0" layoutY="116.0" mnemonicParsing="false" onAction="#include" prefHeight="26.0" prefWidth="92.0" style="-fx-background-color: ORANGE;" text="INCLUIR" textFill="#737373">
          <font>
             <Font name="Open Sans Extrabold" size="13.0" />
          </font>
@@ -36,7 +35,7 @@
             <Font name="Open Sans Extrabold" size="13.0" />
          </font>
       </Button>
-      <Label layoutX="271.0" layoutY="98.0" text="Serviço:" />
+      <Label layoutX="225.0" layoutY="98.0" text="Serviço:" />
       <ScrollPane layoutX="69.0" layoutY="163.0" prefHeight="140.0" prefWidth="462.0">
          <content>
             <TableView fx:id="servicesTable" prefHeight="138.0" prefWidth="460.0">
@@ -52,5 +51,10 @@
          </content>
       </ScrollPane>
       <Label fx:id="feedbackLabel" layoutX="67.0" layoutY="312.0" prefHeight="18.0" prefWidth="462.0" textFill="RED" />
+      <Button fx:id="removeButton" layoutX="485.0" layoutY="116.0" mnemonicParsing="false" onAction="#remove" prefHeight="26.0" prefWidth="92.0" style="-fx-background-color: CORAL;" text="REMOVER" textFill="#737373">
+         <font>
+            <Font name="Open Sans Extrabold" size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
