@@ -52,7 +52,7 @@ public class ServiceOrdersController {
     private TableColumn<ServiceOrder, String> clientColumn;
 
     @FXML
-    private TableColumn<ServiceOrder, Boolean> payedColumn;
+    private TableColumn<ServiceOrder, Integer> idColumn;
 
     @FXML
     private TableColumn<ServiceOrder, Status> statusColumn;
@@ -78,7 +78,7 @@ public class ServiceOrdersController {
         this.statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
         this.clientColumn.setCellValueFactory(new PropertyValueFactory<>("clientCPF"));
         this.technicianColumn.setCellValueFactory(new PropertyValueFactory<>("technicianUsername"));
-        this.payedColumn.setCellValueFactory(new PropertyValueFactory<>("payed"));
+        this.idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
 
         this.statusColumn.setCellFactory(TextFieldTableCell.forTableColumn(new StringConverter<Status>() {
             @Override
@@ -94,14 +94,12 @@ public class ServiceOrdersController {
                 return null;
             }
         }));
-        this.clientColumn.setCellFactory(TextFieldTableCell.forTableColumn( ));
-        this.technicianColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        this.payedColumn.setCellFactory(TextFieldTableCell.forTableColumn( new BooleanStringConverter()));
+
 
         this.statusColumn.setStyle("-fx-alignment: CENTER;");
         this.clientColumn.setStyle("-fx-alignment: CENTER;");
         this.technicianColumn.setStyle("-fx-alignment: CENTER;");
-        this.payedColumn.setStyle("-fx-alignment: CENTER;");
+        this.idColumn.setStyle("-fx-alignment: CENTER;");
         this.ordersTable.onMouseClickedProperty().setValue(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -154,17 +152,20 @@ public class ServiceOrdersController {
 
     @FXML
     private void gotoEdit(ActionEvent actionEvent) throws IOException {
-        if (selectedOrder.getStatus() != Status.CANCELED && selectedOrder.getStatus() != Status.FINISHED) {
-            MainController.popUp(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/updateOrder.fxml"))));
-        }
-        else {
-            this.feedbackLabel.setText("Impossível alterar esta ordem!");
+        if (selectedOrder != null) {
+            if (selectedOrder.getStatus() != Status.CANCELED && selectedOrder.getStatus() != Status.FINISHED) {
+                MainController.popUp(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/updateOrder.fxml"))));
+            } else {
+                this.feedbackLabel.setText("Impossível alterar esta ordem!");
+            }
         }
     }
 
     @FXML
     private void gotoDetails(ActionEvent actionEvent) throws IOException {
-        MainController.popUp(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/details.fxml"))));
+        if (selectedOrder != null) {
+            MainController.popUp(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/details.fxml"))));
+        }
     }
 
 

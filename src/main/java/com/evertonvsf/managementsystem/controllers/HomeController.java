@@ -55,10 +55,15 @@ public class HomeController {
             orderTable.getItems().removeIf(order -> order.getId() == nextOrderId);
             ServiceOrder serviceOrder = DAO.fromServiceOrder().findById(nextOrderId);
             serviceOrder.setStatus(Status.INITIALIZED);
+            serviceOrder.setTechnicianUsername(MainController.loggedTechnician.getUsername());
             DAO.fromServiceOrder().update(serviceOrder);
 
         }
         else{
+            if (orderTable.getItems().size() == 0){
+                feedbackLabel.setText("tabela vazia!");
+            }
+            System.out.println(MainController.loggedTechnician.getActualOrderId());
             feedbackLabel.setText("Você não pode pegar uma nova ordem!");
         }
     }

@@ -7,6 +7,7 @@ import com.evertonvsf.managementsystem.models.task.Service;
 import com.evertonvsf.managementsystem.models.task.ServiceCategory;
 import com.evertonvsf.managementsystem.models.task.ServiceOrder;
 import com.evertonvsf.managementsystem.models.task.Status;
+import com.evertonvsf.managementsystem.models.users.Technician;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,6 +38,10 @@ public class UpdateOrderController {
         if (ServiceOrdersController.selectedOrder.getStatus() == Status.INITIALIZED){
             this.statusChoices.getItems().remove(Status.WAITING);
         }
+        if (ServiceOrdersController.selectedOrder.getStatus() == Status.WAITING){
+            this.statusChoices.getItems().remove(Status.INITIALIZED);
+            this.statusChoices.getItems().remove(Status.FINISHED);
+        }
     }
     @FXML
     void cancel() throws IOException {
@@ -48,6 +53,7 @@ public class UpdateOrderController {
     @FXML
     void save(ActionEvent event) throws IOException {
         ServiceOrder serviceOrder = DAO.fromServiceOrder().findById(ServiceOrdersController.selectedOrder.getId());
+        Technician technician = DAO.fromTechnician().findByUsername(serviceOrder.getTechnicianUsername());
         serviceOrder.setStatus(this.statusChoices.getValue());
         List<Service> services = new ArrayList<>();
         for (Integer serviceId : serviceOrder.getServicesIds()){
@@ -61,9 +67,17 @@ public class UpdateOrderController {
             }
         }
         if (serviceOrder.getStatus() == Status.FINISHED){
+            technician.setActualOrderId(-1);
             createInvoice();
         }
+        if (serviceOrder.getStatus() == Status.CANCELED){
+            technician.setActualOrderId(-1);
+        }
         DAO.fromServiceOrder().update(serviceOrder);
+        DAO.fromTechnician().update(technician);
+        MainController.saveInfo();
+        MainController.loadInfo();
+        MainController.loggedTechnician = DAO.fromTechnician().findByUsername(MainController.loggedTechnician.getUsername());
         cancel();
     }
     private void createInvoice(){
@@ -76,6 +90,7 @@ public class UpdateOrderController {
         for (Service service : services){
             totalPrice += service.getPrice();
         }
+
 
         ServiceOrdersController.selectedOrder.setInvoiceId(DAO.fromInvoice().create(new Invoice(ServiceOrdersController.selectedOrder.getId(), totalPrice)).getId());
     }
