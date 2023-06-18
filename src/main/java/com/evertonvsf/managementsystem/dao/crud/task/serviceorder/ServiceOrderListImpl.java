@@ -3,6 +3,7 @@ package com.evertonvsf.managementsystem.dao.crud.task.serviceorder;
 import com.evertonvsf.managementsystem.dao.persistence.task.serviceorder.ServiceOrderPersistence;
 import com.evertonvsf.managementsystem.models.money.Payment;
 import com.evertonvsf.managementsystem.models.task.ServiceOrder;
+import com.evertonvsf.managementsystem.models.task.Status;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +35,8 @@ public class ServiceOrderListImpl implements ServiceOrderCRUD{
     }
     @Override
     public ServiceOrder create(ServiceOrder serviceOrder) {
-        serviceOrder.setId(this.newId);
-        this.newId++;
+        serviceOrder.setId(newId);
+        newId++;
         this.serviceOrders.add(serviceOrder);
         return serviceOrder;
     }
@@ -59,7 +60,7 @@ public class ServiceOrderListImpl implements ServiceOrderCRUD{
 
     @Override
     public boolean deleteMany() {
-        this.newId = 0;
+        newId = 0;
         if (this.serviceOrders.size() == 0){
             return false;
         }
@@ -111,7 +112,7 @@ public class ServiceOrderListImpl implements ServiceOrderCRUD{
 
 
     @Override
-    public List<ServiceOrder> findByStatus(String orderStatus) {
+    public List<ServiceOrder> findByStatus(Status orderStatus) {
         List<ServiceOrder> sameStatusServiceOrders = new ArrayList<ServiceOrder>();
         for (ServiceOrder serviceOrder : this.serviceOrders){
             if (Objects.equals(serviceOrder.getStatus(), orderStatus)){
@@ -132,5 +133,8 @@ public class ServiceOrderListImpl implements ServiceOrderCRUD{
         }
         return false;
     }
-
+    @Override
+    public Integer getNewID(){
+        return this.newId;
+    }
 }

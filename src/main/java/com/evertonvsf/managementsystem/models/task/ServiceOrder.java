@@ -15,7 +15,7 @@ import java.util.zip.Inflater;
  * @see <code>Status</code>
  */
 public class ServiceOrder implements Serializable {
-    private int id;
+    private Integer id;
     private String clientCPF;
     private String technicianUsername;
     private int invoiceId;

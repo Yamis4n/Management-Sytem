@@ -2,6 +2,7 @@ package com.evertonvsf.managementsystem.controllers.tasks;
 
 import com.evertonvsf.managementsystem.controllers.utils.MainController;
 import com.evertonvsf.managementsystem.dao.DAO;
+import com.evertonvsf.managementsystem.models.money.Invoice;
 import com.evertonvsf.managementsystem.models.task.Service;
 import com.evertonvsf.managementsystem.models.task.ServiceCategory;
 import com.evertonvsf.managementsystem.models.task.ServiceOrder;
@@ -33,6 +34,9 @@ public class UpdateOrderController {
     private void initialize(){
         this.statusChoices.getItems().addAll(Status.values());
         this.statusChoices.setValue(ServiceOrdersController.selectedOrder.getStatus());
+        if (ServiceOrdersController.selectedOrder.getStatus() == Status.INITIALIZED){
+            this.statusChoices.getItems().remove(Status.WAITING);
+        }
     }
     @FXML
     void cancel() throws IOException {
@@ -56,9 +60,23 @@ public class UpdateOrderController {
                 DAO.fromService().update(service);
             }
         }
-
+        if (serviceOrder.getStatus() == Status.FINISHED){
+            createInvoice();
+        }
         DAO.fromServiceOrder().update(serviceOrder);
         cancel();
     }
+    private void createInvoice(){
+        List<Service> services = new ArrayList<>();
 
+        for (Integer serviceId : ServiceOrdersController.selectedOrder.getServicesIds()){
+            services.add(DAO.fromService().findById(serviceId));
+        }
+        Double totalPrice = 0.0;
+        for (Service service : services){
+            totalPrice += service.getPrice();
+        }
+
+        ServiceOrdersController.selectedOrder.setInvoiceId(DAO.fromInvoice().create(new Invoice(ServiceOrdersController.selectedOrder.getId(), totalPrice)).getId());
+    }
 }
