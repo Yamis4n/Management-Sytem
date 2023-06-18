@@ -4,9 +4,15 @@ package com.evertonvsf.managementsystem.controllers.technicians;
 import com.evertonvsf.managementsystem.controllers.utils.MainController;
 import com.evertonvsf.managementsystem.controllers.utils.MenuController;
 import com.evertonvsf.managementsystem.dao.DAO;
+import com.evertonvsf.managementsystem.models.users.Client;
 import com.evertonvsf.managementsystem.models.users.Technician;
 
 
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -56,24 +62,18 @@ public class DataController  {
     @FXML
     private Label nameLabel;
 
+    private final ObservableList<Technician> techniciansObservable = FXCollections.observableArrayList();
+
 
 
     @FXML
     private void initialize(){
 
 
-
+        techniciansObservable.addAll(DAO.fromTechnician().findMany());
         DataController.selectedTechnician = null;
-
-
-
         createTechnicianTable();
-
-
-        for (Technician technician : DAO.fromTechnician().findMany()){
-            techniciansTable.getItems().add(technician);
-        }
-
+        initializeSearch();
 
     }
     private void createTechnicianTable() {
@@ -95,10 +95,43 @@ public class DataController  {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 selectedTechnician =  techniciansTable.getSelectionModel().getSelectedItem();
+                showTech(selectedTechnician);
 
             }
         });
 
+    }
+
+    private void initializeSearch(){
+        FilteredList<Technician> filteredTechnicians = new FilteredList<Technician>(techniciansObservable, b -> true);
+
+        this.searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredTechnicians.setPredicate(technician -> {
+
+                if ( newValue == null || newValue.isEmpty() ){
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if ( technician.getName().toLowerCase().contains(lowerCaseFilter) ){
+                    return true;
+                }
+                else if ( technician.getUsername().toLowerCase().contains(lowerCaseFilter) ){
+                    return true;
+                }
+                else {
+                    return technician.getActualOrderId().toString().contains(lowerCaseFilter);
+                }
+
+
+            });
+
+        });
+        SortedList<Technician> sortedTechnicians = new SortedList<Technician>(filteredTechnicians);
+
+        sortedTechnicians.comparatorProperty().bind(this.techniciansTable.comparatorProperty());
+
+        this.techniciansTable.setItems(sortedTechnicians);
     }
 
     @FXML
@@ -129,6 +162,17 @@ public class DataController  {
         MainController.popUp(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/editTechnician.fxml"))));
 
 
+    }
+
+    private void showTech(Technician tech){
+        if (tech != null){
+            this.nameLabel.setText(tech.getName());
+            this.usernameLabel.setText(tech.getUsername());
+        }
+        else{
+            this.usernameLabel.setText("Username");
+            this.nameLabel.setText("Nome");
+        }
     }
 
 

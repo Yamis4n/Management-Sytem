@@ -1,6 +1,7 @@
 package com.evertonvsf.managementsystem.models.users;
 
 import java.io.Serializable;
+import java.net.Inet4Address;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class Technician implements Serializable {
     private String username;
     private String password;
     private List<Integer> OrdersIds;
-    private int actualOrderId;
+    private Integer actualOrderId;
 /**
  * Construtor da classe <code>Technician</code>.
  *
@@ -46,7 +47,7 @@ public class Technician implements Serializable {
     }
 
 
-    public int getActualOrderId() {
+    public Integer getActualOrderId() {
         return actualOrderId;
     }
 
