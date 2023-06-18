@@ -7,11 +7,12 @@
 <?import javafx.scene.text.Font?>
 
 
+<?import javafx.scene.control.PasswordField?>
 <AnchorPane fx:id="window" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="342.0" prefWidth="426.0" style="-fx-background-color: #4fb4ff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.evertonvsf.managementsystem.controllers.technicians.EditTechnicianController">
    <children>
       <TextField fx:id="newNameField" layoutX="51.0" layoutY="138.0" prefHeight="26.0" prefWidth="331.0" promptText="Nome" />
       <TextField fx:id="newUserField" layoutX="51.0" layoutY="95.0" prefHeight="26.0" prefWidth="331.0" promptText="Username" />
-      <TextField fx:id="newPasswordField" layoutX="51.0" layoutY="185.0" prefHeight="26.0" prefWidth="331.0" promptText="Senha" />
+      <PasswordField fx:id="newPasswordField" layoutX="51.0" layoutY="185.0" prefHeight="26.0" prefWidth="331.0" promptText="Senha" />
       <Button fx:id="saveButton" layoutX="51.0" layoutY="248.0" mnemonicParsing="false" onAction="#save" prefHeight="53.0" prefWidth="110.0" style="-fx-background-color: #60a05b;" text="SALVAR" textFill="#f8f8f8">
          <font>
             <Font name="Open Sans Extrabold" size="14.0" />

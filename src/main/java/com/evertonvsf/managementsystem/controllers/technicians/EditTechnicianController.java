@@ -10,6 +10,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -34,7 +35,7 @@ public class EditTechnicianController {
     private TextField newNameField;
 
     @FXML
-    private TextField newPasswordField;
+    private PasswordField newPasswordField;
 
     @FXML
     private Button saveButton;
@@ -48,7 +49,7 @@ public class EditTechnicianController {
         feedbackLabel.setAlignment(Pos.BASELINE_CENTER);
         feedbackLabel.setTextFill(Color.RED);
 
-        if ( DataController.techId == -1 ) {
+        if ( DataController.selectedTechnician == null ) {
             feedbackLabel.setText("Selecione um Técnico!");
 
             newUserField.setEditable(false);
@@ -58,11 +59,12 @@ public class EditTechnicianController {
             saveButton.setDisable(true);
         }
         else {
-            newUserField.setText(DAO.fromTechnician().findById(DataController.techId).getUsername());
-            newNameField.setText(DAO.fromTechnician().findById(DataController.techId).getName());
+            newUserField.setText(DataController.selectedTechnician.getUsername());
+            newNameField.setText(DataController.selectedTechnician.getName());
+            newPasswordField.setText(DataController.selectedTechnician.getPassword());
         }
 
-        if (Objects.equals(DataController.techId, DAO.fromTechnician().findByUsername("admin").getId())){
+        if (Objects.equals(DataController.selectedTechnician.getUsername(), "admin")){
             newUserField.setEditable(false);
         }
 
@@ -70,7 +72,7 @@ public class EditTechnicianController {
 
     @FXML
     private void save() throws IOException {
-        Technician technician = DAO.fromTechnician().findById(DataController.techId);
+        Technician technician = DataController.selectedTechnician;
 
         if (newPasswordField.getLength() == 0 && newNameField.getLength() == 0 && newUserField.getLength() == 0){
             feedbackLabel.setText("Nenhuma alteração!");
@@ -79,21 +81,20 @@ public class EditTechnicianController {
 
         if (technician == null){
             feedbackLabel.setText("Técnico não encontrado!");
-            feedbackLabel.setText(DataController.techId.toString());
-
             return;
         }
 
         if ( newPasswordField.getLength() != 0 || newNameField.getLength() == 0 || newUserField.getLength() == 0){
 
-            if ( newUserField.getLength() != 0 ) {
+            if ( newUserField.getLength() != 0 && !Objects.equals(DataController.selectedTechnician.getUsername(), "admin")) {
                 String newUsername = newUserField.getText();
-                if (DAO.fromTechnician().findByUsername(newUsername) == null) {
-                    technician.setUsername(newUsername);
-                }
-                else {
-                    feedbackLabel.setText("Usuário já existe!");
-                    return;
+                if (!Objects.equals(newUsername, DataController.selectedTechnician.getUsername())) {
+                    if (DAO.fromTechnician().findByUsername(newUsername) == null) {
+                        technician.setUsername(newUsername);
+                    } else {
+                        feedbackLabel.setText("Usuário já existe!");
+                        return;
+                    }
                 }
             }
 
@@ -104,6 +105,7 @@ public class EditTechnicianController {
                 technician.setName(newNameField.getText());
             }
 
+            DAO.fromTechnician().update(DataController.selectedTechnician);
             MainController.saveInfo();
             MainController.loadInfo();
             this.cancel();
@@ -116,8 +118,7 @@ public class EditTechnicianController {
     @FXML
     private void cancel() throws IOException {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
-        MainController.STAGE.setScene(new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/data.fxml")))));
-        MainController.STAGE.show();
+        MainController.changePanel(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/data.fxml"))));
         stage.close();
     }
 }
